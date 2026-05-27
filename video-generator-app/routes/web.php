@@ -7,7 +7,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\VideoProjectController;
 use App\Http\Controllers\VideoProjectPreviewController;
 use App\Http\Controllers\VideoProjectStatusController;
-use App\Models\VideoProject;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,11 +29,9 @@ Route::middleware('auth')->group(function (): void {
     Route::get('/video-projects/create', [VideoProjectController::class, 'create'])->name('video-projects.create');
     Route::post('/video-projects', [VideoProjectController::class, 'store'])->name('video-projects.store');
 
-    Route::get('/video-projects/{videoProject}', function (VideoProject $videoProject) {
-        return view('video-projects.show', [
-            'videoProject' => $videoProject,
-        ]);
-    })->can('view', 'videoProject')->name('video-projects.show');
+    Route::get('/video-projects/{videoProject}', [VideoProjectController::class, 'show'])
+        ->can('view', 'videoProject')
+        ->name('video-projects.show');
 
     Route::get('/video-projects/{videoProject}/status', VideoProjectStatusController::class)
         ->can('view', 'videoProject')
@@ -43,6 +40,10 @@ Route::middleware('auth')->group(function (): void {
     Route::get('/video-projects/{videoProject}/preview', [VideoProjectPreviewController::class, 'show'])
         ->can('view', 'videoProject')
         ->name('video-projects.preview');
+
+    Route::get('/video-projects/{videoProject}/stream', [VideoProjectPreviewController::class, 'stream'])
+        ->can('view', 'videoProject')
+        ->name('video-projects.stream');
 
     Route::get('/video-projects/{videoProject}/download', [VideoProjectPreviewController::class, 'download'])
         ->can('view', 'videoProject')

@@ -73,6 +73,8 @@ class StoreVideoProjectRequest extends FormRequest
             30 => '30 seconds',
             45 => '45 seconds',
             60 => '60 seconds',
+            180 => '3 minutes',
+            240 => '4 minutes',
         ];
     }
 }

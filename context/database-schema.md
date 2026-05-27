@@ -9,12 +9,12 @@ Dùng file này để mô tả schema database ở mức tổng quan để Codex
   - có `is_admin` boolean default false cho phân quyền admin tối giản
 - `video_projects`
   - thuộc về `users`
-  - hiện có: `id`, `user_id`, `keyword`, `content_brief`, `tone`, `duration_seconds`, `platform`, `language`, `status`, `progress_percent`, `error_message`, `script_content`, `audio_disk`, `audio_path`, `audio_duration_seconds`, `subtitle_disk`, `subtitle_path`, `rendered_video_path`, timestamps
+  - hiện có: `id`, `user_id`, `keyword`, `content_brief`, `tone`, `duration_seconds`, `platform`, `language`, `status`, `progress_percent`, `error_message`, `script_content`, `audio_disk`, `audio_path`, `audio_duration_seconds`, `subtitle_disk`, `subtitle_path`, `rendered_video_path`, `output_disk`, `render_duration_seconds`, `render_size_bytes`, `render_metadata`, timestamps
   - status được cast bằng `VideoProjectStatusEnum`
   - `script_content` được ghi bởi `ScriptGenerationService` qua provider abstraction
   - `audio_*` được ghi bởi `VoiceOverGenerationService` qua TTS provider abstraction
   - `subtitle_*` được ghi bởi `SubtitleGenerationService` dưới dạng SRT
-  - `rendered_video_path` được ghi bởi `VideoRenderService` qua render provider abstraction
+  - `rendered_video_path`, `output_disk`, `render_duration_seconds`, `render_size_bytes`, `render_metadata` được ghi bởi `VideoRenderService` qua render provider abstraction
 - `video_scenes`
   - thuộc về `video_projects`
   - hiện có: `id`, `video_project_id`, `sort_order`, `text`, `duration_seconds`, `visual_prompt`, `status`, timestamps
@@ -53,4 +53,4 @@ Dùng file này để mô tả schema database ở mức tổng quan để Codex
 
 - Đây là schema sơ bộ cho MVP.
 - Laravel app đã được khởi tạo trong `video-generator-app/`.
-- Hiện có migration mặc định của Laravel cho `users`, `cache`, `jobs`, và `failed_jobs`, migration bổ sung `users.is_admin`, migration `video_projects`, `video_scenes`, `video_assets`, và `notifications`.
+- Hiện có migration mặc định của Laravel cho `users`, `cache`, `jobs`, và `failed_jobs`, migration bổ sung `users.is_admin`, migration `video_projects`, `video_scenes`, `video_assets`, `notifications`, và render metadata trên `video_projects`.

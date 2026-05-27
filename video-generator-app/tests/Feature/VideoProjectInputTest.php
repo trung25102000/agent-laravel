@@ -21,8 +21,10 @@ class VideoProjectInputTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('Create video project');
+        $response->assertSee('MVP template');
         $response->assertSee('Keyword');
         $response->assertSee('TikTok');
+        $response->assertSee('3 minutes');
     }
 
     public function test_authenticated_user_can_create_video_project(): void
@@ -61,6 +63,18 @@ class VideoProjectInputTest extends TestCase
 
         $response->assertRedirect('/video-projects/create');
         $response->assertSessionHasErrors(['keyword', 'platform']);
+        $this->followingRedirects()
+            ->actingAs($user)
+            ->from('/video-projects/create')
+            ->post('/video-projects', [
+                'keyword' => '',
+                'tone' => 'educational',
+                'duration_seconds' => 30,
+                'platform' => 'instagram',
+                'language' => 'vi',
+            ])
+            ->assertSee('The keyword field is required.')
+            ->assertSee('The selected platform is invalid.');
         $this->assertDatabaseCount('video_projects', 0);
     }
 }

@@ -4,21 +4,20 @@ Dùng file này để ghi lại map các route hiện có trong dự án Laravel
 
 ## Web Routes
 
-- `GET /` trang welcome mặc định
-- `GET /login` hiển thị form đăng nhập, middleware `guest`
+- `GET /` branded landing page cho AI Video Generator, có CTA login/register hoặc dashboard khi đã đăng nhập
+- `GET /login` hiển thị form đăng nhập branded cho AI video workspace, middleware `guest`
 - `POST /login` xử lý đăng nhập, middleware `guest`, có rate limit trong `LoginRequest`
-- `GET /register` hiển thị form đăng ký, middleware `guest`
+- `GET /register` hiển thị form đăng ký branded cho creator workspace, middleware `guest`
 - `POST /register` xử lý đăng ký, middleware `guest`
 - `POST /logout` đăng xuất, middleware `auth`
 - `GET /dashboard` dashboard user cơ bản với empty state và link tạo video, middleware `auth`
 - `GET /video-projects/create` form tạo video project, middleware `auth`
 - `POST /video-projects` validate bằng `StoreVideoProjectRequest`, lưu video project draft cho owner hiện tại
-- `GET /video-projects/{videoProject}` xem chi tiết project placeholder, middleware `auth`, policy `view`
+- `GET /video-projects/{videoProject}` xem chi tiết project với progress/script/scenes/output panel, middleware `auth`, policy `view`
 - `GET /video-projects/{videoProject}/status` trả JSON status/progress/error/output, middleware `auth`, policy `view`
-- `GET /video-projects/{videoProject}/preview` trang preview output, middleware `auth`, policy `view`
+- `GET /video-projects/{videoProject}/preview` trang preview output với video player 9:16, metadata, empty/missing/unplayable states, middleware `auth`, policy `view`
+- `GET /video-projects/{videoProject}/stream` stream inline MP4 cho `<video src>`, middleware `auth`, policy `view`
 - `GET /video-projects/{videoProject}/download` download output qua controller/storage, middleware `auth`, policy `view`
-- `GET /video-projects/{videoProject}/preview` preview video output
-- `GET /video-projects/{videoProject}/download` tải video output
 
 ## API Routes
 
@@ -41,5 +40,5 @@ Dùng file này để ghi lại map các route hiện có trong dự án Laravel
 
 - Auth routes đã được triển khai thủ công bằng controller/request riêng trong Laravel app.
 - API routing đã được bật trong `bootstrap/app.php` với `routes/api.php`.
-- Dashboard query `VideoProject` theo owner hiện tại và hiển thị keyword/link detail.
+- Dashboard query `VideoProject` theo owner hiện tại, hiển thị thống kê, status badge, progress, metadata, và link detail.
 - Naming ưu tiên RESTful cho resource chính là `video-projects`.

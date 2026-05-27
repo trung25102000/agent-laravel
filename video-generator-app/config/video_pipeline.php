@@ -8,6 +8,7 @@ return [
         'script' => env('AI_SCRIPT_PROVIDER', 'mock'),
         'image' => env('AI_IMAGE_PROVIDER', 'mock'),
         'tts' => env('TTS_PROVIDER', 'mock'),
+        'render' => env('VIDEO_RENDER_PROVIDER', 'mock'),
     ],
 
     'storage' => [
@@ -31,5 +32,8 @@ return [
         'fps' => (int) env('VIDEO_DEFAULT_FPS', 30),
         'aspect_ratio' => env('VIDEO_DEFAULT_ASPECT_RATIO', '9:16'),
         'default_duration' => (int) env('VIDEO_DEFAULT_DURATION', 30),
+        'min_duration_seconds' => (int) env('VIDEO_RENDER_MIN_DURATION', 180),
+        'max_duration_seconds' => (int) env('VIDEO_RENDER_MAX_DURATION', 240),
+        'preset' => env('VIDEO_RENDER_PRESET', 'veryfast'),
     ],
 ];

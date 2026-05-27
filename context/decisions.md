@@ -13,6 +13,62 @@ File này dùng để ghi lại các quyết định kỹ thuật, assumptions, 
 
 ## Entries
 
+- Ngày: 2026-05-28
+- Task: post-027-audio-narration-fix
+- Loại: decision
+- Nội dung: Demo audio local ưu tiên dùng macOS `say` để tạo narration `.aiff`; test/CI vẫn dùng generated WAV fallback để không phụ thuộc OS.
+- Lý do: User cần nghe được tiếng/voice-over trong preview, không chỉ có audio stream hoặc tone kỹ thuật.
+- Ảnh hưởng: Trên macOS local demo có narration; trên môi trường không có `say`, command vẫn tạo audio nghe được bằng WAV tone fallback cho đến khi có TTS provider thật.
+
+- Ngày: 2026-05-28
+- Task: 027-fix-audio-and-reference-based-xianxia-scenes
+- Loại: decision
+- Nội dung: Sửa demo audio bằng service sinh WAV nghe được trong PHP và bắt FFmpeg provider probe audio stream/volume sau render; reference YouTube chỉ lưu làm metadata, visual vẫn là asset gốc `reference_inspired_original`.
+- Lý do: Cần đảm bảo output demo có audio thật ngay cả khi chưa có TTS provider/API key và tránh sao chép frame YouTube khi chưa xác nhận quyền sử dụng.
+- Ảnh hưởng: Demo command có thể tái tạo video có audio; render metadata có thêm `has_audio`, `audio_codec`, `audio_duration_seconds`, `audio_max_volume`, `audio_mean_volume`.
+
+- Ngày: 2026-05-28
+- Task: 026-xianxia-scene-character-demo-video
+- Loại: decision
+- Nội dung: Tạo command local `demo:xianxia-review` và service dùng GD để sinh PNG nhân vật theo scene, sau đó render qua FFmpeg provider hiện có; thêm `--skip-render` để test không phụ thuộc FFmpeg.
+- Lý do: User cần một video demo xem thật với nhân vật từng cảnh ngay trong UI, trong khi image AI provider thật chưa được tích hợp.
+- Ảnh hưởng: Demo local có thể tái tạo bằng Artisan command; production vẫn nên thay phần GD demo bằng image/video AI provider thật khi có key/provider.
+
+- Ngày: 2026-05-27
+- Task: 025-clear-real-video-preview-player
+- Loại: decision
+- Nội dung: Thêm route owner-only `/video-projects/{videoProject}/stream` để phục vụ MP4 inline cho `<video src>`, giữ route download riêng cho attachment và thêm helper model kiểm tra playable output.
+- Lý do: Download response không tối ưu cho preview browser và không nên expose storage path nội bộ trong view/API.
+- Ảnh hưởng: Preview player dùng URL protected, non-owner bị 403, output missing/unplayable hiển thị safe state thay vì rò path hoặc cố render file giả.
+
+- Ngày: 2026-05-27
+- Task: 024-warm-branded-auth-and-landing-ui
+- Loại: decision
+- Nội dung: Giữ UI auth/landing bằng Blade + Tailwind và dùng palette teal/amber/sky tren nen near-white thay vì thêm starter kit hoặc SPA.
+- Lý do: Task yêu cầu giao diện thân thiện và bỏ cảm giác mặc định Laravel; stack hiện có đủ để làm nhanh, dễ test, ít rủi ro.
+- Ảnh hưởng: Các trang guest dùng cùng layout app, CTA hướng rõ vào login/register/workspace, và test kiểm tra không còn welcome copy mặc định.
+
+- Ngày: 2026-05-27
+- Task: 023-real-3-to-4-minute-video-rendering
+- Loại: decision
+- Nội dung: Thêm `FfmpegRenderProvider` bật qua `VIDEO_RENDER_PROVIDER=ffmpeg`, vẫn giữ `MockRenderProvider` làm mặc định để local/test không phụ thuộc FFmpeg nếu chưa cấu hình.
+- Lý do: FFmpeg là dependency hệ thống nặng; provider abstraction cho phép MVP chạy ổn với mock và bật render thật khi môi trường có binary.
+- Ảnh hưởng: Queue/render production cần cài `ffmpeg`/`ffprobe`; integration test render MP4 thật skip nếu thiếu binary.
+
+- Ngày: 2026-05-27
+- Task: 023-real-3-to-4-minute-video-rendering
+- Loại: decision
+- Nội dung: FFmpeg provider tự tạo fallback JPEG, silent AAC audio, và SRT render-specific khi mock AI media/TTS hiện tại chưa tạo binary thật.
+- Lý do: Yêu cầu task cần tạo được MP4 thật end-to-end ngay cả khi chưa có API image/TTS thật.
+- Ảnh hưởng: Output là video thật/playable; nội dung media fallback còn đơn giản cho đến khi tích hợp provider AI image/TTS thật.
+
+- Ngày: 2026-05-27
+- Task: 022-complete-user-friendly-ui
+- Loại: decision
+- Nội dung: Giữ MVP frontend trên Blade + Tailwind/Vite, bổ sung status label/badge trong enum và accessor hiển thị trong model thay vì thêm Vue/React hoặc package UI mới.
+- Lý do: Task yêu cầu giao diện hoàn chỉnh, dễ dùng nhưng không cần SPA; Blade hiện có đủ để cải thiện workflow và giữ kiến trúc đơn giản.
+- Ảnh hưởng: UI build cần Tailwind scan cả `app/**/*.php` để các class badge trong enum được đưa vào CSS production.
+
 - Ngày: 2026-05-27
 - Task: 019-security-review
 - Loại: decision

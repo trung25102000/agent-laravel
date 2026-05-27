@@ -10,6 +10,7 @@ Laravel 13 app for generating short-form AI video projects.
 - Redis queue target for video jobs
 - Blade + Vite
 - Local storage by default, S3-ready config
+- FFmpeg render provider for real MP4 output
 
 ## Setup
 
@@ -19,6 +20,14 @@ cp .env.example .env
 php artisan key:generate
 php artisan migrate
 php artisan test
+```
+
+Install FFmpeg before enabling the real render provider:
+
+```bash
+brew install ffmpeg
+# or on Ubuntu/Debian:
+sudo apt-get update && sudo apt-get install -y ffmpeg
 ```
 
 ## Core Routes
@@ -32,6 +41,7 @@ php artisan test
 - `GET /video-projects/{videoProject}`
 - `GET /video-projects/{videoProject}/status`
 - `GET /video-projects/{videoProject}/preview`
+- `GET /video-projects/{videoProject}/stream`
 - `GET /video-projects/{videoProject}/download`
 - `GET /admin`
 
@@ -43,7 +53,7 @@ API routes:
 
 ## Mock Pipeline
 
-The current MVP pipeline uses mock providers:
+The default MVP pipeline uses mock providers:
 
 - Script: `ScriptGeneratorInterface` -> `MockScriptGenerator`
 - Voice: `TextToSpeechInterface` -> `MockTextToSpeechProvider`
@@ -51,6 +61,46 @@ The current MVP pipeline uses mock providers:
 - Render: `RenderProviderInterface` -> `MockRenderProvider`
 
 The mock render writes a placeholder output file. Real FFmpeg rendering can replace `RenderProviderInterface` without changing controllers or jobs.
+
+## Real FFmpeg Rendering
+
+Set these variables to render real 9:16 MP4 files:
+
+```env
+VIDEO_RENDER_PROVIDER=ffmpeg
+FFMPEG_BINARY=ffmpeg
+FFPROBE_BINARY=ffprobe
+VIDEO_RENDER_MIN_DURATION=180
+VIDEO_RENDER_MAX_DURATION=240
+VIDEO_DEFAULT_WIDTH=1080
+VIDEO_DEFAULT_HEIGHT=1920
+VIDEO_DEFAULT_FPS=30
+VIDEO_RENDER_PRESET=veryfast
+```
+
+The FFmpeg provider creates valid fallback scene images, audible AAC fallback audio, SRT subtitles, and a final H.264/AAC MP4 when real AI media/TTS files are not configured yet. Output is stored under `storage/app/private/videos/video-projects/{id}/output.mp4` for the local disk and is accessed through the protected preview/download routes. Render metadata records `has_audio`, `audio_codec`, `audio_duration_seconds`, and detected volume when probing succeeds.
+
+## Demo Video
+
+Create or replace a local xianxia review demo project with scene-specific character PNG assets and generated audible WAV narration:
+
+```bash
+php artisan demo:xianxia-review --email=demo@example.com --password=password
+```
+
+To replace an existing demo project while keeping its preview URL:
+
+```bash
+php artisan demo:xianxia-review --project-id=6
+```
+
+Store a reference URL for the visual direction without copying source frames:
+
+```bash
+php artisan demo:xianxia-review --project-id=6 --reference-url="https://www.youtube.com/watch?v=5W-8VZa1jpw"
+```
+
+Use `--skip-render` in tests or local setup when FFmpeg is not available. Rendering still requires `ffmpeg` and `ffprobe`, either installed globally or passed with `--ffmpeg` and `--ffprobe`.
 
 ## Queue
 

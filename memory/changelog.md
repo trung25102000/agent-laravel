@@ -1,7 +1,24 @@
 # Changelog
 
+## 2026-05-28
+
+- Hoàn tất task `027-fix-audio-and-reference-based-xianxia-scenes`: thêm generated WAV audio nghe được cho demo tiên hiệp, FFmpeg output probe audio metadata, fallback audio không còn dùng `anullsrc`, và preview project `#6` có Audio Ready.
+- Render lại project `#6` với reference URL YouTube được lưu trong metadata, visual source `reference_inspired_original`, output MP4 180 giây có video H.264 1080x1920 và audio AAC.
+- Sửa tiếp demo audio để ưu tiên system narration `.aiff` bằng macOS `say` khi chạy local, normalize/pad bằng FFmpeg, và render lại project `#6` với audio AAC max volume `-1.4 dB`.
+- Thêm task pending `027-fix-audio-and-reference-based-xianxia-scenes` ưu tiên cao để sửa audio output, xác thực audio stream bằng FFprobe, và nâng cấp visual nhân vật từng scene theo reference YouTube an toàn bản quyền.
+- Thêm task `026-xianxia-scene-character-demo-video` để sửa demo video tĩnh bằng video review truyện tiên hiệp có nhân vật riêng cho từng scene.
+- Thêm command `demo:xianxia-review`, service tạo demo project/scenes/PNG character assets bằng GD, option `--skip-render` cho test, và feature tests cho command.
+- Render lại project preview `#6` thành MP4 180 giây, 1080x1920, chủ đề `Review truyện tiên hiệp: Kiếm Đạo Trường Sinh`, xem qua protected stream route.
+
 ## 2026-05-27
 
+- Bổ sung backlog mới gồm `024-warm-branded-auth-and-landing-ui` cho landing/login/register branded, màu sắc thân thiện, bỏ copy Laravel mặc định và `025-clear-real-video-preview-player` cho preview MP4 thật bằng player protected.
+- Hoàn thiện landing page, login, register, navigation, và dashboard copy theo nhận diện AI Video Generator với palette teal/amber/sky thân thiện; thay welcome page mặc định và thêm branded UI tests.
+- Thêm protected inline MP4 stream route cho preview player 9:16, metadata duration/resolution/size, safe states cho output missing/unplayable, và tests owner/non-owner preview/stream/download.
+- Bổ sung backlog mới gồm `022-complete-user-friendly-ui` cho giao diện hoàn chỉnh, thân thiện, dễ dùng và `023-real-3-to-4-minute-video-rendering` cho render MP4 thật dài 3-4 phút bằng FFmpeg.
+- Hoàn thiện UI web chính gồm layout app, dashboard thống kê, form tạo video, trang progress/scene/script, preview/download states, admin dashboard, status labels, và feature tests UI.
+- Thêm FFmpeg render provider thật bật bằng `VIDEO_RENDER_PROVIDER=ffmpeg`, fallback JPEG/audio/subtitle hợp lệ, render metadata, migration output metadata, duration 3-4 phút, README env vận hành, và tests command/failure/integration MP4.
+- Xác thực render thật bằng smoke project tạo output MP4 180 giây, 1080x1920, lưu tại storage local.
 - Cập nhật bộ agent/rules/context để mặc định làm việc với Laravel 13.x và PHP 8.5.
 - Thêm `rules/platform-version-rules.md` làm luật nền cho Composer constraint, skeleton Laravel 13, Vite, API routing, và style PHP 8.5.
 - Cập nhật prompt start/continue/review và các task foundation, auth, API để tránh giả định Laravel 11/12 hoặc cấu trúc legacy.

@@ -31,6 +31,7 @@ class VideoRenderServiceTest extends TestCase
         $this->assertSame(VideoProjectStatusEnum::Completed, $updatedProject->status);
         $this->assertSame(100, $updatedProject->progress_percent);
         $this->assertSame("videos/video-projects/{$videoProject->id}/output.txt", $updatedProject->rendered_video_path);
+        $this->assertSame('local', $updatedProject->output_disk);
 
         Storage::disk('local')->assertExists($updatedProject->rendered_video_path);
 

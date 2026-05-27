@@ -48,6 +48,10 @@ class VideoRenderService
                 'status' => VideoProjectStatusEnum::Completed,
                 'progress_percent' => 100,
                 'rendered_video_path' => $renderedVideo->path,
+                'output_disk' => $renderedVideo->disk,
+                'render_duration_seconds' => $renderedVideo->durationSeconds,
+                'render_size_bytes' => $renderedVideo->sizeBytes,
+                'render_metadata' => $renderedVideo->metadata,
             ])->save();
 
             $videoProject->assets()->updateOrCreate(
@@ -58,9 +62,12 @@ class VideoRenderService
                 [
                     'disk' => $renderedVideo->disk,
                     'path' => $renderedVideo->path,
-                    'source' => 'mock',
+                    'source' => $renderedVideo->metadata['provider'] ?? 'render',
                     'metadata' => [
                         'mime_type' => $renderedVideo->mimeType,
+                        'duration_seconds' => $renderedVideo->durationSeconds,
+                        'size_bytes' => $renderedVideo->sizeBytes,
+                        ...$renderedVideo->metadata,
                     ],
                 ]
             );

@@ -9,6 +9,7 @@ use App\Services\AI\Contracts\TextToSpeechInterface;
 use App\Services\AI\MockScriptGenerator;
 use App\Services\AI\MockTextToSpeechProvider;
 use App\Services\Rendering\Contracts\RenderProviderInterface;
+use App\Services\Rendering\FfmpegRenderProvider;
 use App\Services\Rendering\MockRenderProvider;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
@@ -38,7 +39,13 @@ class AppServiceProvider extends ServiceProvider
             };
         });
 
-        $this->app->bind(RenderProviderInterface::class, fn () => new MockRenderProvider());
+        $this->app->bind(RenderProviderInterface::class, function () {
+            return match (config('video_pipeline.providers.render')) {
+                'ffmpeg' => new FfmpegRenderProvider(),
+                'mock' => new MockRenderProvider(),
+                default => new MockRenderProvider(),
+            };
+        });
     }
 
     /**

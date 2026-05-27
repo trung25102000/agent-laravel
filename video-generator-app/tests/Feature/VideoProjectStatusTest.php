@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Enums\VideoProjectStatusEnum;
 use App\Models\User;
 use App\Models\VideoProject;
+use App\Models\VideoScene;
 use App\Services\VideoProjectStatusService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -56,5 +57,37 @@ class VideoProjectStatusTest extends TestCase
         $this->actingAs($user)
             ->getJson(route('video-projects.status', $videoProject))
             ->assertForbidden();
+    }
+
+    public function test_owner_can_view_project_progress_page_with_pipeline_steps(): void
+    {
+        $this->withoutVite();
+
+        $user = User::factory()->create();
+        $videoProject = VideoProject::factory()->create([
+            'user_id' => $user->id,
+            'keyword' => 'progress page',
+            'status' => VideoProjectStatusEnum::Rendering,
+            'progress_percent' => 90,
+            'script_content' => 'Generated script preview',
+        ]);
+        VideoScene::factory()->create([
+            'video_project_id' => $videoProject->id,
+            'sort_order' => 1,
+            'text' => 'Opening scene narration',
+        ]);
+
+        $response = $this->actingAs($user)->get(route('video-projects.show', $videoProject));
+
+        $response->assertOk();
+        $response->assertSee('Generation progress');
+        $response->assertSee('Script');
+        $response->assertSee('Scenes');
+        $response->assertSee('Media');
+        $response->assertSee('Voice');
+        $response->assertSee('Subtitle');
+        $response->assertSee('Render');
+        $response->assertSee('Generated script preview');
+        $response->assertSee('Opening scene narration');
     }
 }

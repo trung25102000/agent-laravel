@@ -38,10 +38,10 @@
 
 ## Ghi Chú Thêm
 
-- Ràng buộc nghiệp vụ quan trọng: MVP ưu tiên provider interface + mock provider cho AI, TTS, render; chưa khóa vào vendor thật
+- Ràng buộc nghiệp vụ quan trọng: MVP ưu tiên provider interface + mock provider cho AI/TTS; render có mock provider mặc định và FFmpeg provider thật khi cấu hình `VIDEO_RENDER_PROVIDER=ffmpeg`
 - Ràng buộc bảo mật: Owner-only access cho video project và file output; mọi mutate action phải authorize; không lộ file path nội bộ hoặc secret
 - Ràng buộc hiệu năng: Các bước generate và render phải tách ra queue/job, tránh xử lý nặng trong request lifecycle
-- Tích hợp ngoài: AI script provider, TTS provider, media source provider, FFmpeg hoặc render engine; giai đoạn đầu dùng mock implementation
+- Tích hợp ngoài: AI script provider, TTS provider, media source provider, FFmpeg hoặc render engine; giai đoạn đầu dùng mock implementation cho AI/TTS/media và có fallback FFmpeg local cho video thật
 
 ## Trạng Thái Repo Hiện Tại
 
@@ -49,3 +49,4 @@
 - Source Laravel 13 đã được bootstrap trong `video-generator-app/`.
 - `video-generator-app/` đã có `composer.json`, cấu trúc Laravel skeleton hiện đại, config pipeline video, storage directories nền tảng, và smoke test foundation.
 - Môi trường local hiện chạy PHP 8.4.7; Composer constraint tạm dùng `php:^8.4` để validate được trên máy này và vẫn tương thích PHP 8.5 khi runtime được nâng cấp.
+- Render thật yêu cầu `ffmpeg` và `ffprobe`; nếu thiếu binary, FFmpeg provider fail sớm với lỗi rõ ràng và test integration sẽ skip có điều kiện.
