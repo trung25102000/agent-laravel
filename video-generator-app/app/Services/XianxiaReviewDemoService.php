@@ -15,8 +15,7 @@ class XianxiaReviewDemoService
 {
     public function __construct(
         private readonly DemoAudioTrackService $audioTrackService,
-    ) {
-    }
+    ) {}
 
     /**
      * @return array{user: User, project: VideoProject}
@@ -224,7 +223,7 @@ class XianxiaReviewDemoService
     }
 
     /**
-     * @param array{title: string, character: string, role: string, text: string, visual_prompt: string, palette: array<int, array{0: int, 1: int, 2: int}>} $sceneData
+     * @param  array{title: string, character: string, role: string, text: string, visual_prompt: string, palette: array<int, array{0: int, 1: int, 2: int}>}  $sceneData
      */
     private function writeSceneImage(string $path, array $sceneData, int $index): void
     {
@@ -243,8 +242,8 @@ class XianxiaReviewDemoService
     }
 
     /**
-     * @param array{0: int, 1: int, 2: int} $from
-     * @param array{0: int, 1: int, 2: int} $to
+     * @param  array{0: int, 1: int, 2: int}  $from
+     * @param  array{0: int, 1: int, 2: int}  $to
      */
     private function fillGradient($image, array $from, array $to, int $width, int $height): void
     {
@@ -261,7 +260,7 @@ class XianxiaReviewDemoService
     }
 
     /**
-     * @param array{0: int, 1: int, 2: int} $accent
+     * @param  array{0: int, 1: int, 2: int}  $accent
      */
     private function drawMoonAndMountains($image, array $accent, int $width, int $height, int $index): void
     {
@@ -285,7 +284,7 @@ class XianxiaReviewDemoService
     }
 
     /**
-     * @param array{0: int, 1: int, 2: int} $accent
+     * @param  array{0: int, 1: int, 2: int}  $accent
      */
     private function drawCharacter($image, array $accent, int $width, int $height, int $index): void
     {
@@ -341,7 +340,7 @@ class XianxiaReviewDemoService
     }
 
     /**
-     * @param array{title: string, character: string, role: string, text: string, visual_prompt: string, palette: array<int, array{0: int, 1: int, 2: int}>} $sceneData
+     * @param  array{title: string, character: string, role: string, text: string, visual_prompt: string, palette: array<int, array{0: int, 1: int, 2: int}>}  $sceneData
      */
     private function drawFrameText($image, array $sceneData, int $index): void
     {

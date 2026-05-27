@@ -14,6 +14,20 @@ Dùng file này để lưu các bug, lỗi môi trường, lỗi test, hoặc re
 ## Entries
 
 - Ngày: 2026-05-28
+- Task: marketplace-mvp
+- Bug: Feature tests cũ gọi `/` trong SQLite memory chưa migrate marketplace tables nên landing page query `website_templates` gây lỗi `no such table`.
+- Nguyên nhân: Một số smoke test không dùng `RefreshDatabase`, trong khi homepage mới đọc dữ liệu marketplace.
+- Cách sửa: Guard homepage bằng `Schema::hasTable()` và trả collection rỗng khi bảng chưa tồn tại.
+- Trạng thái: Đã xử lý, `php artisan test` pass.
+
+- Ngày: 2026-05-28
+- Task: marketplace-mvp
+- Bug: Test admin cũ kỳ vọng `/admin` hiển thị video projects, trong khi dashboard mới chuyển sang marketplace.
+- Nguyên nhân: Route `/admin` được tái định hướng nghiệp vụ sang marketplace nhưng module video legacy vẫn cần quan sát.
+- Cách sửa: Dashboard marketplace hiển thị thêm users/video projects legacy và giữ filter `status`; route `/admin/video-projects` trỏ dashboard video cũ.
+- Trạng thái: Đã xử lý, `php artisan test` pass.
+
+- Ngày: 2026-05-28
 - Task: post-027-audio-narration-fix
 - Bug: Output có audio stream nhưng user vẫn không nghe được tiếng đúng kỳ vọng vì audio demo là tone placeholder, không phải narration/giọng đọc.
 - Nguyên nhân: `DemoAudioTrackService` sinh sóng âm deterministic để tránh silent track nhưng chưa tạo tiếng đọc; âm thanh dễ bị hiểu là lỗi hoặc không phải voice-over.

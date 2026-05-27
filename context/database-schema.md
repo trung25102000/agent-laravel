@@ -30,6 +30,32 @@ Dùng file này để mô tả schema database ở mức tổng quan để Codex
   - log job lỗi
 - `notifications`
   - database notification của user, hiện dùng cho render completed notification
+- `template_categories`
+  - danh mục mẫu web public/admin, gồm `name`, `slug`, `description`, `is_active`, `sort_order`
+- `website_templates`
+  - mẫu website/landing/catalog, gồm category, `name`, `slug`, `audience_type`, `template_type`, `summary`, `description`, `price`, preview/gallery/demo URL, `status`
+- `pricing_packages`
+  - gói giá theo nhóm khách hàng, gồm `audience_type`, `package_type`, `price`, `benefits`, `is_featured`, `is_active`
+- `customers`
+  - hồ sơ khách/lead được upsert theo email hoặc phone, gồm group shop/online seller/student
+- `order_requests`
+  - yêu cầu mua template/dịch vụ, liên kết customer/template/package, có `need_type`, `status`, `internal_note`
+- `quote_requests`
+  - form báo giá dịch vụ, có `service_type`, `budget_range`, `deadline`, `requirements`, `status`
+- `graduation_project_requests`
+  - yêu cầu đồ án sinh viên, có trường trường/ngành/đề tài, flags cần báo cáo/database/hướng dẫn
+- `contact_messages`
+  - tin nhắn liên hệ từ website, có channel và status
+- `blog_posts`
+  - blog SEO theo nhóm khách hàng, slug, excerpt/content, meta title/description, status/published_at
+- `source_code_products`
+  - sản phẩm source Laravel cho sinh viên, demo URL, price, status
+- `demo_projects`
+  - demo public/admin cho source hoặc template
+- `product_attachments`
+  - polymorphic attachment cho source/template, type source/report/database/guide/preview
+- `faq_items`
+  - FAQ theo audience, active và sort_order
 
 ## Relationships
 
@@ -38,6 +64,11 @@ Dùng file này để mô tả schema database ở mức tổng quan để Codex
 - `video_projects` 1-n `video_assets` nếu asset ở cấp project
 - `video_scenes` 1-n `video_assets` nếu asset gắn theo scene
 - `users` 1-n `notifications`
+- `template_categories` 1-n `website_templates`
+- `website_templates` 1-n `order_requests`, 1-n `demo_projects`, morph-many `product_attachments`
+- `pricing_packages` 1-n `order_requests`
+- `customers` 1-n `order_requests`, `quote_requests`, `graduation_project_requests`
+- `source_code_products` 1-n `demo_projects`, morph-many `product_attachments`
 
 ## Important Constraints
 

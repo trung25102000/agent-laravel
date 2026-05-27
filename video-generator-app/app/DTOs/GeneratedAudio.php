@@ -9,6 +9,5 @@ final readonly class GeneratedAudio
         public string $path,
         public float $durationSeconds,
         public string $mimeType,
-    ) {
-    }
+    ) {}
 }

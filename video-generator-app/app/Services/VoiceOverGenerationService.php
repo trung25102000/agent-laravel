@@ -9,8 +9,7 @@ class VoiceOverGenerationService
 {
     public function __construct(
         private readonly TextToSpeechInterface $textToSpeech,
-    ) {
-    }
+    ) {}
 
     public function generate(VideoProject $videoProject): VideoProject
     {

@@ -1,0 +1,6 @@
+@extends('layouts.app')
+@section('title', 'Admin gói dịch vụ')
+@section('content')
+<section class="mb-6 rounded-lg border bg-white p-5"><h1 class="text-2xl font-semibold">Gói dịch vụ</h1><form class="mt-4 grid gap-3 md:grid-cols-2" method="POST" action="{{ route('admin.marketplace.packages.store') }}">@csrf<input class="rounded-md border px-3 py-2" name="name" placeholder="Tên gói" required><select class="rounded-md border px-3 py-2" name="audience_type"><option value="shop_owner">Shop nhỏ</option><option value="online_seller">Kinh doanh online</option><option value="student">Sinh viên</option></select><input class="rounded-md border px-3 py-2" name="package_type" value="website"><input class="rounded-md border px-3 py-2" name="price" type="number" placeholder="Giá"><textarea class="rounded-md border px-3 py-2" name="summary" placeholder="Tóm tắt"></textarea><textarea class="rounded-md border px-3 py-2" name="benefits" placeholder="Mỗi quyền lợi một dòng"></textarea><button class="rounded-md bg-rose-600 px-4 py-2 font-semibold text-white md:col-span-2">Tạo gói</button></form></section>
+<x-admin.marketplace.table :items="$packages" :columns="['name' => 'Tên', 'audience_type' => 'Nhóm', 'package_type' => 'Loại', 'price' => 'Giá', 'is_active' => 'Active']" />
+@endsection

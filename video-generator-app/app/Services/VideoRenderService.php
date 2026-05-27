@@ -8,16 +8,15 @@ use App\Events\VideoProjectCompleted;
 use App\Exceptions\PipelineException;
 use App\Models\VideoProject;
 use App\Services\Rendering\Contracts\RenderProviderInterface;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class VideoRenderService
 {
     public function __construct(
         private readonly RenderProviderInterface $renderProvider,
-    ) {
-    }
+    ) {}
 
     public function render(VideoProject $videoProject): VideoProject
     {

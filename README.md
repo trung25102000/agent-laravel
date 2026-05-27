@@ -1,9 +1,9 @@
-# AI Video Generator Laravel Agent Repo
+# Web Template Studio Laravel Agent Repo
 
 Repo này gồm hai phần:
 
 - Root repo: bộ agent workflow, rules, context, memory, prompts, và task files.
-- `video-generator-app/`: source Laravel 13 của nền tảng tạo video AI.
+- `video-generator-app/`: source Laravel 13 của marketplace bán template/dịch vụ làm web/source Laravel, đồng thời giữ module AI video legacy.
 
 ## Local Setup
 
@@ -18,13 +18,13 @@ php artisan test
 
 Môi trường hiện tại dùng PHP 8.4.7, nên `composer.json` đang đặt `php:^8.4`. Khi runtime PHP 8.5 sẵn sàng, đổi lại `php:^8.5`, chạy `composer update --lock`, rồi chạy lại test.
 
-## Application Flow
+## Marketplace Flow
 
-1. User đăng ký hoặc đăng nhập.
-2. User tạo `VideoProject` draft từ keyword, content brief, tone, duration, platform, language.
-3. Mock pipeline có thể tạo script, scenes, media assets, voice-over, subtitle, và render output placeholder.
-4. User xem status, preview, và download output qua route được authorize.
-5. Admin xem users/projects và filter project theo status tại `/admin`.
+1. Khách xem landing page, dịch vụ, template, source Laravel, blog SEO.
+2. Khách lọc template, xem chi tiết/demo, chọn gói giá.
+3. Khách gửi yêu cầu mua, báo giá, liên hệ hoặc đặt làm đồ án tốt nghiệp.
+4. Admin xem dashboard `/admin`, quản lý template, gói dịch vụ, lead, đơn hàng, khách hàng, blog, source code, demo, FAQ.
+5. Module video AI cũ vẫn dùng được qua `/dashboard` và `/video-projects/*`.
 
 ## Mock Providers
 
@@ -58,4 +58,4 @@ php artisan migrate
 php artisan test
 ```
 
-Test suite hiện cover auth, dashboard, project CRUD draft, script/scene/media/voice/subtitle/render mock services, API, notification, security, and end-to-end mock pipeline.
+Test suite hiện cover auth, marketplace public pages/forms/admin/SEO, video project legacy, script/scene/media/voice/subtitle/render mock services, API, notification, security, and end-to-end mock pipeline.

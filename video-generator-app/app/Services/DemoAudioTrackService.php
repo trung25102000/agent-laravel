@@ -8,7 +8,7 @@ use Symfony\Component\Process\Process;
 class DemoAudioTrackService
 {
     /**
-     * @param array<int, int> $frequencies
+     * @param  array<int, int>  $frequencies
      * @return array{disk: string, path: string, duration_seconds: float, mime_type: string, sample_rate: int, channels: int}
      */
     public function createAudibleWav(
@@ -29,7 +29,7 @@ class DemoAudioTrackService
     }
 
     /**
-     * @param array<int, int> $frequencies
+     * @param  array<int, int>  $frequencies
      * @return array{disk: string, path: string, duration_seconds: float, mime_type: string, sample_rate: int, channels: int, mode: string}
      */
     private function createToneWav(int $projectId, int $durationSeconds, array $frequencies = []): array

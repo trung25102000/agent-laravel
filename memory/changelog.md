@@ -2,6 +2,10 @@
 
 ## 2026-05-28
 
+- Triển khai Web Template Studio marketplace MVP: public pages homepage/services/templates/pricing/source-code/blog, lead/order/contact/graduation forms, admin marketplace dashboard và CRUD cơ bản.
+- Thêm database module marketplace gồm template categories, website templates, pricing packages, customers, order requests, quote requests, graduation project requests, contact messages, blog posts, source code products, demo projects, product attachments, FAQ.
+- Bổ sung UI trẻ trung thân thiện với palette rose/amber/sky, CTA Zalo/Facebook/Email, nội dung theo 3 nhóm khách hàng: shop nhỏ, cá nhân kinh doanh online, sinh viên.
+- Thêm MarketplaceSeeder, AdminUserSeeder, feature tests public/form/admin/SEO, cập nhật docs context/routes/schema/memory.
 - Hoàn tất task `027-fix-audio-and-reference-based-xianxia-scenes`: thêm generated WAV audio nghe được cho demo tiên hiệp, FFmpeg output probe audio metadata, fallback audio không còn dùng `anullsrc`, và preview project `#6` có Audio Ready.
 - Render lại project `#6` với reference URL YouTube được lưu trong metadata, visual source `reference_inspired_original`, output MP4 180 giây có video H.264 1080x1920 và audio AAC.
 - Sửa tiếp demo audio để ưu tiên system narration `.aiff` bằng macOS `say` khi chạy local, normalize/pad bằng FFmpeg, và render lại project `#6` với audio AAC max volume `-1.4 dB`.

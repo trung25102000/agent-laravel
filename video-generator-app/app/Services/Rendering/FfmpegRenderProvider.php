@@ -112,7 +112,7 @@ class FfmpegRenderProvider implements RenderProviderInterface
     }
 
     /**
-     * @param array<int, array{key: int, text: string, visual_prompt: string, duration: float, scene: ?VideoScene}> $scenePayloads
+     * @param  array<int, array{key: int, text: string, visual_prompt: string, duration: float, scene: ?VideoScene}>  $scenePayloads
      * @return array<int, string>
      */
     private function prepareImages(VideoProject $videoProject, array $scenePayloads, string $disk, string $workDirectory): array
@@ -124,6 +124,7 @@ class FfmpegRenderProvider implements RenderProviderInterface
 
             if ($existingImage !== null) {
                 $imageFiles[] = $existingImage;
+
                 continue;
             }
 
@@ -208,7 +209,7 @@ class FfmpegRenderProvider implements RenderProviderInterface
     }
 
     /**
-     * @param array<int, array{key: int, text: string, visual_prompt: string, duration: float, scene: ?VideoScene}> $scenePayloads
+     * @param  array<int, array{key: int, text: string, visual_prompt: string, duration: float, scene: ?VideoScene}>  $scenePayloads
      */
     private function prepareSubtitle(array $scenePayloads, string $workDirectory): string
     {
@@ -233,8 +234,8 @@ class FfmpegRenderProvider implements RenderProviderInterface
     }
 
     /**
-     * @param array<int, array{key: int, text: string, visual_prompt: string, duration: float, scene: ?VideoScene}> $scenePayloads
-     * @param array<int, string> $imageFiles
+     * @param  array<int, array{key: int, text: string, visual_prompt: string, duration: float, scene: ?VideoScene}>  $scenePayloads
+     * @param  array<int, string>  $imageFiles
      * @return array<int, string>
      */
     private function renderSegments(array $scenePayloads, array $imageFiles, string $workDirectory): array
@@ -254,7 +255,7 @@ class FfmpegRenderProvider implements RenderProviderInterface
     }
 
     /**
-     * @param array<int, string> $segmentFiles
+     * @param  array<int, string>  $segmentFiles
      */
     private function writeConcatList(array $segmentFiles, string $concatList): string
     {
@@ -398,7 +399,7 @@ class FfmpegRenderProvider implements RenderProviderInterface
     }
 
     /**
-     * @param array<int, string> $command
+     * @param  array<int, string>  $command
      */
     private function runCommand(array $command, string $step): void
     {
@@ -485,7 +486,7 @@ class FfmpegRenderProvider implements RenderProviderInterface
     }
 
     /**
-     * @param array<string, mixed> $mediaInfo
+     * @param  array<string, mixed>  $mediaInfo
      * @return array<string, mixed>|null
      */
     private function firstAudioStream(array $mediaInfo): ?array
@@ -566,7 +567,7 @@ class FfmpegRenderProvider implements RenderProviderInterface
     }
 
     /**
-     * @param array<int, string> $command
+     * @param  array<int, string>  $command
      * @return array<int, string>
      */
     private function sanitizeCommand(array $command): array

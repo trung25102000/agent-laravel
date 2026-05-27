@@ -2,10 +2,11 @@
 
 ## Loại Dự Án
 
-- Tên dự án: AI Video Generator MVP
-- Loại ứng dụng: Web app Laravel có user area, admin area, và API nội bộ
-- Domain nghiệp vụ: Tạo short-form video tự động từ input nội dung marketing hoặc social content
-- Mục tiêu chính của hệ thống: Cho phép user nhập keyword, mô tả, tone, thời lượng, nền tảng và ngôn ngữ để hệ thống tự sinh script, scenes, voice-over, subtitle, asset list, render video, rồi preview/download kết quả
+- Tên dự án: Web Template Studio + AI Video Generator legacy module
+- Loại ứng dụng: Web app Laravel có public marketplace, user area, admin area, và API nội bộ
+- Domain nghiệp vụ chính: Bán template website, landing page, source code Laravel, demo project và dịch vụ làm web theo yêu cầu cho shop nhỏ, cá nhân kinh doanh online, sinh viên
+- Domain phụ còn giữ: Tạo short-form video tự động từ input nội dung marketing hoặc social content
+- Mục tiêu chính của hệ thống: Cho phép khách xem landing page, mẫu web, gói giá, source Laravel, blog SEO, gửi yêu cầu mua/báo giá/đồ án; admin quản lý template, lead, đơn hàng, khách hàng, source code, demo, FAQ
 
 ## Tech Stack
 
@@ -32,9 +33,10 @@
 ## Module Chính
 
 - Module 1: Authentication và phân quyền user/admin
-- Module 2: Video project management và input collection
-- Module 3: Content generation pipeline gồm script, scene, voice-over, subtitle, asset selection
-- Module 4: Render pipeline, preview/download, notification, admin monitoring
+- Module 2: Marketplace public gồm homepage, services, templates, pricing, source code, blog, FAQ, CTA Zalo/Facebook/Email
+- Module 3: Lead/order management gồm order request, quote request, graduation project request, contact message, customer upsert
+- Module 4: Admin marketplace quản lý category, template, pricing package, order, quote, graduation request, customer, contact, blog, source code, demo project, FAQ
+- Module 5: Legacy video project management và render pipeline vẫn tồn tại để không phá workflow AI video trước đó
 
 ## Ghi Chú Thêm
 
@@ -47,6 +49,7 @@
 
 - Repo root chứa bộ AGENTS/rules/tasks/context phục vụ workflow tự động.
 - Source Laravel 13 đã được bootstrap trong `video-generator-app/`.
+- Marketplace MVP đã được thêm vào `video-generator-app/` bằng Blade + Tailwind, dùng chung auth/admin gate hiện có.
 - `video-generator-app/` đã có `composer.json`, cấu trúc Laravel skeleton hiện đại, config pipeline video, storage directories nền tảng, và smoke test foundation.
 - Môi trường local hiện chạy PHP 8.4.7; Composer constraint tạm dùng `php:^8.4` để validate được trên máy này và vẫn tương thích PHP 8.5 khi runtime được nâng cấp.
 - Render thật yêu cầu `ffmpeg` và `ffprobe`; nếu thiếu binary, FFmpeg provider fail sớm với lỗi rõ ràng và test integration sẽ skip có điều kiện.

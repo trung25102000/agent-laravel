@@ -5,7 +5,7 @@ namespace App\DTOs;
 final readonly class RenderedVideo
 {
     /**
-     * @param array<string, mixed> $metadata
+     * @param  array<string, mixed>  $metadata
      */
     public function __construct(
         public string $disk,
@@ -14,6 +14,5 @@ final readonly class RenderedVideo
         public ?float $durationSeconds = null,
         public ?int $sizeBytes = null,
         public array $metadata = [],
-    ) {
-    }
+    ) {}
 }

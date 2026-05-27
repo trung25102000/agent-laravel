@@ -9,8 +9,7 @@ final readonly class ScriptGenerationResult
         public string $hook,
         public string $body,
         public string $callToAction,
-    ) {
-    }
+    ) {}
 
     public function toScriptText(): string
     {

@@ -10,8 +10,7 @@ class ScriptGenerationService
 {
     public function __construct(
         private readonly ScriptGeneratorInterface $scriptGenerator,
-    ) {
-    }
+    ) {}
 
     public function generate(VideoProject $videoProject): VideoProject
     {

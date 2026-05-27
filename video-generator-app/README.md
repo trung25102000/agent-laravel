@@ -1,6 +1,6 @@
-# AI Video Generator
+# Web Template Studio
 
-Laravel 13 app for generating short-form AI video projects.
+Laravel 13 app for selling website templates, landing pages, Laravel source code, custom web services, and graduation project packages. The previous AI video generator module remains available as a legacy workspace.
 
 ## Stack
 
@@ -10,7 +10,8 @@ Laravel 13 app for generating short-form AI video projects.
 - Redis queue target for video jobs
 - Blade + Vite
 - Local storage by default, S3-ready config
-- FFmpeg render provider for real MP4 output
+- Marketplace modules for templates, pricing, orders, quote leads, graduation project requests, contacts, blog SEO, source code products, demo projects, attachments, FAQ
+- FFmpeg render provider for legacy real MP4 output
 
 ## Setup
 
@@ -32,6 +33,19 @@ sudo apt-get update && sudo apt-get install -y ffmpeg
 
 ## Core Routes
 
+- `GET /`
+- `GET /services`
+- `GET /templates`
+- `GET /templates/{slug}`
+- `GET /pricing/shop`
+- `GET /pricing/landing-page`
+- `GET /pricing/graduation-project`
+- `GET /source-code`
+- `GET /blog`
+- `POST /orders`
+- `POST /quote-requests`
+- `POST /graduation-project-requests`
+- `POST /contact-messages`
 - `GET /register`, `POST /register`
 - `GET /login`, `POST /login`
 - `POST /logout`
@@ -44,6 +58,20 @@ sudo apt-get update && sudo apt-get install -y ffmpeg
 - `GET /video-projects/{videoProject}/stream`
 - `GET /video-projects/{videoProject}/download`
 - `GET /admin`
+- `GET /admin/marketplace/*`
+
+## Marketplace Admin Seed
+
+Seed demo data and admin user:
+
+```bash
+php artisan db:seed
+```
+
+Default admin:
+
+- Email: `admin@example.com`
+- Password: `password`
 
 API routes:
 

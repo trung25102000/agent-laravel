@@ -3,7 +3,7 @@
 ## Trạng Thái Hiện Tại
 
 - Task đang làm: Không có
-- Tổng quan: Audio output của demo tiên hiệp đã được sửa; project `#6` hiện có MP4 180 giây với video 1080x1920 và audio AAC nghe được.
+- Tổng quan: Marketplace MVP bán template/dịch vụ/source Laravel đã được triển khai song song với module AI video cũ; toàn bộ task marketplace đã hoàn tất và không còn task pending ở `/tasks`.
 - Cập nhật lần cuối: 2026-05-28
 
 ## Task Completed
@@ -36,6 +36,7 @@
 - 025-clear-real-video-preview-player
 - 026-xianxia-scene-character-demo-video
 - 027-fix-audio-and-reference-based-xianxia-scenes
+- 001-project-foundation đến 033-git-push cho Web Template Studio marketplace MVP
 
 ## Task Đang Làm
 
@@ -52,9 +53,11 @@
 ## Ghi Chú
 
 - Source Laravel đã nằm trong `video-generator-app/`.
+- Marketplace MVP đã có public pages, form lead/order/contact/đồ án, admin marketplace, seeders và tests.
 - Local runtime hiện là PHP 8.4.7 nên composer constraint đang là `php:^8.4` để test được; nâng lên `php:^8.5` khi môi trường sẵn sàng.
 - Product/task blueprint chi tiết nằm ở `tasks/000-ai-video-platform-master-plan.md` và nên được dùng làm nguồn chính khi tách task triển khai MVP.
 - Final validation: `composer dump-autoload`, `php artisan migrate`, và `php artisan test` pass trong `video-generator-app/`.
+- Marketplace validation: `composer dump-autoload`, `php artisan migrate`, và `php artisan test` pass với 66 tests / 354 assertions.
 - UI task 022 pass validation với `composer dump-autoload`, `php artisan migrate`, `php artisan test`, và `npm run build`.
 - Task 023 pass validation với `composer dump-autoload`, `php artisan migrate`, `php artisan test`.
 - Render smoke thật đã tạo MP4 `videos/video-projects/1/output.mp4` dài 180 giây, metadata 1080x1920, bằng FFmpeg binary tạm trong `node_modules`.

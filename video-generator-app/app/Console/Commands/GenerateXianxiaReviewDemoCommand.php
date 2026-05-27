@@ -71,7 +71,7 @@ class GenerateXianxiaReviewDemoCommand extends Command
         $metadata = $completedProject->render_metadata ?? [];
 
         $this->info("Rendered xianxia review project #{$completedProject->id}.");
-        $this->line("Preview: ".route('video-projects.preview', $completedProject));
+        $this->line('Preview: '.route('video-projects.preview', $completedProject));
         $this->line("Output: {$completedProject->rendered_video_path}");
         $this->line("Audio: {$completedProject->audio_path}");
         $this->line('Audio stream: '.json_encode([

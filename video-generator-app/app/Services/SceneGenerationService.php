@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\VideoSceneStatusEnum;
 use App\Models\VideoProject;
+use App\Models\VideoScene;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -11,7 +12,7 @@ use Illuminate\Support\Str;
 class SceneGenerationService
 {
     /**
-     * @return Collection<int, \App\Models\VideoScene>
+     * @return Collection<int, VideoScene>
      */
     public function generate(VideoProject $videoProject): Collection
     {

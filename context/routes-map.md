@@ -4,7 +4,21 @@ Dùng file này để ghi lại map các route hiện có trong dự án Laravel
 
 ## Web Routes
 
-- `GET /` branded landing page cho AI Video Generator, có CTA login/register hoặc dashboard khi đã đăng nhập
+- `GET /` landing page marketplace bán template/dịch vụ/source Laravel, có CTA xem mẫu và form báo giá
+- `GET /services` trang dịch vụ làm website/landing page/đồ án
+- `GET /templates` danh sách template public có search/filter/sort/pagination
+- `GET /templates/{websiteTemplate:slug}` chi tiết template, demo URL, pricing, form đặt mua
+- `GET /pricing/{type}` trang gói giá theo `shop`, `landing-page`, `graduation-project`
+- `GET /source-code` danh sách source Laravel/demo project cho sinh viên
+- `GET /source-code/{sourceCodeProduct:slug}` chi tiết source code, file đính kèm, form đặt làm đồ án
+- `GET /blog` danh sách blog SEO theo nhóm khách hàng
+- `GET /blog/{blogPost:slug}` chi tiết blog SEO
+- `GET /sitemap.xml` sitemap XML cơ bản
+- `GET /robots.txt` robots public kèm sitemap
+- `POST /orders` lưu yêu cầu mua template/dịch vụ, throttle public form
+- `POST /quote-requests` lưu lead/yêu cầu báo giá, throttle public form
+- `POST /graduation-project-requests` lưu yêu cầu đồ án tốt nghiệp, throttle public form
+- `POST /contact-messages` lưu tin nhắn liên hệ, throttle public form
 - `GET /login` hiển thị form đăng nhập branded cho AI video workspace, middleware `guest`
 - `POST /login` xử lý đăng nhập, middleware `guest`, có rate limit trong `LoginRequest`
 - `GET /register` hiển thị form đăng ký branded cho creator workspace, middleware `guest`
@@ -30,9 +44,20 @@ Dùng file này để ghi lại map các route hiện có trong dự án Laravel
 
 ## Auth / Admin / Internal Routes
 
-- `GET /admin` dashboard admin gộp danh sách users và video projects, hỗ trợ query `status`, middleware `auth`, gate `access-admin`
-- `GET /admin/users` chưa tách route riêng trong MVP
-- `GET /admin/video-projects` chưa tách route riêng trong MVP
+- `GET /admin` dashboard admin marketplace, thống kê template/order/lead/contact và vẫn hiển thị video projects cũ, middleware `auth`, gate `access-admin`
+- `GET /admin/video-projects` dashboard admin video projects legacy
+- `GET /admin/marketplace/categories` quản lý danh mục template
+- `GET|POST /admin/marketplace/templates` quản lý template website
+- `GET|POST /admin/marketplace/packages` quản lý gói dịch vụ
+- `GET /admin/marketplace/orders`, `PATCH /admin/marketplace/orders/{orderRequest}` quản lý đơn hàng/yêu cầu mua
+- `GET /admin/marketplace/customers` xem khách hàng và lịch sử request count
+- `GET /admin/marketplace/contacts` quản lý contact messages
+- `GET /admin/marketplace/quotes` quản lý lead/yêu cầu báo giá
+- `GET /admin/marketplace/graduation-requests` quản lý yêu cầu đồ án
+- `GET|POST /admin/marketplace/blog-posts` quản lý blog SEO
+- `GET|POST /admin/marketplace/source-code-products` quản lý source Laravel
+- `GET /admin/marketplace/demo-projects` quản lý demo project
+- `GET /admin/marketplace/faqs` quản lý FAQ
 - `POST /internal/pipeline/video-projects/{videoProject}/start` route nội bộ nếu cần orchestration tách khỏi UI
 - `POST /internal/pipeline/video-projects/{videoProject}/retry` route nội bộ hoặc action admin để retry pipeline
 

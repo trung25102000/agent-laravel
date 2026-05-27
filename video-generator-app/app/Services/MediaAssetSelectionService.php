@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Enums\VideoAssetTypeEnum;
+use App\Models\VideoAsset;
 use App\Models\VideoProject;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class MediaAssetSelectionService
 {
     /**
-     * @return EloquentCollection<int, \App\Models\VideoAsset>
+     * @return EloquentCollection<int, VideoAsset>
      */
     public function selectForProject(VideoProject $videoProject): EloquentCollection
     {

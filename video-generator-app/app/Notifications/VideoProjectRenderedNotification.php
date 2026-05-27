@@ -13,8 +13,7 @@ class VideoProjectRenderedNotification extends Notification
 
     public function __construct(
         private readonly VideoProject $videoProject,
-    ) {
-    }
+    ) {}
 
     /**
      * @return array<int, string>

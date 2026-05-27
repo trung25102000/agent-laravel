@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\DTOs\RenderedVideo;
 use App\Enums\VideoProjectStatusEnum;
 use App\Exceptions\PipelineException;
 use App\Jobs\RenderVideoJob;
@@ -18,8 +19,9 @@ class VideoPipelineErrorHandlingTest extends TestCase
 
     public function test_render_service_marks_project_failed_and_throws_pipeline_exception(): void
     {
-        $this->app->bind(RenderProviderInterface::class, fn () => new class implements RenderProviderInterface {
-            public function render(VideoProject $videoProject): \App\DTOs\RenderedVideo
+        $this->app->bind(RenderProviderInterface::class, fn () => new class implements RenderProviderInterface
+        {
+            public function render(VideoProject $videoProject): RenderedVideo
             {
                 throw new RuntimeException('Sensitive provider stack detail');
             }

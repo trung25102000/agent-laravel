@@ -24,7 +24,7 @@ class FfmpegRenderProviderTest extends TestCase
             'video_pipeline.render.preset' => 'veryfast',
         ]);
 
-        $provider = new FfmpegRenderProvider();
+        $provider = new FfmpegRenderProvider;
         $command = $provider->buildFinalRenderCommand(
             '/tmp/input video.mp4',
             '/tmp/audio.m4a',
@@ -43,7 +43,7 @@ class FfmpegRenderProviderTest extends TestCase
 
     public function test_fallback_audio_command_is_audible_not_silent_source(): void
     {
-        $provider = new FfmpegRenderProvider();
+        $provider = new FfmpegRenderProvider;
 
         $command = $provider->buildFallbackAudioCommand('/tmp/fallback.m4a', 5);
 

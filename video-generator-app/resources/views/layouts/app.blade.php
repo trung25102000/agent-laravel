@@ -7,38 +7,47 @@
         <title>@yield('title', config('app.name'))</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="min-h-screen bg-teal-50/40 text-zinc-950 antialiased">
+    <body class="min-h-screen bg-amber-50/40 text-zinc-950 antialiased">
         <div class="min-h-screen">
-            <header class="border-b border-teal-100 bg-white/95">
+            <header class="border-b border-amber-100 bg-white/95">
                 <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-                    <a href="{{ auth()->check() ? route('dashboard') : url('/') }}" class="flex items-center gap-3">
-                        <span class="grid size-10 place-items-center rounded-lg bg-teal-700 text-sm font-semibold text-white">AI</span>
+                    <a href="{{ route('home') }}" class="flex items-center gap-3">
+                        <span class="grid size-10 place-items-center rounded-lg bg-rose-600 text-sm font-semibold text-white">WEB</span>
                         <span>
-                            <span class="block text-sm font-semibold text-zinc-950">{{ config('app.name', 'AI Video') }}</span>
-                            <span class="block text-xs text-teal-700">Short-form video studio</span>
+                            <span class="block text-sm font-semibold text-zinc-950">{{ config('app.name', 'Web Template Studio') }}</span>
+                            <span class="block text-xs text-rose-700">Template, landing page, source Laravel</span>
                         </span>
                     </a>
 
                     <nav class="flex flex-wrap items-center gap-2 text-sm">
+                        <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('services') }}">Dịch vụ</a>
+                        <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('templates.index') }}">Mẫu web</a>
+                        <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('pricing.show', 'shop') }}">Gói giá</a>
+                        <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('source-code.index') }}">Source Laravel</a>
+                        <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('blog.index') }}">Blog</a>
                         @auth
-                            <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-teal-50 hover:text-teal-800" href="{{ route('dashboard') }}">Video workspace</a>
-                            <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-teal-50 hover:text-teal-800" href="{{ route('video-projects.create') }}">New AI video</a>
+                            <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('dashboard') }}">Workspace</a>
                             @can('access-admin')
-                                <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-teal-50 hover:text-teal-800" href="{{ route('admin.dashboard') }}">Admin</a>
+                                <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('admin.dashboard') }}">Admin</a>
                             @endcan
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button class="rounded-md px-3 py-2 text-zinc-600 hover:bg-teal-50 hover:text-teal-800" type="submit">Logout</button>
+                                <button class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" type="submit">Đăng xuất</button>
                             </form>
                         @else
-                            <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-teal-50 hover:text-teal-800" href="{{ route('login') }}">Log in</a>
-                            <a class="rounded-md bg-teal-700 px-3 py-2 font-medium text-white hover:bg-teal-800" href="{{ route('register') }}">Create account</a>
+                            <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('login') }}">Đăng nhập</a>
+                            <a class="rounded-md bg-rose-600 px-3 py-2 font-medium text-white hover:bg-rose-700" href="#quote-form">Nhận tư vấn</a>
                         @endauth
                     </nav>
                 </div>
             </header>
 
             <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+                @if (session('status'))
+                    <div class="mb-6 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-800">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 @yield('content')
             </main>
         </div>
