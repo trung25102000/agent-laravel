@@ -36,7 +36,7 @@ Cho mỗi task đang ở trạng thái `pending`, Codex phải thực hiện tu�
 2. Đọc code Laravel liên quan trước khi sửa.
 3. Tạo implementation plan ngắn.
 4. Code theo đúng rules trong `/rules`.
-5. Chạy các lệnh xác thực:
+5. Chạy các lệnh xác thực trong thư mục ứng dụng Laravel được khai báo ở `context/project-context.md`:
    - `composer dump-autoload`
    - `php artisan migrate`
    - `php artisan test`
@@ -61,6 +61,7 @@ Trước khi move task vào `/tasks/DONE`, Codex bắt buộc phải chạy revi
 ## 4. Quy Tắc Hành Vi
 
 - Không hỏi lại user nếu task, rules, context, memory, hoặc codebase đã đủ thông tin để suy luận.
+- Khi cần khởi tạo source Laravel, phải tạo source trong thư mục ứng dụng riêng được khai báo ở `context/project-context.md`, không đặt trực tiếp vào root repo agent.
 - Nếu thiếu chi tiết nhỏ:
   - tự quyết định theo hướng hợp lý, an toàn, dễ maintain
   - ghi quyết định đó vào `/context/decisions.md`
@@ -76,6 +77,8 @@ Trước khi move task vào `/tasks/DONE`, Codex bắt buộc phải chạy revi
 
 ## 5. Nguyên Tắc Laravel
 
+- Mặc định làm việc với Laravel 13.x mới nhất và PHP 8.5 mới nhất cho code/project mới.
+- Nếu buộc phải dùng PHP 8.4/8.3 hoặc package chưa hỗ trợ PHP 8.5, phải ghi lý do vào `context/decisions.md`.
 - Controller phải mỏng.
 - Validation phải dùng `FormRequest`.
 - Business logic phải đặt trong `Service`, `Action`, hoặc lớp phù hợp.

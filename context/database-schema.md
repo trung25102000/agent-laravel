@@ -6,23 +6,30 @@ Dùng file này để mô tả schema database ở mức tổng quan để Codex
 
 - `users`
   - thông tin đăng nhập cơ bản
-  - có thể bổ sung `is_admin` cho MVP
+  - có `is_admin` boolean default false cho phân quyền admin tối giản
 - `video_projects`
   - thuộc về `users`
-  - lưu input như keyword, content_brief, tone, duration_seconds, platform, language
-  - lưu trạng thái pipeline, progress, error_message, script_content, audio_path, subtitle_path, rendered_video_path
+  - hiện có: `id`, `user_id`, `keyword`, `content_brief`, `tone`, `duration_seconds`, `platform`, `language`, `status`, `progress_percent`, `error_message`, `script_content`, `audio_disk`, `audio_path`, `audio_duration_seconds`, `subtitle_disk`, `subtitle_path`, `rendered_video_path`, timestamps
+  - status được cast bằng `VideoProjectStatusEnum`
+  - `script_content` được ghi bởi `ScriptGenerationService` qua provider abstraction
+  - `audio_*` được ghi bởi `VoiceOverGenerationService` qua TTS provider abstraction
+  - `subtitle_*` được ghi bởi `SubtitleGenerationService` dưới dạng SRT
+  - `rendered_video_path` được ghi bởi `VideoRenderService` qua render provider abstraction
 - `video_scenes`
   - thuộc về `video_projects`
-  - lưu thứ tự scene, text, duration_seconds, visual_prompt
+  - hiện có: `id`, `video_project_id`, `sort_order`, `text`, `duration_seconds`, `visual_prompt`, `status`, timestamps
+  - status được cast bằng `VideoSceneStatusEnum`
 - `video_assets`
   - thuộc về `video_projects` hoặc `video_scenes`
-  - lưu loại asset, nguồn, path/url, metadata tối giản
+  - hiện có: `id`, `video_project_id`, `video_scene_id`, `type`, `disk`, `path`, `source`, `metadata`, timestamps
+  - type được cast bằng `VideoAssetTypeEnum`
+  - output render được lưu dưới type `output`
 - `jobs`
   - dùng cho database queue nếu chọn queue driver là database
 - `failed_jobs`
   - log job lỗi
 - `notifications`
-  - dùng cho database notification của user
+  - database notification của user, hiện dùng cho render completed notification
 
 ## Relationships
 
@@ -35,13 +42,15 @@ Dùng file này để mô tả schema database ở mức tổng quan để Codex
 ## Important Constraints
 
 - `video_projects.user_id` phải có foreign key và index
-- `video_projects.status` nên dùng enum hoặc string chuẩn hóa, có index
+- `video_projects.status` dùng string enum cast và có composite index với `user_id`
+- `video_projects` có index `user_id, created_at` cho dashboard owner listing
 - `video_scenes.video_project_id` phải có foreign key và index
-- `video_scenes.sort_order` phải rõ ràng để đảm bảo thứ tự render
+- `video_scenes.sort_order` có unique composite với `video_project_id` để đảm bảo thứ tự render
 - File path lưu trong DB phải là relative path an toàn thay vì absolute local path nếu có thể
 - Multi-step pipeline update nên đi qua transaction hoặc service tập trung khi có nhiều write liên tiếp
 
 ## Notes
 
 - Đây là schema sơ bộ cho MVP.
-- Tên cột chi tiết sẽ được chuẩn hóa khi Laravel app được khởi tạo và migration thật được viết.
+- Laravel app đã được khởi tạo trong `video-generator-app/`.
+- Hiện có migration mặc định của Laravel cho `users`, `cache`, `jobs`, và `failed_jobs`, migration bổ sung `users.is_admin`, migration `video_projects`, `video_scenes`, `video_assets`, và `notifications`.

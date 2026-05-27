@@ -13,6 +13,8 @@
 - Route/action từ frontend phải bám contract backend hiện có.
 - Không hard-code URL, token, secret vào asset frontend.
 - Tối ưu bundle, asset, và request khi thay đổi frontend lớn.
+- Dùng Vite cho asset build trong Laravel 13; không thêm Laravel Mix cho code mới.
+- Nếu dùng starter kit, ưu tiên starter kit chính thức tương thích Laravel 13 và giữ UI phù hợp MVP.
 
 ## Checklist
 

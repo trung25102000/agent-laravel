@@ -30,7 +30,9 @@
 ## Chất Lượng Code
 
 - Có type hint đầy đủ khi phù hợp.
-- Có return type cho method nếu codebase hỗ trợ và phù hợp với version PHP hiện tại.
+- Có return type cho method mới, trừ khi framework contract hoặc pattern hiện có không phù hợp.
+- Với PHP 8.5, ưu tiên strict types, typed properties, enum, readonly DTO/value object, constructor property promotion, `match`, attributes, và null-safe operator khi giúp code rõ hơn.
+- Không tạo dynamic property hoặc dựa vào hành vi legacy của PHP cũ.
 - Tên class, method, biến phải dễ hiểu.
 - Ưu tiên code rõ ràng hơn code ngắn.
 - Không thêm logic không liên quan vào cùng một class.

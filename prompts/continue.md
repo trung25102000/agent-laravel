@@ -20,6 +20,8 @@ Sau đó:
 
 - tìm task đầu tiên còn `pending`
 - tiếp tục code
+- ưu tiên Laravel 13.x + PHP 8.5 cho code/project mới, trừ khi rules/context ghi rõ blocker
+- thao tác với source Laravel trong thư mục ứng dụng riêng được khai báo ở `context/project-context.md`
 - tự test
 - tự fix lỗi
 - cập nhật progress

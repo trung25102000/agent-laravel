@@ -9,13 +9,13 @@
 - `/rules/testing-rules.md`
 - test files liên quan
 - code thay đổi của task
-- output từ `php artisan test`
+- output từ `php artisan test` chạy trong thư mục ứng dụng Laravel
 
 ## Công Việc Phải Làm
 
 - Kiểm tra có test cho hành vi chính
 - Kiểm tra happy path, validation fail, authorization nếu phù hợp
-- Chạy hoặc đánh giá kết quả `php artisan test`
+- Chạy hoặc đánh giá kết quả `php artisan test` trong thư mục ứng dụng Laravel được khai báo ở `context/project-context.md`
 - Xác định thiếu coverage rõ ràng
 
 ## Output Bắt Buộc

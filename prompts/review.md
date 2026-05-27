@@ -7,6 +7,7 @@ Yêu cầu review:
 - Security
 - Performance
 - Laravel convention
+- Tương thích Laravel 13.x và PHP 8.5
 - Clean code
 - Architecture consistency
 - Missing tests

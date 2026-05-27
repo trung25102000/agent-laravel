@@ -9,15 +9,16 @@
 
 ## Tech Stack
 
-- Laravel version: Mục tiêu Laravel 12, chấp nhận Laravel 11 nếu môi trường/package yêu cầu
-- PHP version: 8.3+
+- Application directory: `video-generator-app/` là thư mục chứa source Laravel chính. Root repo giữ vai trò agent/control plane với `AGENTS.md`, `rules/`, `context/`, `memory/`, `prompts/`, và `tasks/`.
+- Laravel version: Mục tiêu Laravel 13.x mới nhất, dùng constraint `laravel/framework:^13.0` cho project mới
+- PHP version: Mục tiêu PHP 8.5 mới nhất, dùng constraint `php:^8.5`; Laravel 13 hỗ trợ PHP 8.3 - 8.5 nên chỉ hạ xuống 8.4/8.3 khi package hoặc môi trường bắt buộc và phải ghi rõ lý do vào `context/decisions.md`
 - Database: Ưu tiên MySQL hoặc PostgreSQL, local/dev có thể bắt đầu với SQLite nếu cần để bootstrap
 - Cache: file hoặc database cho MVP, có thể nâng cấp Redis sau
 - Queue: database queue cho local/MVP, có thể nâng cấp Redis/SQS sau
 - Session: database hoặc file tùy stack bootstrap cuối cùng
-- Frontend stack: Blade cho MVP web UI, có thể mở rộng sang Livewire/Inertia sau nếu cần
-- Auth / Permission package: Laravel auth chuẩn, role admin tối giản bằng policy/gate hoặc cờ `is_admin`
-- Test stack: PHPUnit/Pest theo mặc định framework, ưu tiên Feature test + Unit test
+- Frontend stack: Blade + Vite cho MVP web UI; có thể mở rộng sang Livewire hoặc Inertia bằng starter kit chính thức của Laravel nếu task yêu cầu
+- Auth / Permission package: Laravel auth chuẩn hoặc starter kit chính thức tương thích Laravel 13; role admin tối giản bằng policy/gate hoặc cờ `is_admin`
+- Test stack: Pest hoặc PHPUnit theo mặc định framework/starter kit, ưu tiên Feature test + Unit test
 
 ## Coding Style
 
@@ -26,6 +27,7 @@
 - Pattern hiện có trong codebase: Hiện repo mới chỉ có autonomous agent framework, chưa có source Laravel để áp pattern vào code ứng dụng
 - Quy ước response: Web dùng view/redirect chuẩn Laravel, API dùng JSON nhất quán qua Resource và status code đúng
 - Quy ước xử lý exception: Không lộ raw exception ra client, dùng custom exception cho business rule quan trọng và log an toàn
+- Modern PHP: Ưu tiên strict types, typed properties, return types, constructor property promotion, readonly class/property, enum, attributes, `match`, null-safe operator, và dependency injection rõ ràng khi phù hợp
 
 ## Module Chính
 
@@ -43,6 +45,7 @@
 
 ## Trạng Thái Repo Hiện Tại
 
-- Repo hiện mới chứa bộ AGENTS/rules/tasks/context phục vụ workflow tự động.
-- Chưa có source code Laravel, `composer.json`, cấu trúc `app/`, `routes/`, `config/`, hoặc test suite ứng dụng.
-- Task kỹ thuật tiếp theo cần khởi tạo hoặc đưa source Laravel vào repo trước khi triển khai tính năng sản phẩm.
+- Repo root chứa bộ AGENTS/rules/tasks/context phục vụ workflow tự động.
+- Source Laravel 13 đã được bootstrap trong `video-generator-app/`.
+- `video-generator-app/` đã có `composer.json`, cấu trúc Laravel skeleton hiện đại, config pipeline video, storage directories nền tảng, và smoke test foundation.
+- Môi trường local hiện chạy PHP 8.4.7; Composer constraint tạm dùng `php:^8.4` để validate được trên máy này và vẫn tương thích PHP 8.5 khi runtime được nâng cấp.

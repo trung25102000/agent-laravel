@@ -12,6 +12,7 @@
 - Không truyền object quá nặng hoặc state khó serialize vào queue.
 - Retry phải có chủ đích, không retry mù quáng.
 - Failure phải được log hoặc xử lý rõ.
+- Với Laravel 13, có thể dùng queue routing hoặc queue attributes khi giúp cấu hình job rõ ràng hơn.
 
 ## Checklist
 

@@ -8,6 +8,7 @@
 
 ## Loại Test
 
+- Dùng Pest hoặc PHPUnit theo stack mặc định của Laravel 13/starter kit hiện có; không trộn hai style trong cùng module nếu không cần.
 - Dùng feature test cho flow HTTP hoặc API của module chính.
 - Dùng unit test cho service, action, hoặc logic quan trọng cần tách biệt.
 

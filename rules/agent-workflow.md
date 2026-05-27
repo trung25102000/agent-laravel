@@ -16,7 +16,7 @@ pending
 6. Đọc task và lập implementation plan ngắn
 7. Đọc code Laravel liên quan
 8. Code theo rules
-9. Chạy:
+9. Chạy trong thư mục ứng dụng Laravel được khai báo ở `context/project-context.md`:
    - `composer dump-autoload`
    - `php artisan migrate`
    - `php artisan test`

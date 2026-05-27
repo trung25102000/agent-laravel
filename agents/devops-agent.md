@@ -18,6 +18,7 @@ Rà soát tác động vận hành, deploy, queue, scheduler, env, storage, cach
 - Kiểm tra queue/job/mail/notification có đi đúng pattern
 - Kiểm tra secret/config/env risk
 - Kiểm tra migration/runtime impact nếu task ảnh hưởng triển khai
+- Kiểm tra Composer/Artisan/npm/test/deploy command được chạy hoặc tài liệu hóa với working directory là thư mục ứng dụng Laravel, không phải root repo agent
 
 ## Output Bắt Buộc
 

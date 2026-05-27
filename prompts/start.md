@@ -19,8 +19,8 @@ pending
 ```
 
 3. Phân tích task, lập implementation plan ngắn, rồi bắt đầu code.
-4. Tuân thủ Laravel convention và toàn bộ rules trong repo.
-5. Tự chạy:
+4. Tuân thủ Laravel convention, ưu tiên Laravel 13.x + PHP 8.5 cho code/project mới, tạo source Laravel trong thư mục ứng dụng riêng, và toàn bộ rules trong repo.
+5. Tự chạy trong thư mục ứng dụng Laravel được khai báo ở `context/project-context.md`:
    - `composer dump-autoload`
    - `php artisan migrate`
    - `php artisan test`
