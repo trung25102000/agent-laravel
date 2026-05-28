@@ -10,3 +10,96 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@layer utilities {
+    @keyframes trust-float {
+        0%, 100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @keyframes trust-pulse {
+        0%, 100% {
+            opacity: 0.72;
+            transform: scaleX(0.72);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+    }
+
+    @keyframes trust-slide {
+        0% {
+            transform: translateX(-24%);
+        }
+
+        100% {
+            transform: translateX(112%);
+        }
+    }
+
+    .motion-float {
+        animation: trust-float 6s ease-in-out infinite;
+    }
+
+    .motion-float-slow {
+        animation: trust-float 8s ease-in-out infinite;
+    }
+
+    .motion-progress {
+        transform-origin: left;
+        animation: trust-pulse 2.8s ease-in-out infinite;
+    }
+
+    .motion-scan {
+        animation: trust-slide 4.5s ease-in-out infinite;
+    }
+
+    .motion-card {
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .motion-card:hover {
+        border-color: rgb(244 63 94 / 0.35);
+        box-shadow: 0 22px 45px -28px rgb(24 24 27 / 0.45);
+        transform: translateY(-4px);
+    }
+
+    [data-reveal] {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .js [data-reveal] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 520ms ease, transform 520ms ease;
+    }
+
+    .js [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .js [data-reveal] {
+        opacity: 1;
+        transform: none;
+    }
+}

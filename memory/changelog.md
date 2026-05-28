@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-05-29
+
+- Hoàn tất task `046-animated-trust-building-visuals`: thêm hero mockup động bằng HTML/CSS, trust badges, motion cards, scroll reveal bằng IntersectionObserver, CTA micro-interactions và reduced-motion support cho `seo-web-app`.
+- Bổ sung `AnimatedTrustVisualsTest` kiểm tra trust badges, marker visual/reveal và asset CSS/JS; full suite SEO app pass 20 tests / 153 assertions, build Vite pass.
+
 ## 2026-05-28
 
 - Tách repo thành hai ứng dụng Laravel độc lập: `seo-web-app/` cho Web Template Studio marketplace và `video-generator-app/` cho AI Video Generator.

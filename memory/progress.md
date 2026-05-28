@@ -3,8 +3,8 @@
 ## Trạng Thái Hiện Tại
 
 - Task đang làm: Không có
-- Tổng quan: Repo đã được tách thành hai ứng dụng Laravel độc lập: `seo-web-app/` cho Web Template Studio và `video-generator-app/` cho AI Video Generator; các task tách source, làm mới landing/branding và chạy SEO app đã hoàn tất.
-- Cập nhật lần cuối: 2026-05-28
+- Tổng quan: Repo đã được tách thành hai ứng dụng Laravel độc lập; `seo-web-app/` đã được nâng cấp thêm motion visual, hero mockup và trust badges để landing page tăng độ tin tưởng với khách hàng.
+- Cập nhật lần cuối: 2026-05-29
 
 ## Task Completed
 
@@ -38,6 +38,7 @@
 - 027-fix-audio-and-reference-based-xianxia-scenes
 - 001-project-foundation đến 033-git-push cho Web Template Studio marketplace MVP
 - 034-separate-source-audit-and-target-architecture đến 045-replace-default-laravel-branding-with-project-product-copy
+- 046-animated-trust-building-visuals
 
 ## Task Đang Làm
 
@@ -75,3 +76,5 @@
 - Final split validation: `seo-web-app/` pass `composer dump-autoload`, `php artisan migrate:fresh --seed --force`, `php artisan test` (17 tests / 124 assertions), `npm run build`, và `vendor/bin/pint`.
 - Final split validation: `video-generator-app/` pass `composer dump-autoload`, `php artisan migrate:fresh --seed --force`, `php artisan test` (62 tests / 320 assertions), `npm run build`, và `vendor/bin/pint`.
 - Agent review pass: security, testing, refactor, documentation, devops, database không ghi nhận blocker sau khi tách source.
+- Task 046 pass validation trong `seo-web-app/`: `composer dump-autoload`, `php artisan migrate`, `php artisan test` (20 tests / 153 assertions), `npm run build`, và `vendor/bin/pint`.
+- Browser smoke test task 046 pass tại `http://127.0.0.1:8010` cho homepage, services và templates: hero mockup, 4 trust badges, reveal markers, motion cards và contact CTA đều render không lỗi.

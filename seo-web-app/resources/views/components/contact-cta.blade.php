@@ -1,12 +1,17 @@
-<section id="quote-form" class="grid gap-6 rounded-lg border border-rose-100 bg-white p-6 shadow-sm lg:grid-cols-[1fr_26rem]">
+<section id="quote-form" class="grid gap-6 rounded-lg border border-rose-100 bg-white p-6 shadow-sm lg:grid-cols-[1fr_26rem]" data-reveal data-contact-cta>
     <div>
         <p class="text-sm font-semibold text-rose-700">Tư vấn nhanh</p>
         <h2 class="mt-2 text-2xl font-semibold text-zinc-950">Nói nhu cầu, nhận lộ trình và báo giá rõ ràng.</h2>
         <p class="mt-3 text-sm leading-6 text-zinc-600">Phù hợp shop nhỏ, cá nhân chạy quảng cáo và sinh viên cần source Laravel có báo cáo, database mẫu, tài liệu cài đặt.</p>
+        <div class="mt-5 grid gap-2 text-sm sm:grid-cols-2">
+            @foreach (['Demo trước khi bàn giao', 'Có source + hướng dẫn cài đặt', 'Hỗ trợ chỉnh sửa sau bàn giao', 'Phù hợp chạy quảng cáo/Zalo/Facebook'] as $badge)
+                <span class="rounded-md bg-rose-50 px-3 py-2 font-semibold text-rose-800 ring-1 ring-rose-100">{{ $badge }}</span>
+            @endforeach
+        </div>
         <div class="mt-5 flex flex-wrap gap-3 text-sm">
-            <a class="rounded-md bg-emerald-600 px-4 py-2 font-semibold text-white" href="{{ config('contact.zalo_url', '#') }}">Zalo</a>
-            <a class="rounded-md bg-blue-600 px-4 py-2 font-semibold text-white" href="{{ config('contact.facebook_url', '#') }}">Facebook</a>
-            <a class="rounded-md border border-zinc-300 px-4 py-2 font-semibold text-zinc-800" href="mailto:{{ config('contact.email', 'hello@example.com') }}">Email</a>
+            <a class="rounded-md bg-emerald-600 px-4 py-2 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-lg hover:shadow-emerald-100" href="{{ config('contact.zalo_url', '#') }}">Zalo</a>
+            <a class="rounded-md bg-blue-600 px-4 py-2 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-100" href="{{ config('contact.facebook_url', '#') }}">Facebook</a>
+            <a class="rounded-md border border-zinc-300 px-4 py-2 font-semibold text-zinc-800 transition hover:-translate-y-0.5 hover:bg-zinc-50 hover:shadow-sm" href="mailto:{{ config('contact.email', 'hello@example.com') }}">Email</a>
         </div>
     </div>
     <form method="POST" action="{{ route('quote-requests.store') }}" class="space-y-3">

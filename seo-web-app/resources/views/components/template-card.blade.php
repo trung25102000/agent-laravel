@@ -1,7 +1,8 @@
 @props(['template'])
 
-<article class="flex h-full flex-col rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
-    <div class="rounded-md bg-gradient-to-br from-rose-100 via-amber-100 to-sky-100 p-5">
+<article class="motion-card flex h-full flex-col rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
+    <div class="relative overflow-hidden rounded-md bg-gradient-to-br from-rose-100 via-amber-100 to-sky-100 p-5">
+        <span class="motion-scan absolute inset-y-0 left-0 w-16 bg-white/35"></span>
         <p class="text-xs font-semibold uppercase text-rose-700">{{ $template->category?->name ?? 'Template' }}</p>
         <h3 class="mt-3 text-lg font-semibold text-zinc-950">{{ $template->name }}</h3>
         <p class="mt-2 text-sm leading-6 text-zinc-700">{{ $template->summary }}</p>
