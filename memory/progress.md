@@ -3,7 +3,7 @@
 ## Trạng Thái Hiện Tại
 
 - Task đang làm: Không có
-- Tổng quan: Marketplace MVP bán template/dịch vụ/source Laravel đã được triển khai song song với module AI video cũ; toàn bộ task marketplace đã hoàn tất và không còn task pending ở `/tasks`.
+- Tổng quan: Repo đã được tách thành hai ứng dụng Laravel độc lập: `seo-web-app/` cho Web Template Studio và `video-generator-app/` cho AI Video Generator; các task tách source, làm mới landing/branding và chạy SEO app đã hoàn tất.
 - Cập nhật lần cuối: 2026-05-28
 
 ## Task Completed
@@ -37,6 +37,7 @@
 - 026-xianxia-scene-character-demo-video
 - 027-fix-audio-and-reference-based-xianxia-scenes
 - 001-project-foundation đến 033-git-push cho Web Template Studio marketplace MVP
+- 034-separate-source-audit-and-target-architecture đến 045-replace-default-laravel-branding-with-project-product-copy
 
 ## Task Đang Làm
 
@@ -52,8 +53,9 @@
 
 ## Ghi Chú
 
-- Source Laravel đã nằm trong `video-generator-app/`.
-- Marketplace MVP đã có public pages, form lead/order/contact/đồ án, admin marketplace, seeders và tests.
+- Source Laravel hiện được tách thành `seo-web-app/` và `video-generator-app/`, mỗi app có routes, views, seeders, tests, `.env.example`, README và database local riêng.
+- `seo-web-app/` đã chạy local tại `http://127.0.0.1:8010` và browser smoke test pass cho `/`, `/services`, `/templates`, `/pricing/shop`, `/source-code`, `/blog`, `/login`, `/sitemap.xml`, `/robots.txt`.
+- Marketplace MVP đã có public pages, form lead/order/contact/đồ án, admin marketplace, seeders và tests trong `seo-web-app/`.
 - Local runtime hiện là PHP 8.4.7 nên composer constraint đang là `php:^8.4` để test được; nâng lên `php:^8.5` khi môi trường sẵn sàng.
 - Product/task blueprint chi tiết nằm ở `tasks/000-ai-video-platform-master-plan.md` và nên được dùng làm nguồn chính khi tách task triển khai MVP.
 - Final validation: `composer dump-autoload`, `php artisan migrate`, và `php artisan test` pass trong `video-generator-app/`.
@@ -70,3 +72,6 @@
 - Task 027 pass validation với `composer dump-autoload`, `php artisan migrate`, và `php artisan test`; suite hiện có 62 tests, 320 assertions.
 - Project `#6` được render lại bằng `php artisan demo:xianxia-review --project-id=6 --reference-url=https://www.youtube.com/watch?v=5W-8VZa1jpw --replace-project-output`; ffprobe xác nhận video H.264 1080x1920 và audio AAC duration 180s, max volume `-14.3 dB`.
 - Audio project `#6` được sửa lại lần nữa để dùng narration `.aiff` từ macOS `say` khi chạy local, FFmpeg normalize/pad audio, output hiện có audio AAC 180s với max volume `-1.4 dB` và browser preview `muted=false`.
+- Final split validation: `seo-web-app/` pass `composer dump-autoload`, `php artisan migrate:fresh --seed --force`, `php artisan test` (17 tests / 124 assertions), `npm run build`, và `vendor/bin/pint`.
+- Final split validation: `video-generator-app/` pass `composer dump-autoload`, `php artisan migrate:fresh --seed --force`, `php artisan test` (62 tests / 320 assertions), `npm run build`, và `vendor/bin/pint`.
+- Agent review pass: security, testing, refactor, documentation, devops, database không ghi nhận blocker sau khi tách source.

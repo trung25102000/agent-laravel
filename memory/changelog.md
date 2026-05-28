@@ -2,6 +2,12 @@
 
 ## 2026-05-28
 
+- Tách repo thành hai ứng dụng Laravel độc lập: `seo-web-app/` cho Web Template Studio marketplace và `video-generator-app/` cho AI Video Generator.
+- Làm sạch domain trong từng app: SEO app giữ marketplace/service/source-code/blog/admin lead modules; video app giữ pipeline tạo video, preview, stream/download và admin video.
+- Cập nhật branding/giao diện SEO app theo hướng landing page trẻ trung, thân thiện, nhắm shop nhỏ, cá nhân kinh doanh online và sinh viên; loại bỏ copy/template Laravel mặc định trên landing, auth, docs và config.
+- Cập nhật README root, README từng app, project context, routes map, database schema và source separation decision/plan cho kiến trúc hai app.
+- Chạy validation sau split: `seo-web-app/` pass 17 tests / 124 assertions + build + Pint; `video-generator-app/` pass 62 tests / 320 assertions + build + Pint.
+- Smoke test browser SEO app tại `http://127.0.0.1:8010` pass cho landing, services, templates, shop pricing, source code, blog, login, sitemap và robots.
 - Triển khai Web Template Studio marketplace MVP: public pages homepage/services/templates/pricing/source-code/blog, lead/order/contact/graduation forms, admin marketplace dashboard và CRUD cơ bản.
 - Thêm database module marketplace gồm template categories, website templates, pricing packages, customers, order requests, quote requests, graduation project requests, contact messages, blog posts, source code products, demo projects, product attachments, FAQ.
 - Bổ sung UI trẻ trung thân thiện với palette rose/amber/sky, CTA Zalo/Facebook/Email, nội dung theo 3 nhóm khách hàng: shop nhỏ, cá nhân kinh doanh online, sinh viên.

@@ -14,6 +14,13 @@ File này dùng để ghi lại các quyết định kỹ thuật, assumptions, 
 ## Entries
 
 - Ngày: 2026-05-28
+- Task: 034-separate-source-audit-and-target-architecture
+- Loại: decision
+- Nội dung: Tách repo thành hai Laravel app độc lập `seo-web-app/` và `video-generator-app/`; copy auth/admin tối giản vào từng app thay vì tạo shared package.
+- Lý do: Hai domain có lifecycle, deploy, route, database và branding khác nhau; shared package lúc này làm tăng độ phức tạp khi chưa có logic dùng chung đủ lớn.
+- Ảnh hưởng: Mỗi app có composer/npm/env/migration/test riêng; root repo vẫn là control plane cho agent/tasks/context.
+
+- Ngày: 2026-05-28
 - Task: post-027-audio-narration-fix
 - Loại: decision
 - Nội dung: Demo audio local ưu tiên dùng macOS `say` để tạo narration `.aiff`; test/CI vẫn dùng generated WAV fallback để không phụ thuộc OS.

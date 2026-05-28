@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'AI Video Generator')
+@section('title', 'AI Video Generator - Create short-form videos')
+@section('meta_description', 'AI Video Generator giúp tạo script, scene, voice, subtitle và render video dọc MP4 9:16 cho TikTok, Reels, Shorts.')
 
 @section('content')
     <div class="space-y-10">

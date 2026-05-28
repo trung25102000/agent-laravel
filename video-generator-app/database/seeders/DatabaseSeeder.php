@@ -17,14 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        User::query()->updateOrCreate(['email' => 'test@example.com'], [
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'password' => 'password',
+            'is_admin' => false,
         ]);
 
         $this->call([
             AdminUserSeeder::class,
-            MarketplaceSeeder::class,
         ]);
     }
 }

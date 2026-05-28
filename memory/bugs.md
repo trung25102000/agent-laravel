@@ -14,6 +14,20 @@ Dùng file này để lưu các bug, lỗi môi trường, lỗi test, hoặc re
 ## Entries
 
 - Ngày: 2026-05-28
+- Task: 034-045-source-separation
+- Bug: Sau khi nhân bản `seo-web-app/`, seed lại có thể đụng email mặc định `test@example.com` nếu database đã có user từ lần chạy trước.
+- Nguyên nhân: Seeder cũ dùng `User::factory()->create()` với email cố định nên không idempotent khi app chạy trên database local đã tồn tại dữ liệu.
+- Cách sửa: Đổi `DatabaseSeeder` của cả hai app sang `User::updateOrCreate()` cho tài khoản mặc định; validation dùng `migrate:fresh --seed --force` pass ở cả hai app.
+- Trạng thái: Đã xử lý.
+
+- Ngày: 2026-05-28
+- Task: 034-045-source-separation
+- Bug: File SQLite local của từng app có thể bị stage nhầm sau khi tạo app mới và chạy migrate.
+- Nguyên nhân: `.gitignore` trong app chưa khai báo `*.sqlite`.
+- Cách sửa: Thêm `*.sqlite` vào `.gitignore` của `seo-web-app/` và `video-generator-app/`; trước khi push cần kiểm tra staged files không có `.env`, `.sqlite`, `vendor`, `node_modules`, `public/build`.
+- Trạng thái: Đã xử lý.
+
+- Ngày: 2026-05-28
 - Task: marketplace-mvp
 - Bug: Feature tests cũ gọi `/` trong SQLite memory chưa migrate marketplace tables nên landing page query `website_templates` gây lỗi `no such table`.
 - Nguyên nhân: Một số smoke test không dùng `RefreshDatabase`, trong khi homepage mới đọc dữ liệu marketplace.

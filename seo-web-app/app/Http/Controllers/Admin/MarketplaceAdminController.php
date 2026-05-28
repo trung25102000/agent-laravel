@@ -15,7 +15,6 @@ use App\Models\QuoteRequest;
 use App\Models\SourceCodeProduct;
 use App\Models\TemplateCategory;
 use App\Models\User;
-use App\Models\VideoProject;
 use App\Models\WebsiteTemplate;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,10 +24,8 @@ use Illuminate\View\View;
 
 class MarketplaceAdminController extends Controller
 {
-    public function dashboard(Request $request): View
+    public function dashboard(): View
     {
-        $status = $request->string('status')->toString();
-
         return view('admin.marketplace.dashboard', [
             'stats' => [
                 'templates' => WebsiteTemplate::query()->count(),
@@ -40,13 +37,6 @@ class MarketplaceAdminController extends Controller
             'orders' => OrderRequest::query()->latest()->limit(8)->get(),
             'quotes' => QuoteRequest::query()->latest()->limit(8)->get(),
             'users' => User::query()->latest()->limit(10)->get(),
-            'projects' => VideoProject::query()
-                ->with('user')
-                ->when($status, fn ($query) => $query->where('status', $status))
-                ->latest()
-                ->limit(20)
-                ->get(),
-            'selectedStatus' => $status,
         ]);
     }
 

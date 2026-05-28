@@ -17,10 +17,10 @@ class BrandedEntryUiTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Website trẻ trung, dễ dùng, triển khai nhanh');
-        $response->assertSee('Mua template web, landing page và source Laravel');
-        $response->assertSee('Xem mẫu web');
-        $response->assertSee('Nhận tư vấn');
+        $response->assertSee('AI video workspace');
+        $response->assertSee('Turn one topic into a vertical video');
+        $response->assertSee('Log in to create videos');
+        $response->assertSee('Create creator account');
         $response->assertDontSee('Documentation');
         $response->assertDontSee('Laracasts');
         $response->assertDontSee('Laravel News');
@@ -35,8 +35,8 @@ class BrandedEntryUiTest extends TestCase
         $response = $this->actingAs($user)->get('/');
 
         $response->assertOk();
-        $response->assertSee('Workspace');
-        $response->assertDontSee('Nhận tư vấn');
+        $response->assertSee('Open video workspace');
+        $response->assertDontSee('Log in to create videos');
     }
 
     public function test_guest_can_view_branded_login_page(): void
