@@ -13,6 +13,13 @@ Dùng file này để lưu các bug, lỗi môi trường, lỗi test, hoặc re
 
 ## Entries
 
+- Ngày: 2026-05-29
+- Task: 047-product-service-landing-page-experience
+- Bug: Full test suite fail vì một số feature test cũ vẫn assert headline homepage cũ `Làm website đẹp`.
+- Nguyên nhân: Task 047 thay đổi copy chiến lược của hero landing page nhưng test branding/public marketplace chưa được cập nhật theo hành vi mới.
+- Cách sửa: Cập nhật `BrandedEntryUiTest` và `MarketplacePublicTest` để assert hero/storytelling mới, giữ các assert không còn copy mặc định Laravel.
+- Trạng thái: Đã xử lý; `php artisan test` pass 23 tests / 178 assertions.
+
 - Ngày: 2026-05-28
 - Task: 034-045-source-separation
 - Bug: Sau khi nhân bản `seo-web-app/`, seed lại có thể đụng email mặc định `test@example.com` nếu database đã có user từ lần chạy trước.

@@ -57,7 +57,7 @@ class MarketplacePublicTest extends TestCase
             'answer' => 'Có demo rõ ràng.',
         ]);
 
-        $this->get('/')->assertOk()->assertSee('Làm website đẹp');
+        $this->get('/')->assertOk()->assertSee('Có website đẹp để khách tin hơn');
         $this->get('/services')->assertOk()->assertSee('Làm website, landing page');
         $this->get('/templates')->assertOk()->assertSee('Mẫu shop mỹ phẩm');
         $this->get('/templates/mau-shop-my-pham')->assertOk()->assertSee('Đặt mua mẫu này');

@@ -3,7 +3,7 @@
 ## Trạng Thái Hiện Tại
 
 - Task đang làm: Không có
-- Tổng quan: Repo đã được tách thành hai ứng dụng Laravel độc lập; `seo-web-app/` đã được nâng cấp thêm motion visual, hero mockup và trust badges để landing page tăng độ tin tưởng với khách hàng.
+- Tổng quan: Repo đã được tách thành hai ứng dụng Laravel độc lập; `seo-web-app/` đã được nâng cấp thành landing page sản phẩm/dịch vụ có storytelling problem → solution → trust → CTA.
 - Cập nhật lần cuối: 2026-05-29
 
 ## Task Completed
@@ -39,6 +39,7 @@
 - 001-project-foundation đến 033-git-push cho Web Template Studio marketplace MVP
 - 034-separate-source-audit-and-target-architecture đến 045-replace-default-laravel-branding-with-project-product-copy
 - 046-animated-trust-building-visuals
+- 047-product-service-landing-page-experience
 
 ## Task Đang Làm
 
@@ -78,3 +79,5 @@
 - Agent review pass: security, testing, refactor, documentation, devops, database không ghi nhận blocker sau khi tách source.
 - Task 046 pass validation trong `seo-web-app/`: `composer dump-autoload`, `php artisan migrate`, `php artisan test` (20 tests / 153 assertions), `npm run build`, và `vendor/bin/pint`.
 - Browser smoke test task 046 pass tại `http://127.0.0.1:8010` cho homepage, services và templates: hero mockup, 4 trust badges, reveal markers, motion cards và contact CTA đều render không lỗi.
+- Task 047 pass validation trong `seo-web-app/`: `composer dump-autoload`, `php artisan migrate`, `php artisan test` (23 tests / 178 assertions), `npm run build`, và `vendor/bin/pint`.
+- Browser smoke test task 047 pass tại `http://127.0.0.1:8010`: hero, problem section, solution/value section, trust section, reveal markers, CTA và JS console đều ổn; không thấy overflow ngang ở viewport kiểm tra.
