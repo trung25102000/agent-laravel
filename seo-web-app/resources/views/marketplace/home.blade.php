@@ -86,25 +86,101 @@
             </div>
         </section>
 
-        <section class="space-y-6" data-reveal data-landing-section="problems">
+        @php
+            $problemStories = [
+                [
+                    'audience' => 'Chủ shop nhỏ',
+                    'title' => 'Shop nhỏ chưa có website chuyên nghiệp',
+                    'problem' => 'Khách chỉ thấy vài bài đăng rời rạc nên khó tin tưởng thương hiệu và khó xem lại sản phẩm.',
+                    'solution' => 'Dựng website giới thiệu/catalog có CTA Zalo rõ ràng, giúp khách xem nhanh sản phẩm và liên hệ ngay.',
+                    'visual' => 'Catalog mini + CTA Zalo',
+                ],
+                [
+                    'audience' => 'Người chạy quảng cáo',
+                    'title' => 'Landing page thiếu tin cậy',
+                    'problem' => 'Quảng cáo có lượt click nhưng form lead yếu, nội dung chưa đủ thuyết phục và CTA bị chìm.',
+                    'solution' => 'Thiết kế landing page mobile-first với offer rõ, form thu lead nổi bật và block bằng chứng tin cậy.',
+                    'visual' => 'Form lead + offer',
+                ],
+                [
+                    'audience' => 'Người bán online',
+                    'title' => 'Phụ thuộc Facebook/Zalo',
+                    'problem' => 'Thông tin sản phẩm, bảng giá và câu hỏi thường gặp nằm rải rác nên khách dễ bỏ qua.',
+                    'solution' => 'Tạo một điểm chạm chính thức để gom sản phẩm, bảng giá, FAQ và các nút liên hệ nhanh.',
+                    'visual' => 'Hub bán hàng',
+                ],
+                [
+                    'audience' => 'Sinh viên',
+                    'title' => 'Source đồ án chưa đủ bộ',
+                    'problem' => 'Có code nhưng thiếu database mẫu, báo cáo, hướng dẫn cài đặt và demo để bảo vệ đồ án.',
+                    'solution' => 'Bàn giao source Laravel kèm database, tài liệu chạy project, demo và ghi chú triển khai rõ ràng.',
+                    'visual' => 'Source + database',
+                ],
+            ];
+        @endphp
+
+        <section class="space-y-6" data-reveal data-landing-section="problems" data-story-carousel data-story-interval="5200" role="region" aria-label="Slideshow vấn đề và giải pháp cho khách hàng">
             <div class="max-w-3xl">
                 <p class="text-sm font-semibold text-rose-700">Vấn đề thường gặp</p>
                 <h2 class="mt-2 text-3xl font-semibold text-zinc-950">Trước khi có website tốt, khách thường rời đi vì thiếu niềm tin.</h2>
                 <p class="mt-3 text-sm leading-6 text-zinc-600">Không phải ai cũng cần hệ thống phức tạp ngay từ đầu. Điều quan trọng là có một điểm chạm chuyên nghiệp, dễ hiểu và đủ tin cậy để khách liên hệ.</p>
             </div>
-            <div class="grid gap-4 md:grid-cols-5">
-                @foreach ([
-                    ['Shop nhỏ chưa có website chuyên nghiệp', 'Khách chỉ thấy vài bài đăng rời rạc nên khó tin tưởng thương hiệu.'],
-                    ['Landing page thiếu tin cậy', 'Chạy quảng cáo nhưng form lead yếu, CTA mờ và nội dung chưa đủ thuyết phục.'],
-                    ['Phụ thuộc Facebook/Zalo', 'Khi khách hỏi lại thông tin, sản phẩm và bảng giá không có nơi trình bày rõ.'],
-                    ['Source đồ án chưa đủ bộ', 'Có code nhưng thiếu database mẫu, báo cáo, hướng dẫn cài đặt và demo.'],
-                    ['Sợ chi phí phát sinh', 'Không rõ phạm vi, không biết chọn gói nào và lo không được hỗ trợ sau bàn giao.'],
-                ] as [$title, $copy])
-                    <article class="motion-card rounded-lg border border-zinc-200 bg-white p-5 shadow-sm" data-reveal style="--reveal-delay: {{ $loop->index * 80 }}ms">
-                        <span class="grid size-9 place-items-center rounded-md bg-rose-50 text-sm font-semibold text-rose-700">{{ $loop->iteration }}</span>
-                        <h3 class="mt-4 text-base font-semibold text-zinc-950">{{ $title }}</h3>
-                        <p class="mt-2 text-sm leading-6 text-zinc-600">{{ $copy }}</p>
+
+            <div class="relative">
+                @foreach ($problemStories as $story)
+                    <article class="story-slide rounded-lg border border-zinc-200 bg-white p-5 shadow-sm" data-story-slide @if (! $loop->first) aria-hidden="true" @endif>
+                        <div class="grid gap-6 lg:grid-cols-[1fr_24rem] lg:items-center">
+                            <div>
+                                <p class="text-sm font-semibold text-rose-700">Câu chuyện {{ $loop->iteration }} · {{ $story['audience'] }}</p>
+                                <h3 class="mt-2 text-2xl font-semibold text-zinc-950">{{ $story['title'] }}</h3>
+                                <div class="mt-5 grid gap-3 md:grid-cols-2">
+                                    <div class="rounded-lg bg-rose-50 p-4 ring-1 ring-rose-100">
+                                        <p class="text-xs font-semibold uppercase text-rose-700">Vấn đề</p>
+                                        <p class="mt-2 text-sm leading-6 text-rose-950">{{ $story['problem'] }}</p>
+                                    </div>
+                                    <div class="rounded-lg bg-emerald-50 p-4 ring-1 ring-emerald-100">
+                                        <p class="text-xs font-semibold uppercase text-emerald-700">Giải pháp</p>
+                                        <p class="mt-2 text-sm leading-6 text-emerald-950">{{ $story['solution'] }}</p>
+                                    </div>
+                                </div>
+                                <a class="mt-5 inline-flex rounded-md bg-rose-600 px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-rose-700" href="#quote-form">Tư vấn hướng xử lý</a>
+                            </div>
+
+                            <div class="story-visual overflow-hidden rounded-lg bg-gradient-to-br from-rose-50 via-white to-sky-50 p-4 ring-1 ring-zinc-100">
+                                <div class="motion-float-slow rounded-lg bg-white p-4 shadow-sm">
+                                    <div class="flex items-center justify-between border-b border-zinc-100 pb-3">
+                                        <span class="text-xs font-semibold uppercase text-zinc-500">{{ $story['visual'] }}</span>
+                                        <span class="rounded-full bg-emerald-50 px-2 py-1 text-xs font-semibold text-emerald-700">Live demo</span>
+                                    </div>
+                                    <div class="mt-4 grid gap-3">
+                                        <div class="h-24 rounded-lg bg-rose-100 ring-1 ring-rose-200"></div>
+                                        <div class="grid grid-cols-3 gap-2">
+                                            <span class="h-14 rounded-md bg-zinc-100"></span>
+                                            <span class="h-14 rounded-md bg-zinc-100"></span>
+                                            <span class="h-14 rounded-md bg-zinc-100"></span>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <div class="h-2.5 w-4/5 rounded-full bg-zinc-200"></div>
+                                            <div class="h-2.5 w-2/3 rounded-full bg-zinc-200"></div>
+                                            <div class="h-2.5 w-1/2 rounded-full bg-zinc-200"></div>
+                                        </div>
+                                        <div class="relative overflow-hidden rounded-md bg-zinc-950 p-3 text-white">
+                                            <div class="motion-scan absolute inset-y-0 left-0 w-16 bg-white/10"></div>
+                                            <p class="relative text-sm font-semibold">Khách hiểu vấn đề → thấy giải pháp → bấm liên hệ</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </article>
+                @endforeach
+            </div>
+
+            <div class="flex flex-wrap gap-2" role="tablist" aria-label="Chọn câu chuyện vấn đề">
+                @foreach ($problemStories as $story)
+                    <button class="story-control rounded-full border border-rose-100 bg-white px-3 py-2 text-sm font-semibold text-zinc-700 hover:bg-rose-50" type="button" data-story-control aria-label="Xem câu chuyện: {{ $story['title'] }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">
+                        {{ $loop->iteration }}. {{ $story['audience'] }}
+                    </button>
                 @endforeach
             </div>
         </section>

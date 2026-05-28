@@ -3,7 +3,7 @@
 ## Trạng Thái Hiện Tại
 
 - Task đang làm: Không có
-- Tổng quan: Repo đã được tách thành hai ứng dụng Laravel độc lập; `seo-web-app/` đã được nâng cấp thành landing page sản phẩm/dịch vụ có storytelling problem → solution → trust → CTA.
+- Tổng quan: Repo đã được tách thành hai ứng dụng Laravel độc lập; `seo-web-app/` đã được nâng cấp thành landing page sản phẩm/dịch vụ có storytelling problem → solution → trust → CTA và carousel vấn đề/giải pháp trực quan.
 - Cập nhật lần cuối: 2026-05-29
 
 ## Task Completed
@@ -40,6 +40,7 @@
 - 034-separate-source-audit-and-target-architecture đến 045-replace-default-laravel-branding-with-project-product-copy
 - 046-animated-trust-building-visuals
 - 047-product-service-landing-page-experience
+- 048-visual-problem-story-carousel
 
 ## Task Đang Làm
 
@@ -81,3 +82,5 @@
 - Browser smoke test task 046 pass tại `http://127.0.0.1:8010` cho homepage, services và templates: hero mockup, 4 trust badges, reveal markers, motion cards và contact CTA đều render không lỗi.
 - Task 047 pass validation trong `seo-web-app/`: `composer dump-autoload`, `php artisan migrate`, `php artisan test` (23 tests / 178 assertions), `npm run build`, và `vendor/bin/pint`.
 - Browser smoke test task 047 pass tại `http://127.0.0.1:8010`: hero, problem section, solution/value section, trust section, reveal markers, CTA và JS console đều ổn; không thấy overflow ngang ở viewport kiểm tra.
+- Task 048 pass validation trong `seo-web-app/`: `composer dump-autoload`, `php artisan migrate`, `php artisan test` (26 tests / 204 assertions), `npm run build`, và `vendor/bin/pint`.
+- Browser smoke test task 048 pass tại `http://127.0.0.1:8010`: carousel có 4 slide/4 control, auto-play chuyển slide, chỉ 1 slide active, không overflow ngang và không có lỗi JS console.

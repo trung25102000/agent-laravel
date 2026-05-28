@@ -2,6 +2,8 @@
 
 ## 2026-05-29
 
+- Hoàn tất task `048-visual-problem-story-carousel`: thay section vấn đề trên homepage `seo-web-app` bằng carousel storytelling 4 nhóm khách hàng với visual mockup, problem/solution cards, CTA, controls, auto-play, pause on hover/focus và reduced-motion support.
+- Thêm `ProblemStoryCarouselTest` kiểm tra marker carousel, nội dung vấn đề chính và asset JS/CSS; full suite SEO app pass 26 tests / 204 assertions, Vite build, Pint và browser smoke test pass.
 - Hoàn tất task `047-product-service-landing-page-experience`: tái cấu trúc homepage `seo-web-app` thành landing page sản phẩm/dịch vụ với hero mới, section vấn đề người dùng, section giá trị/giải pháp, audience, demo, process, trust, pricing và CTA.
 - Thêm `LandingPageExperienceTest`, cập nhật tests public/branding theo copy mới; full suite SEO app pass 23 tests / 178 assertions, Vite build và Pint pass.
 - Hoàn tất task `046-animated-trust-building-visuals`: thêm hero mockup động bằng HTML/CSS, trust badges, motion cards, scroll reveal bằng IntersectionObserver, CTA micro-interactions và reduced-motion support cho `seo-web-app`.
