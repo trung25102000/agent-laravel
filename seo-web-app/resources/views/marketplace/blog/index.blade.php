@@ -1,23 +1,54 @@
 @extends('layouts.app')
 
-@section('title', 'Blog SEO website và đồ án Laravel')
+@section('title', 'Blog SEO, website, landing page và task code')
+@section('meta_description', 'Blog chia sẻ SEO website, landing page, sửa giao diện, hỗ trợ đồ án và các task code nhỏ để kéo lead và hỗ trợ chuyển đổi dịch vụ.')
+@section('canonical', $selectedPillar ? route('blog.index', ['pillar' => $selectedPillar]) : route('blog.index'))
 
 @section('content')
-    <div class="space-y-6">
-        <section>
-            <h1 class="text-3xl font-semibold">Blog SEO</h1>
-            <p class="mt-2 text-sm text-zinc-600">Nội dung theo nhóm khách hàng: shop nhỏ, kinh doanh online và sinh viên.</p>
+    <div class="space-y-8">
+        <section class="grid gap-6 rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm lg:grid-cols-[1.3fr_0.7fr]">
+            <div>
+                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-rose-700">Blog service-first</p>
+                <h1 class="mt-3 text-3xl font-semibold text-zinc-950">Nội dung SEO, website và technical support để khách hiểu rõ dịch vụ trước khi liên hệ.</h1>
+                <p class="mt-3 text-sm leading-7 text-zinc-600">Blog được chia theo các trụ cột nội dung sát với dịch vụ đang nhận làm: SEO website, landing page, sửa giao diện, hỗ trợ đồ án và task code thực chiến.</p>
+            </div>
+            <div class="rounded-2xl border border-sky-100 bg-sky-50 p-5">
+                <p class="text-sm font-semibold text-zinc-950">Đi nhanh tới nhu cầu của bạn</p>
+                <div class="mt-4 space-y-2">
+                    @foreach ($serviceLinks as $service)
+                        <a class="block rounded-xl border border-white/70 bg-white px-4 py-3 text-sm font-semibold text-zinc-800 transition hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-100" href="{{ route('services.show', $service) }}">{{ $service->name }}</a>
+                    @endforeach
+                </div>
+            </div>
         </section>
-        <div class="grid gap-4 md:grid-cols-3">
+
+        <section class="grid gap-4 lg:grid-cols-5">
+            @foreach ($pillars as $pillar)
+                <a href="{{ $pillar['href'] }}" class="rounded-2xl border p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md {{ $selectedPillar === $pillar['key'] ? 'border-rose-200 bg-rose-50' : 'border-zinc-200 bg-white' }}">
+                    <p class="text-sm font-semibold text-zinc-950">{{ $pillar['label'] }}</p>
+                    <p class="mt-2 text-sm leading-6 text-zinc-600">{{ $pillar['summary'] }}</p>
+                    <p class="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-rose-700">{{ $pillar['count'] }} bài viết</p>
+                </a>
+            @endforeach
+        </section>
+
+        <section class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             @foreach ($posts as $post)
-                <article class="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
-                    <p class="text-xs font-semibold uppercase text-rose-700">{{ $post->audience_type }}</p>
-                    <h2 class="mt-2 text-lg font-semibold">{{ $post->title }}</h2>
-                    <p class="mt-2 text-sm leading-6 text-zinc-600">{{ $post->excerpt }}</p>
-                    <a class="mt-4 inline-flex text-sm font-semibold text-rose-700" href="{{ route('blog.show', $post) }}">Đọc bài</a>
+                <article class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                    <div class="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-rose-700">
+                        <span>{{ $post->pillarMeta()['label'] }}</span>
+                        <span class="rounded-full bg-zinc-100 px-2.5 py-1 tracking-normal text-zinc-600">{{ \App\Models\BlogPost::serviceGroupOptions()[$post->service_group] ?? 'Dịch vụ web' }}</span>
+                    </div>
+                    <h2 class="mt-3 text-xl font-semibold text-zinc-950">{{ $post->title }}</h2>
+                    <p class="mt-3 text-sm leading-6 text-zinc-600">{{ $post->excerpt ?: \Illuminate\Support\Str::limit($post->content, 140) }}</p>
+                    <div class="mt-5 flex flex-wrap gap-3 text-sm">
+                        <a class="font-semibold text-rose-700" href="{{ route('blog.show', $post) }}">Đọc bài</a>
+                        <a class="font-semibold text-sky-700" href="{{ route('services') }}">Xem dịch vụ liên quan</a>
+                    </div>
                 </article>
             @endforeach
-        </div>
+        </section>
+
         {{ $posts->links() }}
     </div>
 @endsection

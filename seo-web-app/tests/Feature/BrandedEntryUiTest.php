@@ -17,12 +17,16 @@ class BrandedEntryUiTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Có website đẹp để khách tin hơn');
-        $response->assertSee('Vấn đề thường gặp');
-        $response->assertSee('Giá trị nhận được');
-        $response->assertSee('Nhận tư vấn miễn phí');
+        $response->assertSee('Biến Ý Tưởng Thành Website Chuyên Nghiệp Chỉ Trong Vài Ngày');
+        $response->assertSee('Thiết kế Website');
+        $response->assertSee('Phát Triển App Theo Yêu Cầu');
+        $response->assertSee('Khách hàng đang gặp vấn đề gì');
+        $response->assertSee('Danh sách dịch vụ');
+        $response->assertSee('Giải pháp tương ứng');
+        $response->assertSee('Nhận Tư Vấn Miễn Phí');
+        $response->assertSee('Xem Dự Án Đã Thực Hiện');
         $response->assertSee('Chủ shop nhỏ/lẻ');
-        $response->assertSee('Source Laravel, database mẫu');
+        $response->assertSee('Feedback và cam kết');
         $response->assertDontSee('Documentation');
         $response->assertDontSee('Laracasts');
         $response->assertDontSee('Laravel News');

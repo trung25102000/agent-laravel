@@ -13,6 +13,132 @@ File này dùng để ghi lại các quyết định kỹ thuật, assumptions, 
 
 ## Entries
 
+- Ngày: 2026-05-29
+- Task: 064-problem-solution-storytelling-sections
+- Loại: decision
+- Nội dung: Bỏ carousel vấn đề dạng 4 story và chuyển sang 6 pain cards + solution mapping grid, vì mục tiêu của phase agency landing là scan nhanh và nhận diện nhu cầu rõ hơn thay vì đọc tuần tự từng slide.
+- Lý do: Brief mới yêu cầu khách phải thấy ngay pain point của mình; grid tĩnh với hover nhẹ phục vụ conversion tốt hơn carousel dài trong phần này.
+- Ảnh hưởng: Homepage section vấn đề/giải pháp trực diện hơn, mobile dễ quét hơn và task sau có thể tiếp tục nâng visual card/timeline mà không cần giữ logic carousel cũ.
+
+- Ngày: 2026-05-29
+- Task: 063-hero-section-agency-grade-redesign
+- Loại: decision
+- Nội dung: Dựng hero agency-grade hoàn toàn bằng Blade + HTML/CSS/JS nội bộ với 5 scene visual auto-cycle (website, dashboard, code, SEO, app), thay vì dùng ảnh raster hay thư viện animation ngoài.
+- Lý do: Brief yêu cầu cảm giác chuyên nghiệp và motion rõ nhưng vẫn phải nhẹ, dễ maintain và không kéo thêm dependency nặng cho landing page.
+- Ảnh hưởng: Homepage có hero conversion-first mạnh hơn, đồng thời tạo nền reusable cho các task visual tiếp theo như service cards, showcase và trust sections.
+
+- Ngày: 2026-05-29
+- Task: 062-final-service-platform-review-and-polish
+- Loại: decision
+- Nội dung: Đóng chuỗi service-platform `049-062` tại đây và giữ các task `063-071` là backlog presentation/CRO tách biệt, thay vì gộp toàn bộ UI agency-grade vào task final review của service domain.
+- Lý do: `062` chỉ nên dùng để rà soát tính nhất quán, validation và tài liệu cho lớp domain/service đã hoàn tất; nếu nhét luôn redesign lớn sẽ làm mất vai trò review/finalize của task này.
+- Ảnh hưởng: Service-platform core đã có thể xem như phase hoàn chỉnh; các task còn lại tập trung hoàn toàn vào hero, visual system, showcase và conversion polish sâu hơn.
+
+- Ngày: 2026-05-29
+- Task: 061-mobile-conversion-polish
+- Loại: decision
+- Nội dung: Tối ưu mobile theo hướng chống friction trực tiếp trong funnel hiện có: thêm khoảng đệm đáy cho sticky CTA, chuyển action groups sang stack dọc trên mobile, tăng kích thước nút và thêm marker test cho card/form/sticky bar.
+- Lý do: Brief tập trung vào việc người dùng điện thoại phải hiểu dịch vụ và gửi yêu cầu nhanh; các thay đổi nhỏ nhưng đúng điểm ma sát sẽ hiệu quả hơn là redesign toàn bộ trong task này.
+- Ảnh hưởng: Homepage, services và contact funnel bớt chật hơn trên mobile; các task visual lớn hơn sau này vẫn có thể reuse contract mobile markers hiện tại.
+
+- Ngày: 2026-05-29
+- Task: 060-technical-seo-and-performance-hardening
+- Loại: decision
+- Nội dung: Ưu tiên hardening ở lớp markup/layout thay vì thêm third-party tooling: canonical, robots, structured data mức an toàn, skip link, meta rõ cho các trang public chính và test smoke cho UI/performance markers.
+- Lý do: Task yêu cầu technical SEO cơ bản tốt và tránh script nặng; các cải tiến này cho hiệu quả rõ mà không làm frontend phình thêm.
+- Ảnh hưởng: Homepage, services và blog có head markup nhất quán hơn; các task CRO/UI sau vẫn có thể thay view mà giữ contract SEO đã test.
+
+- Ngày: 2026-05-29
+- Task: 059-blog-seo-content-pillars-and-internal-linking
+- Loại: decision
+- Nội dung: Mở rộng `blog_posts` với `content_pillar` và `service_group`, dùng blog index dạng pillar filter nhẹ và blog detail có related posts + soft links sang services/pricing/contact, thay vì dựng taxonomy CMS sâu hơn.
+- Lý do: Cần tăng internal linking và giá trị SEO/chuyển đổi nhanh trong khi admin blog hiện tại vẫn đủ để nhập bài viết thủ công.
+- Ảnh hưởng: Blog giờ đóng vai trò rõ hơn trong funnel lead generation; các task SEO/performance sau có thể tối ưu tiếp metadata và interlink mà không cần đổi domain model lớn.
+
+- Ngày: 2026-05-29
+- Task: 058-admin-lead-operations-and-notes
+- Loại: decision
+- Nội dung: Giữ admin lead operations ở mức lightweight bằng cách mở rộng các bảng lead hiện có với `lead_source`, `priority` và note nội bộ, thay vì tạo CRM entity mới; dashboard admin gom số liệu lead mới và listing cho phép cập nhật ngay tại chỗ.
+- Lý do: Brief yêu cầu workflow tư vấn thực tế hơn nhưng không muốn admin phình thành hệ thống CRM lớn; tận dụng schema đang có sẽ nhanh validate và dễ maintain hơn.
+- Ảnh hưởng: Orders, quotes, graduation requests và contact messages đều có filter/update thực dụng; customer record tiếp tục là nơi giữ note tái chăm sóc ngắn.
+
+- Ngày: 2026-05-29
+- Task: 057-contact-channel-and-sticky-cta-improvements
+- Loại: decision
+- Nội dung: Dùng contact strip ở đầu layout và sticky CTA chỉ cho mobile ở đáy màn hình, đồng thời tự ẩn sticky CTA khi block `#quote-form` đi vào viewport bằng `IntersectionObserver`.
+- Lý do: Cần tăng hiện diện của Zalo/Facebook/Email và CTA chuyển đổi mà không spam nút nổi hoặc che nút submit của form báo giá hiện có.
+- Ảnh hưởng: Public pages nhất quán hơn về contact copy; mobile có lối vào nhanh để chat hoặc nhảy tới form, còn desktop vẫn giữ layout sạch và tập trung vào CTA trong nội dung trang.
+
+- Ngày: 2026-05-29
+- Task: 049-seo-web-service-platform-positioning-audit
+- Loại: decision
+- Nội dung: Chốt định vị `seo-web-app` theo hướng service-first platform cho web, code, app, SEO và hỗ trợ kỹ thuật; các module template, source code và demo project được giữ lại như trust asset và offer phụ trợ thay vì thông điệp trung tâm của toàn site.
+- Lý do: Audit public copy cho thấy homepage đã nghiêng về dịch vụ nhưng routes, README và context vẫn mô tả app như marketplace/template-first, dễ làm các task sau lệch thông điệp.
+- Ảnh hưởng: Các task `050` trở đi sẽ ưu tiên service catalog, service detail pages, portfolio, funnel tư vấn và admin lead workflow trước khi polish phần template/source.
+
+- Ngày: 2026-05-29
+- Task: 050-service-catalog-domain-module
+- Loại: decision
+- Nội dung: Thiết kế `service_offerings` như một bảng độc lập với các trường JSON `target_audiences`, `key_benefits`, `process_steps` và status `draft/published`; public `/services` chỉ đọc bản ghi `published`, còn admin có thể tạo mới và bật/tắt publish ngay từ dashboard namespace marketplace hiện có.
+- Lý do: Cần module dịch vụ đủ cấu trúc để tái sử dụng cho public pages tiếp theo nhưng chưa cần ràng buộc phức tạp tới pricing, blog hay lead tables ở phase đầu.
+- Ảnh hưởng: Task `051` có thể thêm service detail pages trực tiếp từ dữ liệu thật; admin workflow tạm dùng route `/admin/marketplace/services` trước khi được đổi naming rộng hơn ở các task sau.
+
+- Ngày: 2026-05-29
+- Task: 051-service-detail-pages-and-routing
+- Loại: decision
+- Nội dung: Dùng blueprint nội dung theo `service_group` ngay trong `MarketplaceController` để dựng problem/scope/technology/timeline cho service detail pages, trong khi dữ liệu `service_offerings` vẫn giữ phần mô tả kinh doanh, lợi ích, audience và process ở mức có thể chỉnh bởi admin.
+- Lý do: Mỗi nhóm dịch vụ cần copy chi tiết khác nhau ngay ở phase này, nhưng chưa cần mở rộng admin thành CMS giàu trường cấu trúc cho mọi block nội dung.
+- Ảnh hưởng: Public route `/services/{slug}` đã hoạt động với content detail nhất quán; nếu sau này cần editable toàn bộ block detail từ admin thì có thể tách blueprint này thành schema hoặc content module riêng.
+
+- Ngày: 2026-05-29
+- Task: 052-homepage-service-repositioning
+- Loại: decision
+- Nội dung: Reposition homepage theo hướng service-first bằng cách dùng `service_offerings` làm section “Danh sách dịch vụ”, giữ template/demo như proof/portfolio phụ trợ, và dùng feedback copy tĩnh ngắn ở phase này thay vì chờ module testimonial hoàn chỉnh.
+- Lý do: Task yêu cầu homepage phải chuyển trọng tâm ngay sang dịch vụ và tăng khả năng chuyển đổi; module feedback/portfolio đầy đủ sẽ được tách task sau để không chặn refactor trang chủ.
+- Ảnh hưởng: Homepage hiện đọc vào là hiểu đây là website cung cấp dịch vụ công nghệ; các task `054` và `055` sau sẽ có thể thay section proof tạm thời bằng dữ liệu portfolio/testimonial có cấu trúc.
+
+- Ngày: 2026-05-29
+- Task: 053-quick-consultation-and-quote-funnel-optimization
+- Loại: decision
+- Nội dung: Giữ nhiều funnel public riêng (`quote`, `graduation`, `contact`, `order`) nhưng chuẩn hóa `quote` thành entry-point chính cho website/sửa web/SEO/task code, với thêm `preferred_contact_channel`, `budget_range`, `deadline` và `technology_stack`; `contact_messages` được phép lưu ngữ cảnh dịch vụ để tránh mất lead mơ hồ.
+- Lý do: User phổ thông cần gửi nhu cầu nhanh ngay trên homepage, trong khi sinh viên và khách mua source vẫn có use case riêng chưa nên ép vào một form duy nhất.
+- Ảnh hưởng: Quote funnel giàu thông tin hơn cho tư vấn/báo giá; task admin lead workflow sau có thêm dữ liệu để ưu tiên xử lý lead đúng kênh và đúng công nghệ.
+
+- Ngày: 2026-05-29
+- Task: backlog-landing-page-agency-ui
+- Loại: decision
+- Nội dung: Tạo thêm chuỗi task `063` đến `071` chuyên cho presentation/conversion của landing page, tách biệt với các task domain/service platform hiện có như portfolio, feedback, technical SEO và mobile polish.
+- Lý do: Brief mới tập trung mạnh vào cảm giác agency, visual richness, motion và khả năng “muốn liên hệ ngay”; nếu gộp hết vào các task domain đang có sẽ làm task quá rộng và khó review.
+- Ảnh hưởng: Agent có hai lớp backlog phối hợp với nhau: lớp domain/data (`054-062`) và lớp UI/CRO (`063-071`), giúp triển khai có thứ tự hơn và giảm rủi ro chồng chéo.
+
+- Ngày: 2026-05-29
+- Task: 054-portfolio-and-case-study-module
+- Loại: decision
+- Nội dung: Tận dụng bảng `demo_projects` hiện có làm nguồn dữ liệu portfolio/case study thay vì tạo module mới, nhưng mở rộng schema để đủ thông tin công khai như slug, project_type, bài toán, giải pháp, tech stack, vai trò và kết quả.
+- Lý do: `demo_projects` đã là entity gần nhất với portfolio trong app hiện tại; mở rộng bảng hiện có giảm duplicate domain và cho phép homepage/source/template reuse cùng một data source.
+- Ảnh hưởng: Public routes `/portfolio` và `/portfolio/{slug}` đã hoạt động; admin namespace `demo-projects` tiếp tục được dùng nội bộ nhưng public copy chuyển thành portfolio/case study.
+
+- Ngày: 2026-05-29
+- Task: 055-feedback-and-social-proof-module
+- Loại: decision
+- Nội dung: Dùng bảng `testimonials` riêng để quản lý feedback có cấu trúc, thay block feedback tĩnh trên homepage; service detail page lọc feedback theo `service_type` khớp với `service_group` để tạo social proof sát ngữ cảnh.
+- Lý do: Feedback là trust signal quan trọng cho homepage và service pages, cần publish workflow độc lập thay vì hard-code trong view.
+- Ảnh hưởng: Homepage và service detail đã hiển thị testimonial publish từ database; task UI/carousel sau có thể reuse cùng data source mà không cần đổi schema nữa.
+
+- Ngày: 2026-05-29
+- Task: 056-pricing-reference-and-support-plans
+- Loại: decision
+- Nội dung: Giữ route `/pricing/{type}` nhưng mở rộng type theo service platform (`shop`, `landing-page`, `ui-fix`, `seo`, `graduation-project`, `coding-task`) và chuyển filtering sang `package_type` thay vì chỉ bám `audience_type`.
+- Lý do: Bảng giá mới cần phản ánh đúng offer thực tế theo loại dịch vụ, trong khi route cũ vẫn đủ dễ hiểu và không cần phá URL structure đã có.
+- Ảnh hưởng: Pricing pages hiện mang tính tham khảo rõ hơn, CTA đẩy về quote funnel chính xác hơn và các package types mới có thể seed/mở rộng mà không phải đổi routing lần nữa.
+
+- Ngày: 2026-05-29
+- Task: backlog-seo-web-service-platform
+- Loại: decision
+- Nội dung: Chia yêu cầu mới của user cho `seo-web-app` thành chuỗi task nhỏ `049` đến `062`, ưu tiên xử lý theo thứ tự từ định vị nội dung và domain service trước, rồi mới đến public pages, funnel chuyển đổi, admin operations, SEO/performance và final review.
+- Lý do: Hệ thống hiện đã có nền marketplace/source/template; nếu sửa trực tiếp không chia pha sẽ dễ chồng chéo domain, khó review và khó giữ tính nhất quán giữa content, schema, UI và admin workflow.
+- Ảnh hưởng: Agent có backlog rõ ràng để tiếp tục tự động, mỗi task có phạm vi nhỏ hơn, dễ validate và giảm rủi ro regress trong `seo-web-app`.
+
 - Ngày: 2026-05-28
 - Task: 034-separate-source-audit-and-target-architecture
 - Loại: decision
@@ -173,3 +299,45 @@ File này dùng để ghi lại các quyết định kỹ thuật, assumptions, 
 - Nội dung: Ghi rõ trong context rằng repo hiện chưa có source Laravel và việc khởi tạo framework là điều kiện tiên quyết cho task kỹ thuật tiếp theo.
 - Lý do: Điều này phản ánh trạng thái thực tế của workspace và giúp phân biệt blocker môi trường với lỗi triển khai.
 - Ảnh hưởng: Task 001 sẽ phải xác minh khả năng khởi tạo Laravel trước khi tiếp tục các module sản phẩm.
+- Ngày: 2026-05-29
+- Task: 065-service-cards-visual-upgrade
+- Loại: decision
+- Nội dung: Giữ domain `service_offerings` ở 5 nhóm dịch vụ lõi hiện tại, còn `Mobile App Development` và `Technical Consultation` được hiển thị như extended offers trong homepage/service catalog thay vì thêm seed/domain entity mới ngay.
+- Lý do: Brief UI cần đủ 7 service cards để tăng cảm giác năng lực, nhưng data/service detail hiện vẫn xoay quanh 5 nhóm offer đã được seed và liên kết đầy đủ vào funnel hiện tại.
+- Ảnh hưởng: Card UI đã thể hiện breadth dịch vụ ngay trên landing page, trong khi expansion dữ liệu/public detail cho 2 offer bổ sung có thể được triển khai ở phase domain sau nếu cần.
+- Ngày: 2026-05-29
+- Task: 066-portfolio-ui-showcase-upgrade
+- Loại: decision
+- Nội dung: Dùng `project_type` của `demo_projects` để gán visual identity cho portfolio card/showcase thay vì thêm asset model hoặc media pipeline mới ở giai đoạn này.
+- Lý do: Dữ liệu portfolio hiện đã đủ cho bài toán trust và conversion nếu được trình bày lại bằng mockup, role, outcome và tech stack; mở rộng media domain lúc này sẽ vượt phạm vi task UI.
+- Ảnh hưởng: Homepage teaser, `/portfolio` và `/portfolio/{slug}` có thể tạo cảm giác agency/case-study rõ hơn mà vẫn bám domain hiện có từ task `054`.
+- Ngày: 2026-05-29
+- Task: 067-process-feedback-and-tech-trust-sections
+- Loại: decision
+- Nội dung: Dùng text badges theo tech stack cho marquee công nghệ thay vì đưa logo raster/SVG mới vào repo ở giai đoạn này.
+- Lý do: Task cần tăng trust kỹ thuật và motion consistency ngay trên homepage, trong khi asset/logo mới sẽ kéo thêm bài toán sourcing, bản quyền và pipeline hình ảnh ngoài phạm vi UI hiện tại.
+- Ảnh hưởng: Section công nghệ vẫn truyền đạt được năng lực Laravel/PHP/React/Next.js/MySQL/Docker/AWS/Redis/Linux, đồng thời giữ repo gọn để phase `069` xử lý rotating media/showcase assets sâu hơn nếu cần.
+- Ngày: 2026-05-29
+- Task: 068-visual-system-colors-and-motion-foundation
+- Loại: decision
+- Nội dung: Thiết lập visual system mới theo hướng foundation-first: palette tokens, site shell gradient, particle background, motion utilities, skeleton/count-up hooks được đặt ở layout/assets trước khi mở rộng tiếp vào từng showcase section.
+- Lý do: Các task `069-070` cần một lớp theme/motion dùng chung để tránh tiếp tục vá cục bộ từng section và làm landing page thiếu nhất quán.
+- Ảnh hưởng: Public pages đã dùng chung visual shell mới; các section sau có thể tái sử dụng `data-count-up`, `skeleton-shimmer`, particles và token màu mà không phải đổi kiến trúc asset thêm lần nữa.
+- Ngày: 2026-05-29
+- Task: 069-rotating-media-and-showcase-assets
+- Loại: decision
+- Nội dung: Dùng hero media showcase dạng composited HTML/CSS với 6 trạng thái và thumbnail rail đồng bộ thay vì thêm ảnh thật nặng vào repo.
+- Lý do: Brief cần cảm giác media thật hơn icon thuần nhưng task vẫn phải giữ load nhẹ, không mở thêm pipeline asset/preload phức tạp trong giai đoạn cuối của landing page.
+- Ảnh hưởng: Homepage đã có rotating media cho website mockup, dashboard analytics, laptop coding, SEO chart, mobile preview và team/support mà vẫn bám reduced-motion support sẵn có.
+- Ngày: 2026-05-29
+- Task: 070-homepage-conversion-cro-polish
+- Loại: decision
+- Nội dung: Đưa proof strip và CTA/form chính lên sớm hơn trong homepage thay vì chỉ để funnel ở cuối trang.
+- Lý do: Sau khi visual sections đã đủ mạnh, điểm nghẽn conversion còn lại là người dùng phải cuộn khá sâu mới gặp form và kỳ vọng phản hồi chưa đủ rõ.
+- Ảnh hưởng: Homepage hiện nhấn mạnh response timing, service fit và kênh liên hệ sớm hơn; contact CTA cũng nói rõ hơn về scope, timeline và đầu ra người dùng sẽ nhận.
+- Ngày: 2026-05-29
+- Task: 072-floating-contact-icons-and-footer-emphasis
+- Loại: decision
+- Nội dung: Thay quick-contact text links bằng floating icon cluster toàn site và ẩn cluster này khi quote form đang nằm trong viewport.
+- Lý do: User muốn contact actions nổi bật ở góc phải dưới nhưng không được che form/CTA chính; dùng cùng observer với sticky CTA giúp giảm chồng lớp UI mà không cần thêm logic phức tạp.
+- Ảnh hưởng: Homepage không còn section công nghệ sử dụng; footer và quick-contact layer giờ là điểm kết thúc/chuyển đổi rõ hơn trên desktop lẫn mobile.

@@ -9,51 +9,46 @@ class ProblemStoryCarouselTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_homepage_renders_visual_problem_story_carousel(): void
+    public function test_homepage_renders_problem_grid_and_solution_mapping(): void
     {
         $this->withoutVite();
 
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('data-story-carousel', false);
-        $response->assertSee('data-story-slide', false);
-        $response->assertSee('data-story-control', false);
-        $response->assertSee('role="region"', false);
-        $response->assertSee('aria-label="Slideshow vấn đề và giải pháp cho khách hàng"', false);
+        $response->assertSee('data-problem-grid', false);
+        $response->assertSee('data-problem-card', false);
+        $response->assertSee('data-solution-card', false);
 
-        $this->assertGreaterThanOrEqual(4, substr_count($response->getContent(), 'data-story-slide'));
-        $this->assertGreaterThanOrEqual(4, substr_count($response->getContent(), 'data-story-control'));
+        $this->assertGreaterThanOrEqual(6, substr_count($response->getContent(), 'data-problem-card'));
+        $this->assertGreaterThanOrEqual(6, substr_count($response->getContent(), 'data-solution-card'));
     }
 
-    public function test_carousel_contains_core_problem_and_solution_stories(): void
+    public function test_problem_and_solution_sections_contain_core_pain_points(): void
     {
         $this->withoutVite();
 
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Shop nhỏ chưa có website chuyên nghiệp');
-        $response->assertSee('Landing page thiếu tin cậy');
-        $response->assertSee('Phụ thuộc Facebook/Zalo');
-        $response->assertSee('Source đồ án chưa đủ bộ');
-        $response->assertSee('Tư vấn hướng xử lý');
-        $response->assertSee('Khách hiểu vấn đề');
+        $response->assertSee('Không biết làm website ở đâu');
+        $response->assertSee('Website tải chậm');
+        $response->assertSee('Website không có khách');
+        $response->assertSee('Landing Page không chuyển đổi');
+        $response->assertSee('Đồ án sắp tới hạn');
+        $response->assertSee('Không đủ người xử lý task');
+        $response->assertSee('Mỗi pain point đều có hướng xử lý rõ');
+        $response->assertSee('Task code gấp');
     }
 
-    public function test_frontend_assets_include_story_carousel_behavior_and_motion_classes(): void
+    public function test_frontend_assets_include_problem_solution_motion_classes(): void
     {
         $css = file_get_contents(resource_path('css/app.css'));
         $js = file_get_contents(resource_path('js/app.js'));
 
-        $this->assertStringContainsString('[data-story-carousel]', $js);
-        $this->assertStringContainsString('[data-story-slide]', $js);
-        $this->assertStringContainsString('[data-story-control]', $js);
-        $this->assertStringContainsString('setInterval', $js);
-        $this->assertStringContainsString('mouseenter', $js);
-        $this->assertStringContainsString('focusin', $js);
-        $this->assertStringContainsString('.story-slide', $css);
-        $this->assertStringContainsString('.story-control.is-active', $css);
+        $this->assertStringContainsString('IntersectionObserver', $js);
+        $this->assertStringContainsString('.problem-card:hover', $css);
+        $this->assertStringContainsString('.solution-card:hover', $css);
         $this->assertStringContainsString('prefers-reduced-motion', $css);
     }
 }

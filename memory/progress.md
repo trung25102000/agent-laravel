@@ -2,8 +2,8 @@
 
 ## Trạng Thái Hiện Tại
 
-- Task đang làm: Không có
-- Tổng quan: Repo đã được tách thành hai ứng dụng Laravel độc lập; `seo-web-app/` đã được nâng cấp thành landing page sản phẩm/dịch vụ có storytelling problem → solution → trust → CTA và carousel vấn đề/giải pháp trực quan.
+- Task đang làm: `Không còn`
+- Tổng quan: Repo đã được tách thành hai ứng dụng Laravel độc lập; `seo-web-app/` đang được tái định vị từ marketplace/template sang service-first platform cho web, code, app, SEO và hỗ trợ kỹ thuật. Portfolio, feedback/social proof và pricing reference đều đã được cập nhật theo offer mới.
 - Cập nhật lần cuối: 2026-05-29
 
 ## Task Completed
@@ -41,14 +41,38 @@
 - 046-animated-trust-building-visuals
 - 047-product-service-landing-page-experience
 - 048-visual-problem-story-carousel
+- 049-seo-web-service-platform-positioning-audit
+- 050-service-catalog-domain-module
+- 051-service-detail-pages-and-routing
+- 052-homepage-service-repositioning
+- 053-quick-consultation-and-quote-funnel-optimization
+- 054-portfolio-and-case-study-module
+- 055-feedback-and-social-proof-module
+- 056-pricing-reference-and-support-plans
+- 057-contact-channel-and-sticky-cta-improvements
+- 058-admin-lead-operations-and-notes
+- 059-blog-seo-content-pillars-and-internal-linking
+- 060-technical-seo-and-performance-hardening
+- 061-mobile-conversion-polish
+- 062-final-service-platform-review-and-polish
+- 063-hero-section-agency-grade-redesign
+- 064-problem-solution-storytelling-sections
+- 065-service-cards-visual-upgrade
+- 066-portfolio-ui-showcase-upgrade
+- 067-process-feedback-and-tech-trust-sections
+- 068-visual-system-colors-and-motion-foundation
+- 069-rotating-media-and-showcase-assets
+- 070-homepage-conversion-cro-polish
+- 071-final-landing-page-agency-review
+- 072-floating-contact-icons-and-footer-emphasis
 
 ## Task Đang Làm
 
-- Không có
+- Không còn task active.
 
 ## Task Pending
 
-- Không có
+- Không còn task pending trong `/tasks`.
 
 ## Blockers
 
@@ -56,13 +80,40 @@
 
 ## Ghi Chú
 
+- Ngày 2026-05-29 đã bổ sung backlog chi tiết mới cho `seo-web-app` để chuyển trọng tâm từ marketplace/template đơn thuần sang nền tảng dịch vụ web, code, app, SEO và hỗ trợ kỹ thuật theo yêu cầu mới của user.
+- Ngày 2026-05-29 đã bổ sung thêm một chuỗi backlog UI/CRO `063` đến `071` để xử lý riêng bài toán landing page quá đơn giản, thiếu điểm nhấn thị giác và thiếu cảm giác agency chuyên nghiệp. Chuỗi này đi theo lớp presentation/conversion và nên phối hợp với các task domain đang pending như `054`, `055`, `060`.
+- Ngày 2026-05-29 đã bổ sung task `072-floating-contact-icons-and-footer-emphasis` để xử lý feedback mới: bỏ section “Công nghệ sử dụng”, đổi Zalo/Facebook/Email thành cụm icon nổi góc phải dưới và làm footer nổi bật hơn.
+- Task `049-seo-web-service-platform-positioning-audit` đã hoàn tất ở mức documentation/audit: context, route map, README và decision log đã chốt hướng service-first; audit ghi nhận homepage đã nghiêng về dịch vụ nhưng `/services`, `/pricing`, `/blog`, `/source-code`, contact CTA và admin naming vẫn cần đồng bộ qua backlog `050` đến `062`.
+- Task `050-service-catalog-domain-module` đã hoàn tất: thêm bảng `service_offerings`, seed 5 dịch vụ trọng tâm, admin route `/admin/marketplace/services`, publish workflow cơ bản và `/services` đã hiển thị danh mục từ dữ liệu thật thay vì copy tĩnh hoàn toàn.
+- Task `051-service-detail-pages-and-routing` đã hoàn tất: thêm route `/services/{serviceOffering:slug}`, trang chi tiết dịch vụ với problem/solution/scope/technology/process/CTA, internal linking sang pricing/blog và CTA form có thể khóa `service_type` theo dịch vụ đang xem.
+- Task `052-homepage-service-repositioning` đã hoàn tất: hero homepage nói rõ 5 nhóm offer chính, thêm section danh sách dịch vụ từ `service_offerings`, giảm độ lấn át của template trên homepage, bổ sung block portfolio/demo và feedback theo hướng service-first; build Vite và full test suite đều pass.
+- Task `053-quick-consultation-and-quote-funnel-optimization` đã hoàn tất: quote funnel có thêm kênh liên hệ ưu tiên, ngân sách, deadline, công nghệ liên quan; contact message có ngữ cảnh dịch vụ; `contact-cta` giải thích rõ khi nào dùng quote/contact/graduation flow.
+- Task `054-portfolio-and-case-study-module` đã hoàn tất: thêm public routes `/portfolio` và `/portfolio/{slug}`, mở rộng `demo_projects` thành case study data source, seed 3 portfolio items, link từ homepage/service pages và admin CRUD tối thiểu cho portfolio project.
+- Task `055-feedback-and-social-proof-module` đã hoàn tất: thêm bảng `testimonials`, seed feedback có cấu trúc, admin CRUD tối thiểu cho feedback, homepage dùng testimonial publish và service detail page lọc social proof theo nhóm dịch vụ.
+- Task `056-pricing-reference-and-support-plans` đã hoàn tất: mở rộng pricing route theo service type, làm mới seed package cho website/landing/ui-fix/seo/đồ án/task code và chỉnh view để giá mang tính tham khảo rõ ràng hơn với CTA về quote funnel.
+- Task `057-contact-channel-and-sticky-cta-improvements` đã hoàn tất: thêm contact strip toàn site, chuẩn hóa copy cho Zalo/Facebook/Email, bổ sung mobile sticky CTA không che form và làm rõ cách gửi nhu cầu để tăng khả năng chat/gửi brief.
+- Task `058-admin-lead-operations-and-notes` đã hoàn tất: thêm dashboard lead overview, filter hữu ích cho orders/quotes/graduation/contacts, metadata `lead_source`/`priority` và note nội bộ để admin xử lý lead dịch vụ nhanh hơn.
+- Task `059-blog-seo-content-pillars-and-internal-linking` đã hoàn tất: blog được chia theo trụ cột nội dung dịch vụ, blog detail có internal linking sang services/pricing và CTA tư vấn giúp blog phục vụ rõ cho SEO lẫn chuyển đổi.
+- Task `060-technical-seo-and-performance-hardening` đã hoàn tất: public pages chính có canonical/robots/schema cơ bản, blog/services/homepage có metadata rõ hơn và smoke tests đã khóa lại các marker SEO/UI quan trọng.
+- Task `061-mobile-conversion-polish` đã hoàn tất: sticky CTA mobile an toàn hơn, contact funnel dễ thao tác hơn và các CTA/card chính trên public pages đã được tối ưu cho màn hình nhỏ.
+- Task `062-final-service-platform-review-and-polish` đã hoàn tất: chuỗi service-platform `049-062` đã được rà soát/validate xong, tài liệu nội bộ đã đồng bộ lại và phase tiếp theo chỉ còn backlog landing-page/UI agency-grade `063-071`.
+- Task `063-hero-section-agency-grade-redesign` đã hoàn tất: hero homepage đã được nâng lên bố cục agency-grade với headline mạnh, CTA rõ và visual cycle 5 trạng thái thể hiện website, SEO, code, app và delivery process.
+- Task `064-problem-solution-storytelling-sections` đã hoàn tất: section vấn đề/giải pháp đã chuyển sang 6 pain cards và solution mapping rõ ràng hơn, giúp khách scan nhanh đúng vấn đề của mình ngay trên homepage.
+- Task `065-service-cards-visual-upgrade` đã hoàn tất: section dịch vụ trên homepage và `/services` đã được nâng thành card system có gradient, icon, mockup, chips lợi ích, hover polish và CTA rõ ràng hơn; đồng thời bổ sung 2 extended offers cho mobile app và technical consultation ở lớp presentation.
+- Task `066-portfolio-ui-showcase-upgrade` đã hoàn tất: homepage teaser, `/portfolio` và portfolio detail đã được nâng thành case-study showcase với mockup board, role, outcome, tech stack và CTA rõ hơn để tăng trust kiểu agency.
+- Task `067-process-feedback-and-tech-trust-sections` đã hoàn tất: homepage có process timeline 6 bước, feedback carousel tự xoay 5 giây và tech marquee để tăng cảm giác quy trình rõ ràng và năng lực kỹ thuật.
+- Task `068-visual-system-colors-and-motion-foundation` đã hoàn tất: layout public đã có token màu mới, gradient shell, particle background và utility motion/count-up/skeleton để các phase UI tiếp theo dùng chung một ngôn ngữ hình ảnh.
+- Task `069-rotating-media-and-showcase-assets` đã hoàn tất: hero rotator đã phủ đủ website mockup, dashboard analytics, laptop coding, SEO chart, mobile preview và team/support bằng composited media showcase nhẹ hơn asset ảnh thật.
+- Task `070-homepage-conversion-cro-polish` đã hoàn tất: homepage nhấn mạnh proof/response timing rõ hơn, CTA chính được đưa lên sớm hơn và contact form nói rõ mục tiêu scope/báo giá để tăng khả năng hành động.
+- Task `071-final-landing-page-agency-review` đã hoàn tất: chuỗi UI/conversion `063-071` được review lại theo security/testing/refactor/documentation/devops, full validation pass và tài liệu nội bộ đã phản ánh trạng thái cuối.
+- Task `072-floating-contact-icons-and-footer-emphasis` đã hoàn tất: homepage bỏ section công nghệ sử dụng, quick-contact chuyển thành floating icons góc phải dưới và footer được nâng thành điểm kết thúc rõ brand/CTA hơn.
 - Source Laravel hiện được tách thành `seo-web-app/` và `video-generator-app/`, mỗi app có routes, views, seeders, tests, `.env.example`, README và database local riêng.
 - `seo-web-app/` đã chạy local tại `http://127.0.0.1:8010` và browser smoke test pass cho `/`, `/services`, `/templates`, `/pricing/shop`, `/source-code`, `/blog`, `/login`, `/sitemap.xml`, `/robots.txt`.
 - Marketplace MVP đã có public pages, form lead/order/contact/đồ án, admin marketplace, seeders và tests trong `seo-web-app/`.
 - Local runtime hiện là PHP 8.4.7 nên composer constraint đang là `php:^8.4` để test được; nâng lên `php:^8.5` khi môi trường sẵn sàng.
 - Product/task blueprint chi tiết nằm ở `tasks/000-ai-video-platform-master-plan.md` và nên được dùng làm nguồn chính khi tách task triển khai MVP.
 - Final validation: `composer dump-autoload`, `php artisan migrate`, và `php artisan test` pass trong `video-generator-app/`.
-- Marketplace validation: `composer dump-autoload`, `php artisan migrate`, và `php artisan test` pass với 66 tests / 354 assertions.
+- Marketplace validation: `composer dump-autoload`, `php artisan migrate`, và `php artisan test` pass với 66 tests / 393 assertions.
 - UI task 022 pass validation với `composer dump-autoload`, `php artisan migrate`, `php artisan test`, và `npm run build`.
 - Task 023 pass validation với `composer dump-autoload`, `php artisan migrate`, `php artisan test`.
 - Render smoke thật đã tạo MP4 `videos/video-projects/1/output.mp4` dài 180 giây, metadata 1080x1920, bằng FFmpeg binary tạm trong `node_modules`.

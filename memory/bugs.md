@@ -14,6 +14,34 @@ Dùng file này để lưu các bug, lỗi môi trường, lỗi test, hoặc re
 ## Entries
 
 - Ngày: 2026-05-29
+- Task: 058-admin-lead-operations-and-notes
+- Bug: `MarketplaceAdminTest` fail sau khi workflow update order yêu cầu thêm `priority` và `lead_source`.
+- Nguyên nhân: Task 058 chuẩn hóa contract update lead cho admin, nhưng test cũ chỉ gửi `status` và `internal_note` theo contract trước đó.
+- Cách sửa: Cập nhật test admin gửi đầy đủ `priority` và `lead_source`, đồng thời assert lại các field mới trong database.
+- Trạng thái: Đã xử lý; full suite pass 44 tests / 299 assertions.
+
+- Ngày: 2026-05-29
+- Task: 054-portfolio-and-case-study-module
+- Bug: `PortfolioCaseStudyTest` fail 404 ở route update admin vì test gọi `id` trong khi `DemoProject` đã chuyển sang route model binding theo `slug`.
+- Nguyên nhân: Sau khi thêm `getRouteKeyName(): slug` để dùng public route `/portfolio/{slug}`, route admin `PATCH /admin/marketplace/demo-projects/{demoProject}` cũng áp dụng binding theo slug.
+- Cách sửa: Cập nhật test dùng `$project->slug` cho route update admin.
+- Trạng thái: Đã xử lý; full suite pass 37 tests / 254 assertions.
+
+- Ngày: 2026-05-29
+- Task: 050-service-catalog-domain-module
+- Bug: `MarketplacePublicTest` fail sau khi `/services` đổi từ copy tĩnh sang service catalog dữ liệu thật.
+- Nguyên nhân: Test cũ vẫn assert headline `Làm website, landing page` và không seed `service_offerings`, nên không phản ánh hành vi mới của trang dịch vụ.
+- Cách sửa: Cập nhật test để seed một `ServiceOffering` publish và assert headline service-first mới cùng item dịch vụ thực tế.
+- Trạng thái: Đã xử lý; `php artisan test` pass 29 tests / 215 assertions.
+
+- Ngày: 2026-05-29
+- Task: 049-seo-web-service-platform-positioning-audit
+- Bug: `composer dump-autoload` trong `seo-web-app/` fail platform check vì runtime CLI hiện tại là PHP 8.3.6, trong khi `composer.json` yêu cầu `>= 8.4.0`.
+- Nguyên nhân: Môi trường shell hiện trỏ tới `/usr/bin/php` phiên bản 8.3.6; dependency của app vẫn được cài từ lần trước nên `php artisan test` còn chạy được, nhưng Composer script kiểm tra platform trước khi hoàn tất autoload.
+- Cách sửa: Dùng workaround `composer dump-autoload --ignore-platform-req=php` để hoàn tất validation cho task tài liệu; cần nâng CLI PHP của môi trường lên 8.4+ để bỏ workaround ở các task sau.
+- Trạng thái: Đã xử lý tạm thời cho validation hiện tại; còn residual environment mismatch.
+
+- Ngày: 2026-05-29
 - Task: 047-product-service-landing-page-experience
 - Bug: Full test suite fail vì một số feature test cũ vẫn assert headline homepage cũ `Làm website đẹp`.
 - Nguyên nhân: Task 047 thay đổi copy chiến lược của hero landing page nhưng test branding/public marketplace chưa được cập nhật theo hành vi mới.
@@ -110,3 +138,9 @@ Dùng file này để lưu các bug, lỗi môi trường, lỗi test, hoặc re
 - Nguyên nhân: Laravel 13 skeleton không có RateLimiter mặc định cho `api` trong app provider.
 - Cách sửa: Định nghĩa `RateLimiter::for('api')` trong `AppServiceProvider`.
 - Trạng thái: Đã xử lý, `php artisan test` pass.
+- Ngày: 2026-05-29
+- Task: 066-portfolio-ui-showcase-upgrade
+- Bug: Full test suite public pages fail với thông báo `Call to undefined method ReflectionProperty::isVirtual()` sau khi nâng UI portfolio/service cards.
+- Nguyên nhân: Blade compile bị vỡ bởi cú pháp `@php(...)` ngắn trong service card loop; Symfony error renderer trên PHP 8.3 lại gọi `ReflectionProperty::isVirtual()` khi render exception nên che mất lỗi gốc và làm failure nhìn như lỗi runtime chung.
+- Cách sửa: Bypass exception renderer để lấy `Illuminate\\View\\ViewException` gốc, đổi `@php(...)` sang block `@php ... @endphp` rõ ràng, và chạy lại full validation.
+- Trạng thái: Đã xử lý, `php artisan test` pass lại.

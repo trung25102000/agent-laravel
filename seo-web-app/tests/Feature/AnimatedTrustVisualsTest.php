@@ -16,12 +16,14 @@ class AnimatedTrustVisualsTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('data-trust-visual="hero-mockup"', false);
+        $response->assertSee('data-hero-visuals', false);
         $response->assertSee('data-reveal', false);
-        $response->assertSee('Demo trước khi bàn giao');
-        $response->assertSee('Có source + hướng dẫn cài đặt');
-        $response->assertSee('Hỗ trợ chỉnh sửa sau bàn giao');
-        $response->assertSee('Phù hợp chạy quảng cáo/Zalo/Facebook');
+        $response->assertSee('Phản hồi nhanh');
+        $response->assertSee('Demo có chủ đích');
+        $response->assertSee('Bàn giao chắc tay');
+        $response->assertSee('Agency Delivery Board');
+        $response->assertSee('data-visual-system', false);
+        $response->assertSee('data-background-particles', false);
     }
 
     public function test_public_ui_keeps_project_branding_without_default_laravel_copy(): void
@@ -46,8 +48,12 @@ class AnimatedTrustVisualsTest extends TestCase
         $js = file_get_contents(resource_path('js/app.js'));
 
         $this->assertStringContainsString('prefers-reduced-motion', $css);
+        $this->assertStringContainsString('--color-primary', $css);
+        $this->assertStringContainsString('site-particle-float', $css);
+        $this->assertStringContainsString('skeleton-shimmer', $css);
         $this->assertStringContainsString('[data-reveal]', $css);
         $this->assertStringContainsString('IntersectionObserver', $js);
         $this->assertStringContainsString('is-visible', $js);
+        $this->assertStringContainsString('data-count-up', $js);
     }
 }

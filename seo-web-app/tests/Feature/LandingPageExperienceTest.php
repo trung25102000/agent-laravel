@@ -30,10 +30,13 @@ class LandingPageExperienceTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Shop nhỏ chưa có website chuyên nghiệp');
-        $response->assertSee('Landing page thiếu tin cậy');
-        $response->assertSee('Phụ thuộc Facebook/Zalo');
-        $response->assertSee('Source đồ án chưa đủ bộ');
+        $response->assertSee('Không biết làm website ở đâu');
+        $response->assertSee('Website tải chậm');
+        $response->assertSee('Website không có khách');
+        $response->assertSee('Landing Page không chuyển đổi');
+        $response->assertSee('Đồ án sắp tới hạn');
+        $response->assertSee('Không đủ người xử lý task');
+        $response->assertSee('Mỗi pain point đều có hướng xử lý rõ');
         $response->assertSee('Có demo trước khi bàn giao');
         $response->assertSee('Giao diện đẹp, tối ưu mobile');
         $response->assertSee('Form thu lead và CTA rõ ràng');

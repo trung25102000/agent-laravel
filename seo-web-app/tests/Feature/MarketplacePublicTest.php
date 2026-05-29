@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\BlogPost;
 use App\Models\FaqItem;
 use App\Models\PricingPackage;
+use App\Models\ServiceOffering;
 use App\Models\SourceCodeProduct;
 use App\Models\TemplateCategory;
 use App\Models\WebsiteTemplate;
@@ -37,6 +38,16 @@ class MarketplacePublicTest extends TestCase
             'benefits' => ['Catalog', 'CTA Zalo'],
             'is_active' => true,
         ]);
+        ServiceOffering::query()->create([
+            'name' => 'Fix giao diện website',
+            'slug' => 'fix-giao-dien-website',
+            'service_group' => 'ui_fix',
+            'short_description' => 'Sửa giao diện và tối ưu responsive.',
+            'detail_description' => 'Chi tiết sửa giao diện.',
+            'key_benefits' => ['Sửa layout', 'Tối ưu mobile'],
+            'status' => 'published',
+            'sort_order' => 1,
+        ]);
         SourceCodeProduct::query()->create([
             'name' => 'Source Laravel bán hàng',
             'slug' => 'source-laravel-ban-hang',
@@ -57,8 +68,8 @@ class MarketplacePublicTest extends TestCase
             'answer' => 'Có demo rõ ràng.',
         ]);
 
-        $this->get('/')->assertOk()->assertSee('Có website đẹp để khách tin hơn');
-        $this->get('/services')->assertOk()->assertSee('Làm website, landing page');
+        $this->get('/')->assertOk()->assertSee('Biến Ý Tưởng Thành Website Chuyên Nghiệp Chỉ Trong Vài Ngày');
+        $this->get('/services')->assertOk()->assertSee('Dịch vụ web, code, app, SEO')->assertSee('Fix giao diện website');
         $this->get('/templates')->assertOk()->assertSee('Mẫu shop mỹ phẩm');
         $this->get('/templates/mau-shop-my-pham')->assertOk()->assertSee('Đặt mua mẫu này');
         $this->get('/pricing/shop')->assertOk()->assertSee('Basic Shop');

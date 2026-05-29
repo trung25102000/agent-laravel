@@ -17,7 +17,7 @@ class MarketplaceAdminTest extends TestCase
 
         $admin = User::factory()->create(['is_admin' => true]);
 
-        $this->actingAs($admin)->get('/admin')->assertOk()->assertSee('Marketplace dashboard');
+        $this->actingAs($admin)->get('/admin')->assertOk()->assertSee('Lead operations dashboard');
         $this->actingAs($admin)->post('/admin/marketplace/categories', [
             'name' => 'Landing page',
             'description' => 'Danh mục landing page',
@@ -35,12 +35,16 @@ class MarketplaceAdminTest extends TestCase
 
         $this->actingAs($admin)->patch("/admin/marketplace/orders/{$order->id}", [
             'status' => 'contacted',
+            'priority' => 'normal',
+            'lead_source' => 'website',
             'internal_note' => 'Đã gọi Zalo',
         ])->assertRedirect();
 
         $this->assertDatabaseHas('order_requests', [
             'id' => $order->id,
             'status' => 'contacted',
+            'priority' => 'normal',
+            'lead_source' => 'website',
             'internal_note' => 'Đã gọi Zalo',
         ]);
     }

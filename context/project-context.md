@@ -22,21 +22,37 @@ Root repo là control plane cho agents: `AGENTS.md`, `rules/`, `context/`, `memo
 - Directory: `seo-web-app/`
 - Public brand: `Web Template Studio`
 - Local URL đề xuất: `http://127.0.0.1:8010`
+- Product positioning:
+  - service-first platform cho web, code, app, SEO và hỗ trợ kỹ thuật
+  - tập trung chuyển đổi lead tư vấn/báo giá cho cá nhân, shop nhỏ, sinh viên, khách cần sửa website và doanh nghiệp nhỏ
+  - template, source code và demo project là trust asset và offer phụ trợ để giúp khách xem trước năng lực triển khai, không phải thông điệp duy nhất của toàn site
+- Nhóm dịch vụ cốt lõi cần thể hiện nhất quán trên public pages:
+  - SEO website
+  - fix và chỉnh sửa giao diện website
+  - tạo website và landing page
+  - hỗ trợ đồ án sinh viên
+  - nhận làm task lập trình nhỏ
 - Domain chính:
   - homepage landing page chuyển đổi khách hàng
-  - dịch vụ làm website
-  - template/category
-  - pricing packages
+  - service catalog và service detail pages
+  - pricing/reference packages
+  - quote requests / consultation funnel
   - order requests
-  - quote requests
   - graduation project requests
   - contact messages
-  - blog SEO
+  - portfolio hoặc demo projects
+  - blog SEO / website / lập trình
   - source code products
-  - demo projects
+  - template/category
   - product attachments
-  - FAQ
-- Admin: auth + gate `access-admin`, dashboard marketplace tại `/admin`
+  - FAQ / trust content
+- Lớp UI public hiện có:
+  - floating quick-contact icons cho Zalo/Facebook/Email ở góc phải dưới
+  - footer nhấn mạnh branding, CTA và trust copy thay cho phần kết trang mờ nhạt trước đó
+- Admin: auth + gate `access-admin`, dashboard hiện còn dùng namespace marketplace tại `/admin`; backlog mới sẽ dần tái định nghĩa UI/terminology theo service platform
+- Trạng thái backlog:
+  - chuỗi service-platform `049-062` đã hoàn tất với catalog dịch vụ, portfolio, feedback, pricing tham khảo, admin lead workflow, blog pillars, technical SEO và mobile polish
+  - chuỗi `063-071` đã hoàn tất, đưa homepage/public pages lên hướng landing-page agency-grade với hero mới, storytelling, visual system, rotating media và CRO polish
 
 ## Video Generator App
 

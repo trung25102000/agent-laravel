@@ -20,8 +20,12 @@ class MarketplaceRequestTest extends TestCase
             'customer_name' => 'Lan Shop',
             'customer_phone' => '0909000001',
             'customer_email' => 'lan@example.com',
+            'preferred_contact_channel' => 'zalo',
             'customer_group' => 'shop_owner',
             'service_type' => 'website',
+            'budget_range' => '3m_to_7m',
+            'deadline' => 'Trong 5 ngày',
+            'technology_stack' => 'Laravel',
             'requirements' => 'Cần website giới thiệu và catalog.',
         ])->assertRedirect();
 
@@ -48,6 +52,8 @@ class MarketplaceRequestTest extends TestCase
             'name' => 'Huy',
             'phone' => '0909000003',
             'channel' => 'zalo',
+            'service_type' => 'landing_page',
+            'preferred_contact_channel' => 'phone',
             'message' => 'Tư vấn landing page.',
         ])->assertRedirect();
 
@@ -56,5 +62,15 @@ class MarketplaceRequestTest extends TestCase
         $this->assertDatabaseCount(OrderRequest::class, 1);
         $this->assertDatabaseCount(GraduationProjectRequest::class, 1);
         $this->assertDatabaseCount(ContactMessage::class, 1);
+        $this->assertDatabaseHas(QuoteRequest::class, [
+            'customer_name' => 'Lan Shop',
+            'preferred_contact_channel' => 'zalo',
+            'technology_stack' => 'Laravel',
+        ]);
+        $this->assertDatabaseHas(ContactMessage::class, [
+            'name' => 'Huy',
+            'service_type' => 'landing_page',
+            'preferred_contact_channel' => 'phone',
+        ]);
     }
 }

@@ -1,6 +1,6 @@
 # Web Template Studio
 
-Laravel app độc lập cho website bán template, landing page, source code Laravel, demo project và dịch vụ làm web theo yêu cầu.
+Laravel app độc lập cho nền tảng dịch vụ web, code, app, SEO và hỗ trợ kỹ thuật. Website ưu tiên funnel tư vấn/báo giá cho cá nhân, shop nhỏ, sinh viên, khách cần sửa website và doanh nghiệp nhỏ; template, source code và demo project được dùng như trust asset để khách xem trước năng lực triển khai.
 
 ## Stack
 
@@ -32,17 +32,39 @@ Admin seed mặc định:
 
 - `GET /`
 - `GET /services`
+- `GET /portfolio`
+- `GET /portfolio/{slug}`
 - `GET /templates`
 - `GET /templates/{slug}`
 - `GET /pricing/shop`
 - `GET /pricing/landing-page`
+- `GET /pricing/ui-fix`
+- `GET /pricing/seo`
 - `GET /pricing/graduation-project`
+- `GET /pricing/coding-task`
 - `GET /source-code`
 - `GET /source-code/{slug}`
 - `GET /blog`
 - `GET /blog/{slug}`
 - `GET /sitemap.xml`
 - `GET /robots.txt`
+
+## Service Positioning
+
+- Dịch vụ cốt lõi:
+  - SEO website
+  - fix và chỉnh sửa giao diện website
+  - tạo website và landing page
+  - hỗ trợ đồ án sinh viên
+  - nhận làm task lập trình nhỏ
+- Module `templates`, `source-code` và `demo projects` hiện được giữ lại để hỗ trợ conversion:
+  - cho khách xem demo/mẫu trước
+  - chứng minh năng lực thực thi
+  - phục vụ các use case mua source Laravel hoặc đồ án
+- Chuỗi service-platform cốt lõi đã bao gồm service catalog, portfolio/case study, feedback, pricing reference, admin lead workflow, blog pillars, technical SEO và mobile conversion polish.
+- Chuỗi landing-page/UI agency-grade cũng đã hoàn tất: hero 2 cột kiểu agency, problem-solution storytelling, service/portfolio showcase, feedback carousel, tech marquee, visual system mới, rotating media và conversion polish.
+- Quick-contact layer hiện dùng floating icons cố định góc phải dưới cho Zalo/Facebook/Email; footer cũng đã được tăng nhấn mạnh để giữ contact/CTA rõ ở cuối trang.
+- Pricing pages hiện là mức tham khảo theo loại dịch vụ; người dùng được khuyến khích gửi quote để chốt scope và báo giá chính xác.
 
 Form public:
 
@@ -54,13 +76,23 @@ Form public:
 Admin:
 
 - `GET /admin`
+- `GET|POST /admin/marketplace/services`
+- `PATCH /admin/marketplace/services/{service}`
 - `GET|POST /admin/marketplace/templates`
 - `GET|POST /admin/marketplace/packages`
 - `GET /admin/marketplace/orders`
+- `PATCH /admin/marketplace/orders/{order}`
 - `GET /admin/marketplace/quotes`
+- `PATCH /admin/marketplace/quotes/{quote}`
 - `GET /admin/marketplace/graduation-requests`
+- `PATCH /admin/marketplace/graduation-requests/{request}`
 - `GET /admin/marketplace/customers`
+- `PATCH /admin/marketplace/customers/{customer}`
+- `GET /admin/marketplace/contacts`
+- `PATCH /admin/marketplace/contacts/{message}`
 - `GET|POST /admin/marketplace/blog-posts`
+- `GET|POST /admin/marketplace/demo-projects`
+- `GET|POST /admin/marketplace/testimonials`
 - `GET|POST /admin/marketplace/source-code-products`
 
 ## Environment
@@ -78,8 +110,9 @@ MAIL_MAILER=log
 ## Validation
 
 ```bash
-composer dump-autoload
-php artisan migrate:fresh --seed
+composer dump-autoload --ignore-platform-req=php
+php artisan migrate --force
 php artisan test
 npm run build
+vendor/bin/pint
 ```

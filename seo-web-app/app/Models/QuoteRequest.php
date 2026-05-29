@@ -12,6 +12,11 @@ class QuoteRequest extends Model
 
     protected $guarded = [];
 
+    protected function casts(): array
+    {
+        return [];
+    }
+
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
