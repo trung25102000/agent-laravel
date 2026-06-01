@@ -40,10 +40,10 @@ Hoan thien trai nghiem xem truoc video sau khi video da duoc tao. Khi project co
 - `video-generator-app/app/Models/VideoProject.php` neu can helper `isPlayableVideo`, `streamUrl`, metadata accessors
 - `video-generator-app/tests/Feature/VideoProjectPreviewDownloadTest.php`
 - co the them test rieng `VideoProjectVideoStreamTest.php`
-- `context/routes-map.md`
-- `memory/progress.md`
-- `memory/changelog.md`
-- `context/decisions.md` neu chon cach stream/range
+- `.agents/context/routes-map.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/context/decisions.md` neu chon cach stream/range
 
 ## Implementation Notes
 - Uu tien tao route rieng:

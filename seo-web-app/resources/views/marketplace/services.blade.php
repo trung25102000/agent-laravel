@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Dịch vụ web, code, app và SEO')
-@section('meta_description', 'Danh sách dịch vụ SEO website, làm website, landing page, fix giao diện, hỗ trợ đồ án và task code theo scope rõ ràng.')
+@section('title', 'Dịch vụ làm website, SEO và sửa website')
+@section('meta_description', 'Danh sách dịch vụ làm website, landing page, tối ưu SEO, sửa giao diện và hỗ trợ đồ án cho khách cần triển khai rõ ràng.')
 @section('canonical', route('services'))
 @section('structured_data')
     <script type="application/ld+json">
@@ -18,19 +18,19 @@
 @section('content')
     @php
         $serviceVisuals = [
-            'seo' => ['eyebrow' => 'SEO Website', 'icon' => 'SEO', 'gradient' => 'from-[#2563EB] via-[#06B6D4] to-[#10B981]', 'surface' => 'bg-sky-50', 'line' => 'Traffic, content và CTA cùng đi lên'],
-            'website' => ['eyebrow' => 'Website Development', 'icon' => 'WEB', 'gradient' => 'from-[#2563EB] via-[#7C3AED] to-[#0F172A]', 'surface' => 'bg-indigo-50', 'line' => 'Website, landing page và web giới thiệu'],
-            'ui_fix' => ['eyebrow' => 'Fix Bug / UI', 'icon' => 'FIX', 'gradient' => 'from-[#F97316] via-[#EF4444] to-[#7C3AED]', 'surface' => 'bg-rose-50', 'line' => 'Responsive, form, CTA và trust block'],
-            'student_support' => ['eyebrow' => 'Student Project Support', 'icon' => 'LAB', 'gradient' => 'from-[#0F172A] via-[#2563EB] to-[#06B6D4]', 'surface' => 'bg-cyan-50', 'line' => 'Source, database, tài liệu và demo'],
-            'coding_task' => ['eyebrow' => 'Technical Consultation', 'icon' => 'DEV', 'gradient' => 'from-[#10B981] via-[#06B6D4] to-[#2563EB]', 'surface' => 'bg-emerald-50', 'line' => 'Task code, API, DB và support kỹ thuật'],
+            'seo' => ['eyebrow' => 'SEO Website', 'icon' => 'SEO', 'gradient' => 'from-[#2563EB] via-[#06B6D4] to-[#10B981]', 'surface' => 'bg-sky-50', 'line' => 'Giúp website dễ được tìm thấy và có nhiều khách liên hệ hơn'],
+            'website' => ['eyebrow' => 'Làm Website', 'icon' => 'WEB', 'gradient' => 'from-[#2563EB] via-[#7C3AED] to-[#0F172A]', 'surface' => 'bg-indigo-50', 'line' => 'Website giới thiệu, landing page và trang bán hàng dễ dùng'],
+            'ui_fix' => ['eyebrow' => 'Sửa Website', 'icon' => 'FIX', 'gradient' => 'from-[#F97316] via-[#EF4444] to-[#7C3AED]', 'surface' => 'bg-rose-50', 'line' => 'Sửa giao diện, form liên hệ và trải nghiệm trên điện thoại'],
+            'student_support' => ['eyebrow' => 'Hỗ trợ đồ án', 'icon' => 'LAB', 'gradient' => 'from-[#0F172A] via-[#2563EB] to-[#06B6D4]', 'surface' => 'bg-cyan-50', 'line' => 'Có tài liệu, database mẫu và hướng dẫn để demo dễ hơn'],
+            'coding_task' => ['eyebrow' => 'Hỗ trợ lập trình', 'icon' => 'DEV', 'gradient' => 'from-[#10B981] via-[#06B6D4] to-[#2563EB]', 'surface' => 'bg-emerald-50', 'line' => 'Xử lý phần việc khó để bạn không bị kẹt tiến độ'],
         ];
     @endphp
 
     <div class="space-y-10">
         <section data-reveal>
             <p class="text-sm font-semibold text-rose-700">Dịch vụ</p>
-            <h1 class="mt-2 text-3xl font-semibold text-zinc-950">Dịch vụ web, code, app, SEO và hỗ trợ kỹ thuật theo nhu cầu.</h1>
-            <p class="mt-3 max-w-3xl text-sm leading-6 text-zinc-600">Danh mục dưới đây là nền để khách chọn đúng hướng hỗ trợ: SEO website, fix giao diện, làm website/landing page, hỗ trợ đồ án và task lập trình nhanh.</p>
+            <h1 class="mt-2 text-3xl font-semibold text-zinc-950">Chọn đúng dịch vụ bạn đang cần để bắt đầu nhanh hơn.</h1>
+            <p class="mt-3 max-w-3xl text-sm leading-6 text-zinc-600">Bạn có thể bắt đầu từ nhu cầu thực tế: làm website mới, sửa website hiện tại, tối ưu SEO, hỗ trợ đồ án hoặc nhờ xử lý một phần việc lập trình.</p>
         </section>
         <section class="grid gap-5 md:grid-cols-2 xl:grid-cols-3" data-reveal data-mobile-card-grid data-service-visual-grid>
             @foreach ($serviceOfferings as $service)
@@ -72,7 +72,7 @@
                         <p class="mt-4 text-sm font-semibold text-zinc-950">{{ $visual['line'] }}</p>
                         <div class="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
                             <a class="rounded-xl bg-zinc-950 px-4 py-2.5 text-sm font-semibold text-white" href="{{ route('services.show', $service) }}">Xem chi tiết</a>
-                            <a class="rounded-xl border border-zinc-300 px-4 py-2.5 text-sm font-semibold text-zinc-800" href="#quote-form">Nhận tư vấn</a>
+                            <a class="rounded-xl border border-zinc-300 px-4 py-2.5 text-sm font-semibold text-zinc-800" href="#quote-form">Nhận tư vấn miễn phí</a>
                         </div>
                     </div>
                 </article>
@@ -82,10 +82,10 @@
             <div>
                 <p class="text-sm font-semibold text-rose-700">Đi tiếp từ đây</p>
                 <h2 class="mt-2 text-2xl font-semibold text-zinc-950">Chưa chắc mình cần gói nào?</h2>
-                <p class="mt-3 text-sm leading-6 text-zinc-600">Bạn có thể xem bảng giá tham khảo, đọc blog định hướng hoặc gửi nhu cầu để được tư vấn scope phù hợp.</p>
+                <p class="mt-3 text-sm leading-6 text-zinc-600">Bạn có thể xem giá tham khảo, đọc bài hướng dẫn hoặc gửi nhu cầu để được tư vấn cách làm phù hợp.</p>
             </div>
-            <a class="rounded-lg border border-zinc-200 bg-amber-50 p-4 text-sm font-semibold text-zinc-900" href="{{ route('pricing.show', 'shop') }}">Xem bảng giá tham khảo</a>
-            <a class="rounded-lg border border-zinc-200 bg-sky-50 p-4 text-sm font-semibold text-zinc-900" href="{{ route('blog.index') }}">Đọc blog SEO, website và lập trình</a>
+            <a class="rounded-lg border border-zinc-200 bg-amber-50 p-4 text-sm font-semibold text-zinc-900" href="{{ route('portfolio.index') }}">Xem dự án đã thực hiện</a>
+            <a class="rounded-lg border border-zinc-200 bg-sky-50 p-4 text-sm font-semibold text-zinc-900" href="{{ route('blog.index') }}">Đọc bài về website, SEO và kinh nghiệm triển khai</a>
         </section>
         <x-contact-cta />
         <x-faq-list :faqs="$faqs" />

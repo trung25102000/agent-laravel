@@ -31,16 +31,16 @@ Viết tài liệu setup, chạy local, deploy, env, queue/storage cho từng d�
   - FFmpeg/FFprobe.
   - video storage/private stream.
   - AI/TTS/render providers.
-- Cập nhật `/context/project-context.md`, `/context/routes-map.md`, `/context/database-schema.md`.
+- Cập nhật `/.agents/context/project-context.md`, `/.agents/context/routes-map.md`, `/.agents/context/database-schema.md`.
 
 ## Files Expected
 - `/README.md`
 - `/seo-web-app/README.md`
 - `/video-generator-app/README.md`
-- `/context/project-context.md`
-- `/context/routes-map.md`
-- `/context/database-schema.md`
-- `/context/decisions.md`
+- `/.agents/context/project-context.md`
+- `/.agents/context/routes-map.md`
+- `/.agents/context/database-schema.md`
+- `/.agents/context/decisions.md`
 
 ## Implementation Notes
 - Tài liệu cần viết bằng tiếng Việt hoặc song ngữ nhất quán.
@@ -51,7 +51,7 @@ Viết tài liệu setup, chạy local, deploy, env, queue/storage cho từng d�
 
 ## Done When
 - Developer mới nhìn README có thể chạy từng app độc lập.
-- Context/memory phản ánh kiến trúc mới.
+- Context/.agents/memory phản ánh kiến trúc mới.
 - Không còn mô tả gây hiểu nhầm rằng marketplace và video nằm chung một app.
 
 ## Test Requirements

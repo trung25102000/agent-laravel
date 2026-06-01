@@ -27,7 +27,7 @@ Sau khi tách source, khởi chạy dự án SEO-web độc lập và xác nhậ
 
 ## Files Expected
 - Không bắt buộc sửa file nếu app đã chạy.
-- Có thể cập nhật `/memory/progress.md` với URL đang chạy.
+- Có thể cập nhật `/.agents/memory/progress.md` với URL đang chạy.
 
 ## Implementation Notes
 - Lệnh gợi ý:

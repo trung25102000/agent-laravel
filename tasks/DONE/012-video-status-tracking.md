@@ -22,9 +22,9 @@ Theo dõi tiến trình xử lý video project theo timeline trạng thái, ph�
 - service cập nhật progress/status
 - view hoặc API status
 - test status tracking
-- `context/database-schema.md`
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/context/database-schema.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Có thể bắt đầu bằng các field trên `video_projects`, sau đó thêm bảng lịch sử nếu hợp lý

@@ -23,7 +23,6 @@
                     <option value="landing_page">Landing page</option>
                     <option value="seo">SEO</option>
                     <option value="ui_fix">Fix giao diện</option>
-                    <option value="source_code">Source code</option>
                     <option value="coding_task">Task lập trình</option>
                     <option value="student_support">Hỗ trợ đồ án</option>
                 </select>

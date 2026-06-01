@@ -5,9 +5,7 @@ namespace Database\Seeders;
 use App\Models\BlogPost;
 use App\Models\DemoProject;
 use App\Models\FaqItem;
-use App\Models\PricingPackage;
 use App\Models\ServiceOffering;
-use App\Models\SourceCodeProduct;
 use App\Models\TemplateCategory;
 use App\Models\Testimonial;
 use App\Models\WebsiteTemplate;
@@ -103,45 +101,8 @@ class MarketplaceSeeder extends Seeder
             );
         }
 
-        foreach ([
-            ['Basic Shop', 'shop_owner', 'website', 2500000, ['Trang giới thiệu', 'Catalog sản phẩm', 'Nút Zalo/Facebook']],
-            ['Landing Ads', 'online_seller', 'landing_page', 1800000, ['Hero chốt offer', 'Form thu lead', 'Tối ưu mobile']],
-            ['UI Refresh Sprint', 'shop_owner', 'ui_fix', 1200000, ['Sửa responsive', 'Tối ưu CTA', 'Cải thiện block chính']],
-            ['SEO On-Page Boost', 'shop_owner', 'seo', 1500000, ['Audit nhanh', 'Tối ưu title/meta', 'Rà CTA và internal links']],
-            ['Laravel Graduation', 'student', 'graduation_project', 3500000, ['Source Laravel', 'Database mẫu', 'Báo cáo và hướng dẫn']],
-            ['Coding Task Quick Win', 'online_seller', 'coding_task', 900000, ['Nhận task nhỏ rõ scope', 'Fix bug/API/UI', 'Bàn giao hướng dẫn ngắn']],
-        ] as [$name, $audience, $type, $price, $benefits]) {
-            PricingPackage::query()->firstOrCreate(
-                ['slug' => Str::slug($name)],
-                [
-                    'name' => $name,
-                    'audience_type' => $audience,
-                    'package_type' => $type,
-                    'price' => $price,
-                    'summary' => 'Gói triển khai rõ phạm vi, dễ nghiệm thu.',
-                    'benefits' => $benefits,
-                    'is_featured' => $type !== 'website',
-                    'is_active' => true,
-                ]
-            );
-        }
-
-        SourceCodeProduct::query()->firstOrCreate(
-            ['slug' => 'source-laravel-ban-hang-do-an'],
-            [
-                'name' => 'Source Laravel bán hàng cho đồ án',
-                'framework' => 'Laravel',
-                'summary' => 'Có auth, admin, sản phẩm, đơn hàng, database mẫu và hướng dẫn cài đặt.',
-                'description' => 'Bộ source phù hợp sinh viên cần demo đồ án tốt nghiệp hoặc môn học Laravel.',
-                'price' => 2500000,
-                'demo_url' => 'https://example.com/source-demo',
-                'status' => 'active',
-            ]
-        );
-
         $fashionTemplate = WebsiteTemplate::query()->where('slug', Str::slug('Web shop thời trang mini'))->first();
         $landingTemplate = WebsiteTemplate::query()->where('slug', Str::slug('Landing page mỹ phẩm chốt lead'))->first();
-        $sourceProduct = SourceCodeProduct::query()->where('slug', 'source-laravel-ban-hang-do-an')->first();
 
         foreach ([
             [
@@ -167,18 +128,6 @@ class MarketplaceSeeder extends Seeder
                 'role_summary' => 'Phân tích điểm nghẽn chuyển đổi, thiết kế landing page mới và tối ưu flow nhận lead.',
                 'outcome_summary' => 'Tăng khả năng khách hiểu offer ngay và dễ bấm để lại nhu cầu tư vấn hơn trên mobile.',
                 'demo_url' => 'https://example.com/demo-landing',
-            ],
-            [
-                'slug' => 'portfolio-source-laravel-do-an',
-                'name' => 'Portfolio source Laravel đồ án bán hàng',
-                'project_type' => 'source_code',
-                'source_code_product_id' => $sourceProduct?->id,
-                'client_problem' => 'Sinh viên cần source có auth, admin, database mẫu và tài liệu để vừa demo được vừa dễ bảo vệ.',
-                'implemented_solution' => 'Chuẩn hóa source Laravel, bổ sung database mẫu, hướng dẫn cài đặt và luồng demo rõ ràng.',
-                'tech_stack' => ['Laravel', 'PHP', 'MySQL', 'Admin panel'],
-                'role_summary' => 'Hoàn thiện source, tài liệu bàn giao và hướng dẫn giải thích flow chức năng cho sinh viên.',
-                'outcome_summary' => 'Bộ source trở thành case study đáng tin hơn cho khách cần đồ án hoặc mua source hoàn chỉnh.',
-                'demo_url' => 'https://example.com/source-demo',
             ],
         ] as $demo) {
             DemoProject::query()->updateOrCreate(

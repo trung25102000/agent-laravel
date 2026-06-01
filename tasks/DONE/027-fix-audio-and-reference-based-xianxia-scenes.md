@@ -143,7 +143,7 @@ Khong bat buoc tich hop TTS provider that trong task nay neu chua co API key. Co
    - `/video-projects/6/preview`
    - check media metadata
    - neu co the check audio stream/volume bang ffprobe
-8. Cap nhat docs/memory/bugs/decisions.
+8. Cap nhat docs/.agents/memory/bugs/decisions.
 
 ## Files Expected
 - `video-generator-app/app/Console/Commands/GenerateXianxiaReviewDemoCommand.php`
@@ -156,10 +156,10 @@ Khong bat buoc tich hop TTS provider that trong task nay neu chua co API key. Co
 - `video-generator-app/tests/Unit/FfmpegRenderProviderTest.php`
 - `video-generator-app/tests/Feature/VideoProjectPreviewDownloadTest.php` neu preview artifact doi
 - `video-generator-app/README.md`
-- `memory/progress.md`
-- `memory/changelog.md`
-- `memory/bugs.md`
-- `context/decisions.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/memory/bugs.md`
+- `.agents/context/decisions.md`
 
 ## Test Requirements
 - Feature test command `demo:xianxia-review --skip-render` tao:
@@ -201,7 +201,7 @@ Khong bat buoc tich hop TTS provider that trong task nay neu chua co API key. Co
   - audio codec: AAC hoac compatible
   - duration khoang 180s
 - Tests pass.
-- Task duoc dong theo workflow AGENTS, cap nhat memory/changelog/bugs/decisions.
+- Task duoc dong theo workflow AGENTS, cap nhat .agents/memory/changelog/bugs/decisions.
 
 ## Risks And Notes
 - YouTube reference co the co ban quyen. Khong copy frame/asset truc tiep neu user chua xac nhan quyen su dung.

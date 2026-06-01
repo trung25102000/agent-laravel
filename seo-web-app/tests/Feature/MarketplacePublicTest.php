@@ -4,9 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\BlogPost;
 use App\Models\FaqItem;
-use App\Models\PricingPackage;
 use App\Models\ServiceOffering;
-use App\Models\SourceCodeProduct;
 use App\Models\TemplateCategory;
 use App\Models\WebsiteTemplate;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,15 +27,6 @@ class MarketplacePublicTest extends TestCase
             'price' => 2000000,
             'status' => 'active',
         ]);
-        PricingPackage::query()->create([
-            'name' => 'Basic Shop',
-            'slug' => 'basic-shop',
-            'audience_type' => 'shop_owner',
-            'package_type' => 'website',
-            'price' => 2500000,
-            'benefits' => ['Catalog', 'CTA Zalo'],
-            'is_active' => true,
-        ]);
         ServiceOffering::query()->create([
             'name' => 'Fix giao diện website',
             'slug' => 'fix-giao-dien-website',
@@ -47,13 +36,6 @@ class MarketplacePublicTest extends TestCase
             'key_benefits' => ['Sửa layout', 'Tối ưu mobile'],
             'status' => 'published',
             'sort_order' => 1,
-        ]);
-        SourceCodeProduct::query()->create([
-            'name' => 'Source Laravel bán hàng',
-            'slug' => 'source-laravel-ban-hang',
-            'summary' => 'Có database mẫu',
-            'price' => 2500000,
-            'status' => 'active',
         ]);
         BlogPost::query()->create([
             'title' => 'SEO cho shop nhỏ',
@@ -68,12 +50,12 @@ class MarketplacePublicTest extends TestCase
             'answer' => 'Có demo rõ ràng.',
         ]);
 
-        $this->get('/')->assertOk()->assertSee('Biến Ý Tưởng Thành Website Chuyên Nghiệp Chỉ Trong Vài Ngày');
-        $this->get('/services')->assertOk()->assertSee('Dịch vụ web, code, app, SEO')->assertSee('Fix giao diện website');
+        $this->get('/')->assertOk()->assertSee('Bạn cần làm website, sửa website hoặc nhờ xử lý một phần việc khó?');
+        $this->get('/services')->assertOk()->assertSee('Chọn đúng dịch vụ bạn đang cần để bắt đầu nhanh hơn.')->assertSee('Fix giao diện website');
         $this->get('/templates')->assertOk()->assertSee('Mẫu shop mỹ phẩm');
         $this->get('/templates/mau-shop-my-pham')->assertOk()->assertSee('Đặt mua mẫu này');
-        $this->get('/pricing/shop')->assertOk()->assertSee('Basic Shop');
-        $this->get('/source-code')->assertOk()->assertSee('Source Laravel bán hàng');
+        $this->get('/pricing/shop')->assertNotFound();
+        $this->get('/source-code')->assertNotFound();
         $this->get('/blog')->assertOk()->assertSee('SEO cho shop nhỏ');
         $this->get('/sitemap.xml')->assertOk()->assertSee('/templates/mau-shop-my-pham');
         $this->get('/robots.txt')->assertOk()->assertSee('Sitemap:');

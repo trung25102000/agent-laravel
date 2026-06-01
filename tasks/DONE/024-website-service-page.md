@@ -22,7 +22,7 @@ Xây dựng trang dịch vụ làm website theo yêu cầu cho shop nhỏ, cá n
 - `video-generator-app/resources/views/services/index.blade.php`
 - `video-generator-app/routes/web.php`
 - `video-generator-app/tests/Feature/ServicePageTest.php`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Page nên đọc dữ liệu package active nếu module gói dịch vụ đã có.

@@ -11,17 +11,17 @@ Thiết lập bối cảnh sản phẩm cho web app Laravel tạo video tự đ�
 
 ## Requirements
 - Xác định rõ product là web app tạo short-form video bằng pipeline nhiều bước
-- Ghi vào `context/project-context.md` mô tả domain, actor chính, tech assumptions, module chính
-- Ghi vào `context/routes-map.md` các nhóm route dự kiến cho user, admin, API nội bộ
-- Ghi vào `context/database-schema.md` các bảng cốt lõi dự kiến cho MVP
-- Ghi assumption nhỏ vào `context/decisions.md`
+- Ghi vào `.agents/context/project-context.md` mô tả domain, actor chính, tech assumptions, module chính
+- Ghi vào `.agents/context/routes-map.md` các nhóm route dự kiến cho user, admin, API nội bộ
+- Ghi vào `.agents/context/database-schema.md` các bảng cốt lõi dự kiến cho MVP
+- Ghi assumption nhỏ vào `.agents/context/decisions.md`
 
 ## Files Expected
-- `context/project-context.md`
-- `context/routes-map.md`
-- `context/database-schema.md`
-- `context/decisions.md`
-- `memory/progress.md`
+- `.agents/context/project-context.md`
+- `.agents/context/routes-map.md`
+- `.agents/context/database-schema.md`
+- `.agents/context/decisions.md`
+- `.agents/memory/progress.md`
 
 ## Implementation Notes
 - Xem đây là task định hình sản phẩm trước khi code module thực tế

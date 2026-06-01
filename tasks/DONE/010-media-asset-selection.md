@@ -20,9 +20,9 @@ Tạo cơ chế chọn hoặc gợi ý background image/video cho từng scene b
 - model/bảng `video_assets` hoặc tương đương nếu cần
 - provider interface nếu cần abstraction
 - test asset selection
-- `context/database-schema.md`
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/context/database-schema.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - MVP có thể dùng placeholder library hoặc selector đơn giản

@@ -38,8 +38,8 @@ Tạo module domain cho danh mục dịch vụ để website có thể quản l�
 - `seo-web-app/app/Http/Controllers/Admin/*`
 - `seo-web-app/resources/views/admin/marketplace/services.blade.php`
 - `seo-web-app/tests/Feature/*ServiceCatalog*Test.php`
-- `context/database-schema.md`
-- `context/routes-map.md`
+- `.agents/context/database-schema.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Nếu cần enum cho `service_group` hoặc `status`, dùng enum riêng.

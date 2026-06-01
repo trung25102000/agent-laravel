@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="description" content="@yield('meta_description', 'Web Template Studio cung cấp website cho shop nhỏ, landing page chốt đơn, source Laravel đồ án và dịch vụ làm web theo yêu cầu.')">
+        <meta name="description" content="@yield('meta_description', 'Web Template Studio cung cấp dịch vụ làm website, SEO, sửa website và hỗ trợ lập trình cho shop nhỏ, cá nhân và sinh viên.')">
         <meta name="robots" content="@yield('meta_robots', 'index,follow')">
         <link rel="canonical" href="@yield('canonical', url()->current())">
         <title>@yield('title', config('app.name'))</title>
@@ -33,16 +33,13 @@
                         <span class="grid size-10 place-items-center rounded-lg bg-rose-600 text-sm font-semibold text-white">WEB</span>
                         <span>
                             <span class="block text-sm font-semibold text-zinc-950">{{ config('app.name', 'Web Template Studio') }}</span>
-                            <span class="block text-xs text-rose-700">Web, SEO, sửa lỗi, đồ án, task code</span>
+                            <span class="block text-xs text-rose-700">Website, SEO, sửa web và hỗ trợ đồ án</span>
                         </span>
                     </a>
 
                     <nav class="flex flex-wrap items-center gap-2 text-sm">
                         <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('services') }}">Dịch vụ</a>
-                        <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('portfolio.index') }}">Dự án</a>
                         <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('templates.index') }}">Mẫu web</a>
-                        <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('pricing.show', 'shop') }}">Gói giá</a>
-                        <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('source-code.index') }}">Source Laravel</a>
                         <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('blog.index') }}">Blog</a>
                         @auth
                             @can('access-admin')
@@ -56,7 +53,7 @@
                             </form>
                         @else
                             <a class="rounded-md px-3 py-2 text-zinc-600 hover:bg-amber-50 hover:text-rose-700" href="{{ route('login') }}">Đăng nhập</a>
-                            <a class="rounded-md bg-rose-600 px-3 py-2 font-medium text-white hover:bg-rose-700" href="#quote-form">Nhận tư vấn</a>
+                            <a class="rounded-md bg-rose-600 px-3 py-2 font-medium text-white hover:bg-rose-700" href="#quote-form">Nhận tư vấn miễn phí</a>
                         @endauth
                     </nav>
                 </div>
@@ -78,15 +75,15 @@
                             <span class="grid size-11 place-items-center rounded-xl bg-white/10 text-sm font-semibold text-white">WEB</span>
                             <div>
                                 <p class="text-lg font-semibold">{{ config('app.name', 'Web Template Studio') }}</p>
-                                <p class="text-sm text-slate-300">Web, SEO, sửa lỗi, đồ án và task code với scope rõ và bàn giao chắc tay.</p>
+                                <p class="text-sm text-slate-300">Làm website, tối ưu SEO, sửa web và hỗ trợ đồ án với cách làm rõ ràng, dễ theo dõi.</p>
                             </div>
                         </div>
-                        <p class="max-w-2xl text-sm leading-7 text-slate-300">Nếu bạn cần website mới, sửa landing page, tối ưu SEO hoặc xử lý task lập trình nhỏ, phần liên hệ nhanh ở góc phải dưới và form báo giá trên trang chủ luôn sẵn để bắt đầu ngay.</p>
+                        <p class="max-w-2xl text-sm leading-7 text-slate-300">Nếu bạn cần làm website, sửa landing page, tối ưu SEO hoặc nhờ xử lý một phần việc khó, bạn có thể liên hệ nhanh qua Zalo, Facebook, email hoặc form tư vấn trên trang.</p>
                         <div class="grid gap-3 sm:grid-cols-3">
                             @foreach ([
-                                ['15-60 phút', 'mốc phản hồi khi brief rõ'],
-                                ['3-7 ngày', 'cho website hoặc task nhỏ rõ scope'],
-                                ['Source + support', 'bàn giao kèm note và hướng dẫn'],
+                                ['15-60 phút', 'thời gian phản hồi khi nhu cầu đã đủ rõ'],
+                                ['3-7 ngày', 'cho website nhỏ hoặc phần việc cần xử lý nhanh'],
+                                ['Bàn giao dễ theo dõi', 'có ghi chú và hướng dẫn khi cần'],
                             ] as [$title, $copy])
                                 <article class="rounded-[1.15rem] border border-white/10 bg-white/7 px-4 py-4 backdrop-blur-sm">
                                     <p class="text-base font-semibold text-white">{{ $title }}</p>
@@ -100,9 +97,9 @@
                         <article class="rounded-[1.4rem] border border-white/10 bg-white/7 p-5 backdrop-blur-sm">
                             <p class="text-sm font-semibold text-sky-200">Liên hệ nhanh</p>
                             <div class="mt-4 grid gap-3">
-                                <a class="rounded-xl bg-emerald-500/90 px-4 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400" href="{{ config('contact.zalo_url', '#') }}">Nhắn Zalo để chốt brief nhanh</a>
-                                <a class="rounded-xl bg-blue-500/90 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-400" href="{{ config('contact.facebook_url', '#') }}">Gửi brief qua Facebook</a>
-                                <a class="rounded-xl border border-white/14 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10" href="mailto:{{ config('contact.email', 'hello@example.com') }}">Gửi scope dài qua Email</a>
+                                <a class="rounded-xl bg-emerald-500/90 px-4 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400" href="{{ config('contact.zalo_url', '#') }}">Nhắn Zalo để trao đổi nhanh</a>
+                                <a class="rounded-xl bg-blue-500/90 px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-400" href="{{ config('contact.facebook_url', '#') }}">Nhắn Facebook để trao đổi nhu cầu</a>
+                                <a class="rounded-xl border border-white/14 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10" href="mailto:{{ config('contact.email', 'hello@example.com') }}">Gửi yêu cầu chi tiết qua email</a>
                             </div>
                         </article>
                         <article class="rounded-[1.4rem] border border-white/10 bg-white/7 p-5 backdrop-blur-sm">
@@ -110,7 +107,7 @@
                             <div class="mt-4 flex flex-wrap gap-3 text-sm">
                                 <a class="rounded-xl bg-white px-4 py-3 font-semibold text-zinc-950" href="{{ route('services') }}">Xem dịch vụ</a>
                                 <a class="rounded-xl border border-white/14 px-4 py-3 font-semibold text-white" href="{{ route('portfolio.index') }}">Xem dự án</a>
-                                <a class="rounded-xl border border-white/14 px-4 py-3 font-semibold text-white" href="#quote-form">Nhận tư vấn</a>
+                                <a class="rounded-xl border border-white/14 px-4 py-3 font-semibold text-white" href="#quote-form">Nhận tư vấn miễn phí</a>
                             </div>
                         </article>
                     </div>
@@ -131,7 +128,7 @@
         </div>
 
         <div class="sticky-cta-mobile" data-sticky-cta data-mobile-sticky-bar>
-            <a class="sticky-cta-mobile__item sticky-cta-mobile__item--primary" href="#quote-form">Tư vấn nhanh</a>
+            <a class="sticky-cta-mobile__item sticky-cta-mobile__item--primary" href="#quote-form">Nhận tư vấn</a>
             <a class="sticky-cta-mobile__item sticky-cta-mobile__item--success" href="{{ config('contact.zalo_url', '#') }}">Nhắn Zalo</a>
             <a class="sticky-cta-mobile__item" href="{{ route('services') }}">Xem dịch vụ</a>
         </div>

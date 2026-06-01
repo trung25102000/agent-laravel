@@ -18,10 +18,10 @@ class AnimatedTrustVisualsTest extends TestCase
         $response->assertOk();
         $response->assertSee('data-hero-visuals', false);
         $response->assertSee('data-reveal', false);
-        $response->assertSee('Phản hồi nhanh');
-        $response->assertSee('Demo có chủ đích');
-        $response->assertSee('Bàn giao chắc tay');
-        $response->assertSee('Agency Delivery Board');
+        $response->assertSee('Phản hồi trong 15-60 phút');
+        $response->assertSee('Thống nhất công việc trước khi làm');
+        $response->assertSee('Bàn giao có hướng dẫn');
+        $response->assertSee('Tổng quan dịch vụ');
         $response->assertSee('data-visual-system', false);
         $response->assertSee('data-background-particles', false);
     }

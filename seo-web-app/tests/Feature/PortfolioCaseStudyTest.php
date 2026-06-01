@@ -43,7 +43,7 @@ class PortfolioCaseStudyTest extends TestCase
             ->assertSee('Kết quả')
             ->assertSee('Laravel')
             ->assertSee('data-portfolio-show-hero', false)
-            ->assertSee('Outcome đạt được');
+            ->assertSee('Kết quả nhận được');
     }
 
     public function test_unpublished_or_inactive_portfolio_project_is_not_public(): void

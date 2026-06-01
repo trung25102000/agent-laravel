@@ -27,7 +27,7 @@ Xây dựng dashboard admin tổng quan để theo dõi số lượng template, 
 - `video-generator-app/resources/views/admin/dashboard.blade.php`
 - `video-generator-app/routes/web.php`
 - `video-generator-app/tests/Feature/AdminDashboardTest.php`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Query chỉ lấy số liệu cần thiết.

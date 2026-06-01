@@ -27,10 +27,10 @@ Rà soát và điều chỉnh định vị của `seo-web-app` từ hướng mar
 - Cập nhật context nếu phạm vi hoặc cách gọi module thay đổi đáng kể.
 
 ## Files Expected
-- `context/project-context.md`
-- `context/decisions.md`
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/context/project-context.md`
+- `.agents/context/decisions.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 - `seo-web-app/README.md`
 
 ## Implementation Notes

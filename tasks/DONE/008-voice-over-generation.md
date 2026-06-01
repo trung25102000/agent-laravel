@@ -22,8 +22,8 @@ Tạo service sinh voice-over hoặc text-to-speech cho video project bằng pro
 - mock provider
 - migration hoặc field audio path nếu cần
 - test service
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Mock provider có thể tạo file text hoặc file audio giả trong storage để mô phỏng pipeline

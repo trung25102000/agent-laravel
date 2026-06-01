@@ -29,7 +29,7 @@ Xây dựng trang chủ bán template và dịch vụ làm web có thông điệ
 - `video-generator-app/resources/views/components/template-card.blade.php`
 - `video-generator-app/routes/web.php`
 - `video-generator-app/tests/Feature/HomepageTest.php`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Nếu chưa có model template, truyền collection rỗng và render CTA fallback.

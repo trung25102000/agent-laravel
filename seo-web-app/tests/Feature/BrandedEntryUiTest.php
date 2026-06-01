@@ -17,16 +17,15 @@ class BrandedEntryUiTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Biến Ý Tưởng Thành Website Chuyên Nghiệp Chỉ Trong Vài Ngày');
-        $response->assertSee('Thiết kế Website');
-        $response->assertSee('Phát Triển App Theo Yêu Cầu');
-        $response->assertSee('Khách hàng đang gặp vấn đề gì');
-        $response->assertSee('Danh sách dịch vụ');
-        $response->assertSee('Giải pháp tương ứng');
-        $response->assertSee('Nhận Tư Vấn Miễn Phí');
-        $response->assertSee('Xem Dự Án Đã Thực Hiện');
-        $response->assertSee('Chủ shop nhỏ/lẻ');
-        $response->assertSee('Feedback và cam kết');
+        $response->assertSee('Bạn cần làm website, sửa website hoặc nhờ xử lý một phần việc khó?');
+        $response->assertSee('Website mới hoặc landing page chốt lead');
+        $response->assertSee('Sửa website, tối ưu SEO, cải thiện trải nghiệm liên hệ');
+        $response->assertSee('Khách mới cần thấy ngay bạn đang cung cấp dịch vụ gì và nên liên hệ thế nào.');
+        $response->assertSee('Dịch vụ chính');
+        $response->assertSee('Tổng quan dịch vụ');
+        $response->assertSee('Nhận tư vấn miễn phí');
+        $response->assertSee('Xem dự án tiêu biểu');
+        $response->assertSee('Mô tả ngắn nhu cầu để nhận hướng làm và mốc thời gian phù hợp.');
         $response->assertDontSee('Documentation');
         $response->assertDontSee('Laracasts');
         $response->assertDontSee('Laravel News');
@@ -51,11 +50,11 @@ class BrandedEntryUiTest extends TestCase
         $response = $this->get('/login');
 
         $response->assertOk();
-        $response->assertSee('Đăng nhập để quản lý khách hàng');
+        $response->assertSee('Đăng nhập để tiếp tục vào khu vực quản trị.');
         $response->assertSee('Email');
         $response->assertSee('Mật khẩu');
         $response->assertSee('Ghi nhớ thiết bị này');
-        $response->assertSee('Đăng nhập quản trị');
+        $response->assertSee('Đăng nhập');
         $response->assertDontSee('AI video workspace');
         $response->assertDontSee('Sign in');
     }
@@ -70,8 +69,8 @@ class BrandedEntryUiTest extends TestCase
         ]);
 
         $response->assertOk();
-        $response->assertSee('Đăng nhập để quản lý khách hàng');
-        $response->assertSee('These credentials do not match our records.');
+        $response->assertSee('Đăng nhập để tiếp tục vào khu vực quản trị.');
+        $response->assertSee('Email hoặc mật khẩu chưa đúng.');
     }
 
     public function test_guest_can_view_branded_register_page(): void
@@ -81,7 +80,7 @@ class BrandedEntryUiTest extends TestCase
         $response = $this->get('/register');
 
         $response->assertOk();
-        $response->assertSee('Tạo tài khoản để quản lý yêu cầu dịch vụ');
+        $response->assertSee('Tạo tài khoản để theo dõi yêu cầu khi cần.');
         $response->assertSee('Web Template Studio');
         $response->assertSee('Tạo tài khoản');
         $response->assertSee('Đã có tài khoản?');

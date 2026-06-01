@@ -61,9 +61,9 @@ Nâng cấp Landing Page của `seo-web-app` bằng một section slideshow/caro
 - `/seo-web-app/resources/css/app.css`
 - `/seo-web-app/resources/js/app.js`
 - `/seo-web-app/tests/Feature/ProblemStoryCarouselTest.php`
-- `/memory/progress.md`
-- `/memory/changelog.md`
-- `/memory/bugs.md` nếu phát sinh lỗi đã xử lý
+- `/.agents/memory/progress.md`
+- `/.agents/memory/changelog.md`
+- `/.agents/memory/bugs.md` nếu phát sinh lỗi đã xử lý
 
 ## Implementation Notes
 - Ưu tiên vanilla JS:

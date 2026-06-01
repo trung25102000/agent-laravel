@@ -26,8 +26,8 @@ Tạo module danh mục template để admin quản lý nhóm mẫu web và publ
 - `video-generator-app/resources/views/admin/template-categories/*`
 - `video-generator-app/routes/web.php`
 - `video-generator-app/tests/Feature/AdminTemplateCategoryTest.php`
-- `context/database-schema.md`
-- `context/routes-map.md`
+- `.agents/context/database-schema.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Dùng FormRequest cho create/update.

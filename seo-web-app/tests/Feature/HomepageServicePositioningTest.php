@@ -29,25 +29,21 @@ class HomepageServicePositioningTest extends TestCase
         $response->assertOk();
         $response->assertSee('data-hero-section', false);
         $response->assertSee('data-hero-visuals', false);
-        $response->assertSee('data-rotating-media-showcase', false);
-        $response->assertSee('data-hero-media-rail', false);
         $response->assertSee('data-landing-section="services"', false);
         $response->assertSee('data-service-visual-grid', false);
         $response->assertSee('data-service-visual-card', false);
-        $response->assertSee('data-landing-section="portfolio"', false);
-        $response->assertSee('data-landing-section="feedback"', false);
-        $response->assertSee('data-process-timeline', false);
         $response->assertDontSee('data-tech-marquee', false);
-        $response->assertSee('data-conversion-strip', false);
-        $response->assertSee('data-conversion-proof-strip', false);
+        $response->assertDontSee('data-conversion-strip', false);
+        $response->assertDontSee('data-conversion-proof-strip', false);
         $response->assertSee('data-footer-emphasis', false);
         $response->assertSee('data-floating-contact', false);
-        $response->assertSee('Biến Ý Tưởng Thành Website Chuyên Nghiệp Chỉ Trong Vài Ngày');
+        $response->assertSee('Bạn cần làm website, sửa website hoặc nhờ xử lý một phần việc khó?');
         $response->assertSee('Nhận làm task lập trình nhanh');
-        $response->assertSee('Xem Dự Án Đã Thực Hiện');
-        $response->assertSee('Technical Consultation');
-        $response->assertSee('Support board cho handoff');
-        $response->assertSee('Nhận scope và báo giá nhanh');
+        $response->assertSee('Xem dự án tiêu biểu');
+        $response->assertSee('Hỗ trợ lập trình');
+        $response->assertSee('Tổng quan dịch vụ');
+        $response->assertSee('Nhận hướng tư vấn phù hợp');
+        $response->assertSee('data-contact-cta', false);
         $response->assertDontSee('Công nghệ sử dụng');
     }
 }

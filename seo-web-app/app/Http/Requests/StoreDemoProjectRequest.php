@@ -16,9 +16,8 @@ class StoreDemoProjectRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:160'],
-            'project_type' => ['required', Rule::in(['website', 'landing_page', 'seo', 'source_code', 'app', 'bug_fix'])],
+            'project_type' => ['required', Rule::in(['website', 'landing_page', 'seo', 'app', 'bug_fix'])],
             'website_template_id' => ['nullable', 'exists:website_templates,id'],
-            'source_code_product_id' => ['nullable', 'exists:source_code_products,id'],
             'demo_url' => ['required', 'url', 'max:255'],
             'admin_url' => ['nullable', 'url', 'max:255'],
             'username' => ['nullable', 'string', 'max:120'],

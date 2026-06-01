@@ -20,8 +20,8 @@ Thông báo cho user khi video render xong hoặc thất bại bằng database n
 - event/listener hoặc job nếu cần
 - migration notifications nếu dùng database notification
 - test notification
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Ưu tiên notification database cho MVP

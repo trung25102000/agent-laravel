@@ -18,7 +18,7 @@ class StoreTestimonialRequest extends FormRequest
             'name' => ['required', 'string', 'max:120'],
             'avatar_label' => ['nullable', 'string', 'max:8'],
             'audience_type' => ['required', Rule::in(['shop_owner', 'online_seller', 'student', 'small_business'])],
-            'service_type' => ['required', Rule::in(['website', 'landing_page', 'seo', 'ui_fix', 'source_code', 'coding_task', 'student_support'])],
+            'service_type' => ['required', Rule::in(['website', 'landing_page', 'seo', 'ui_fix', 'coding_task', 'student_support'])],
             'content' => ['required', 'string', 'max:2000'],
             'rating' => ['required', 'integer', 'min:1', 'max:5'],
             'trust_tag' => ['nullable', 'string', 'max:120'],

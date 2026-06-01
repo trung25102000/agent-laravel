@@ -31,7 +31,7 @@ Tạo khu vực portfolio/dự án đã làm để tăng trust và giúp khách 
 - `seo-web-app/resources/views/marketplace/portfolio/show.blade.php`
 - `seo-web-app/resources/views/admin/marketplace/demo-projects.blade.php`
 - `seo-web-app/tests/Feature/PortfolioCaseStudyTest.php`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Ưu tiên naming/public copy dễ hiểu hơn “demo projects” nếu module đang phục vụ vai trò portfolio.

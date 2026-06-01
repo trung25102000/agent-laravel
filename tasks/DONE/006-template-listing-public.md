@@ -25,7 +25,7 @@ Xây dựng trang public danh sách mẫu web để khách hàng tìm kiếm, l�
 - `video-generator-app/resources/views/components/template-card.blade.php`
 - `video-generator-app/routes/web.php`
 - `video-generator-app/tests/Feature/PublicTemplateListingTest.php`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Dùng query builder rõ ràng, tránh N+1 bằng `with('category')`.

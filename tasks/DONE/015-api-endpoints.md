@@ -23,15 +23,15 @@ Xây dựng API nội bộ rõ ràng cho việc tạo video project, xem trạng
 - `FormRequest`
 - `Resource`
 - test API
-- `context/routes-map.md`
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/context/routes-map.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - API nên bám contract nhất quán cho success/error
 - Scope dữ liệu theo user hiện tại hoặc token nếu auth API đã có
 - Không return raw model
-- Không giả định skeleton Laravel mới có sẵn `routes/api.php`; nếu cần, bật API routing theo cơ chế chính thức và cập nhật `context/routes-map.md`
+- Không giả định skeleton Laravel mới có sẵn `routes/api.php`; nếu cần, bật API routing theo cơ chế chính thức và cập nhật `.agents/context/routes-map.md`
 
 ## Done When
 - API create/status/result hoạt động đúng

@@ -15,7 +15,6 @@
                     <option value="website">Website</option>
                     <option value="landing_page">Landing Page</option>
                     <option value="seo">SEO</option>
-                    <option value="source_code">Source code</option>
                     <option value="app">App</option>
                     <option value="bug_fix">Fix bug</option>
                 </select>
@@ -23,12 +22,6 @@
                     <option value="">Không gắn template</option>
                     @foreach ($templates as $template)
                         <option value="{{ $template->id }}">{{ $template->name }}</option>
-                    @endforeach
-                </select>
-                <select class="rounded-md border px-3 py-2" name="source_code_product_id">
-                    <option value="">Không gắn source code</option>
-                    @foreach ($products as $product)
-                        <option value="{{ $product->id }}">{{ $product->name }}</option>
                     @endforeach
                 </select>
                 <input class="rounded-md border px-3 py-2 md:col-span-2" name="demo_url" placeholder="Demo URL" required>
@@ -65,7 +58,7 @@
                             <tr>
                                 <td class="py-3">
                                     <p class="font-semibold text-zinc-950">{{ $demo->name }}</p>
-                                    <p class="text-zinc-500">{{ $demo->websiteTemplate?->name ?? $demo->sourceCodeProduct?->name }}</p>
+                                    <p class="text-zinc-500">{{ $demo->websiteTemplate?->name }}</p>
                                 </td>
                                 <td class="py-3">{{ $demo->project_type }}</td>
                                 <td class="py-3"><a class="text-rose-700" href="{{ $demo->demo_url }}">Demo</a></td>

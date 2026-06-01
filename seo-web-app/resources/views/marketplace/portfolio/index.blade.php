@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Portfolio dự án đã thực hiện')
-@section('meta_description', 'Xem các case study website, landing page, SEO, source code và task kỹ thuật đã triển khai trong seo-web-app.')
+@section('title', 'Dự án đã thực hiện')
+@section('meta_description', 'Xem các dự án website, landing page, SEO và hỗ trợ lập trình đã triển khai để đánh giá cách làm và kết quả thực tế.')
 
 @section('content')
     @php
@@ -10,7 +10,6 @@
             'website' => ['eyebrow' => 'Website', 'icon' => 'WEB', 'gradient' => 'from-[#0F172A] via-[#2563EB] to-[#06B6D4]'],
             'seo' => ['eyebrow' => 'SEO Growth', 'icon' => 'SEO', 'gradient' => 'from-[#10B981] via-[#06B6D4] to-[#2563EB]'],
             'bug_fix' => ['eyebrow' => 'Fix Bug', 'icon' => 'FIX', 'gradient' => 'from-[#F97316] via-[#EF4444] to-[#7C3AED]'],
-            'source_code' => ['eyebrow' => 'Source Code', 'icon' => 'SRC', 'gradient' => 'from-[#7C3AED] via-[#2563EB] to-[#0F172A]'],
         ];
     @endphp
 
@@ -19,8 +18,8 @@
             <div class="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_20rem] lg:items-end">
                 <div>
                     <p class="text-sm font-semibold text-rose-700">Portfolio</p>
-                    <h1 class="mt-2 text-3xl font-semibold text-zinc-950">Dự án đã thực hiện và case study triển khai thực tế.</h1>
-                    <p class="mt-3 max-w-3xl text-sm leading-7 text-zinc-600">Mỗi case study cho thấy bài toán khách hàng, giải pháp kỹ thuật, công nghệ sử dụng, vai trò thực hiện và kết quả đạt được để bạn dễ đánh giá năng lực trước khi gửi yêu cầu.</p>
+                    <h1 class="mt-2 text-3xl font-semibold text-zinc-950">Dự án đã thực hiện để bạn xem cách làm thực tế.</h1>
+                    <p class="mt-3 max-w-3xl text-sm leading-7 text-zinc-600">Mỗi dự án cho thấy khách đang gặp vấn đề gì, đã được xử lý ra sao và kết quả nhận được để bạn dễ đánh giá trước khi liên hệ.</p>
                 </div>
                 <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
                     <article class="rounded-[1.2rem] border border-white/80 bg-white/90 px-4 py-4 shadow-sm">
@@ -28,8 +27,8 @@
                         <p class="mt-2 text-2xl font-semibold text-zinc-950">{{ $projects->total() }}</p>
                     </article>
                     <article class="rounded-[1.2rem] border border-white/80 bg-white/90 px-4 py-4 shadow-sm">
-                        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Trust signal</p>
-                        <p class="mt-2 text-sm font-semibold text-zinc-950">Role + outcome + demo</p>
+                        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Điểm đáng xem</p>
+                        <p class="mt-2 text-sm font-semibold text-zinc-950">Cách làm, kết quả và bản demo</p>
                     </article>
                     <article class="rounded-[1.2rem] border border-white/80 bg-white/90 px-4 py-4 shadow-sm">
                         <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">CTA</p>
@@ -80,11 +79,11 @@
                         </div>
                         <div class="grid gap-3 sm:grid-cols-2">
                             <div class="rounded-[1.2rem] border border-zinc-200 bg-zinc-50 px-4 py-4">
-                                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Giải pháp</p>
+                                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Cách xử lý</p>
                                 <p class="mt-2 text-sm leading-6 text-zinc-700">{{ $project->implemented_solution }}</p>
                             </div>
                             <div class="rounded-[1.2rem] border border-zinc-200 bg-zinc-50 px-4 py-4">
-                                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Kết quả đạt được</p>
+                                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Kết quả nhận được</p>
                                 <p class="mt-2 text-sm leading-6 text-zinc-700">{{ $project->outcome_summary }}</p>
                             </div>
                         </div>

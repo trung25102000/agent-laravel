@@ -84,6 +84,6 @@ class BlogContentPillarsTest extends TestCase
             ->assertSee('Dịch vụ liên quan')
             ->assertSee('Checklist sửa responsive cho mobile')
             ->assertSee('Nhận tư vấn từ bài viết này')
-            ->assertSee('Xem bảng giá tham khảo');
+            ->assertSee('Xem dự án đã thực hiện');
     }
 }

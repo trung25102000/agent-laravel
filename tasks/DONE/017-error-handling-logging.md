@@ -21,9 +21,9 @@ Chuẩn hóa xử lý lỗi và logging cho các bước AI, render, queue, và 
 - service/job logging updates
 - config/logging.php nếu cần điều chỉnh
 - test error handling
-- `memory/bugs.md`
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/bugs.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Tách lỗi business và lỗi hạ tầng nếu có thể

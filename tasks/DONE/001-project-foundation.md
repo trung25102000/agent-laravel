@@ -26,10 +26,10 @@ Thiết lập nền tảng Laravel cho website bán template và dịch vụ là
 - `video-generator-app/resources/views/components/*`
 - `video-generator-app/resources/css/app.css`
 - `video-generator-app/routes/web.php`
-- `context/project-context.md`
-- `context/routes-map.md`
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/context/project-context.md`
+- `.agents/context/routes-map.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Ưu tiên dùng Blade + Tailwind nếu project hiện tại đã dùng Blade.
@@ -43,7 +43,7 @@ Thiết lập nền tảng Laravel cho website bán template và dịch vụ là
 - Layout chính render không lỗi Vite.
 - Navigation public hiển thị đầy đủ link cơ bản.
 - `.env.example` có đủ biến cần thiết cho setup local.
-- Context/memory được cập nhật đúng trạng thái dự án mới.
+- Context/.agents/memory được cập nhật đúng trạng thái dự án mới.
 
 ## Test Requirements
 - Feature test trang chủ public trả HTTP 200.

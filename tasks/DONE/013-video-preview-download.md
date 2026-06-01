@@ -21,8 +21,8 @@ Cho phép user preview và download video đã render, kèm authorization để 
 - policy hoặc authorization logic
 - view preview nếu là web flow
 - test authorization và download
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Không expose trực tiếp file path nội bộ nếu có thể stream qua controller

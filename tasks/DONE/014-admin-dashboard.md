@@ -21,8 +21,8 @@ Tạo admin dashboard cơ bản để admin theo dõi users và video projects.
 - view admin dashboard/listing
 - middleware/policy/gate admin
 - test admin dashboard
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Dùng role hoặc cờ `is_admin` tối giản cho MVP

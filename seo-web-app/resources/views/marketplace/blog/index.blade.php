@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
-@section('title', 'Blog SEO, website, landing page và task code')
-@section('meta_description', 'Blog chia sẻ SEO website, landing page, sửa giao diện, hỗ trợ đồ án và các task code nhỏ để kéo lead và hỗ trợ chuyển đổi dịch vụ.')
+@section('title', 'Blog về website, SEO và kinh nghiệm triển khai')
+@section('meta_description', 'Blog chia sẻ kinh nghiệm làm website, tối ưu SEO, sửa giao diện và hỗ trợ đồ án theo góc nhìn dễ hiểu cho khách hàng.')
 @section('canonical', $selectedPillar ? route('blog.index', ['pillar' => $selectedPillar]) : route('blog.index'))
 
 @section('content')
     <div class="space-y-8">
         <section class="grid gap-6 rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm lg:grid-cols-[1.3fr_0.7fr]">
             <div>
-                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-rose-700">Blog service-first</p>
-                <h1 class="mt-3 text-3xl font-semibold text-zinc-950">Nội dung SEO, website và technical support để khách hiểu rõ dịch vụ trước khi liên hệ.</h1>
-                <p class="mt-3 text-sm leading-7 text-zinc-600">Blog được chia theo các trụ cột nội dung sát với dịch vụ đang nhận làm: SEO website, landing page, sửa giao diện, hỗ trợ đồ án và task code thực chiến.</p>
+                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-rose-700">Blog dễ hiểu cho khách mới</p>
+                <h1 class="mt-3 text-3xl font-semibold text-zinc-950">Bài viết về website, SEO và cách xử lý những nhu cầu thường gặp.</h1>
+                <p class="mt-3 text-sm leading-7 text-zinc-600">Nội dung được chia theo các nhóm nhu cầu thực tế như làm website, tối ưu SEO, sửa giao diện, hỗ trợ đồ án và xử lý phần việc lập trình.</p>
             </div>
             <div class="rounded-2xl border border-sky-100 bg-sky-50 p-5">
                 <p class="text-sm font-semibold text-zinc-950">Đi nhanh tới nhu cầu của bạn</p>
@@ -42,7 +42,7 @@
                     <h2 class="mt-3 text-xl font-semibold text-zinc-950">{{ $post->title }}</h2>
                     <p class="mt-3 text-sm leading-6 text-zinc-600">{{ $post->excerpt ?: \Illuminate\Support\Str::limit($post->content, 140) }}</p>
                     <div class="mt-5 flex flex-wrap gap-3 text-sm">
-                        <a class="font-semibold text-rose-700" href="{{ route('blog.show', $post) }}">Đọc bài</a>
+                        <a class="font-semibold text-rose-700" href="{{ route('blog.show', $post) }}">Đọc chi tiết</a>
                         <a class="font-semibold text-sky-700" href="{{ route('services') }}">Xem dịch vụ liên quan</a>
                     </div>
                 </article>

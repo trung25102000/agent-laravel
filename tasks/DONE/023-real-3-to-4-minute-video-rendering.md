@@ -31,10 +31,10 @@ Nang pipeline tu mock output len kha nang tao duoc mot video MP4 that dai tu 3 d
 - service tao subtitle/audio/asset fallback neu can
 - tests unit/feature cho FFmpeg provider va render job
 - tai lieu env trong `video-generator-app/README.md`
-- `memory/progress.md`
-- `memory/changelog.md`
-- `memory/bugs.md` neu gap loi FFmpeg moi truong
-- `context/decisions.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/memory/bugs.md` neu gap loi FFmpeg moi truong
+- `.agents/context/decisions.md`
 
 ## Implementation Notes
 - Kiem tra `ffmpeg` va `ffprobe` co ton tai truoc khi render; fail som voi loi ro rang neu thieu.

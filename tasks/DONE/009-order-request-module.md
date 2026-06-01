@@ -31,7 +31,7 @@ Cho phép khách gửi yêu cầu mua template, yêu cầu báo giá làm web, h
 - `video-generator-app/resources/views/orders/thank-you.blade.php`
 - `video-generator-app/routes/web.php`
 - `video-generator-app/tests/Feature/OrderRequestTest.php`
-- `context/database-schema.md`
+- `.agents/context/database-schema.md`
 
 ## Implementation Notes
 - Controller chỉ nhận request và gọi service nếu cần.

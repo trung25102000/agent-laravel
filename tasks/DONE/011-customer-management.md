@@ -25,7 +25,7 @@ Lưu và quản lý thông tin khách hàng, tránh trùng email/số điện th
 - `video-generator-app/app/Http/Controllers/Admin/CustomerController.php`
 - `video-generator-app/resources/views/admin/customers/*`
 - `video-generator-app/tests/Feature/CustomerManagementTest.php`
-- `context/database-schema.md`
+- `.agents/context/database-schema.md`
 
 ## Implementation Notes
 - Dùng transaction khi tạo order/contact và upsert customer.

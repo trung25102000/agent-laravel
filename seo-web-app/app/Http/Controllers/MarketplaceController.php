@@ -12,10 +12,8 @@ use App\Models\DemoProject;
 use App\Models\FaqItem;
 use App\Models\GraduationProjectRequest;
 use App\Models\OrderRequest;
-use App\Models\PricingPackage;
 use App\Models\QuoteRequest;
 use App\Models\ServiceOffering;
-use App\Models\SourceCodeProduct;
 use App\Models\TemplateCategory;
 use App\Models\Testimonial;
 use App\Models\WebsiteTemplate;
@@ -33,8 +31,7 @@ class MarketplaceController extends Controller
         return view('marketplace.home', [
             'featuredServices' => Schema::hasTable('service_offerings') ? ServiceOffering::query()->where('status', 'published')->orderBy('sort_order')->limit(5)->get() : collect(),
             'featuredTemplates' => Schema::hasTable('website_templates') ? WebsiteTemplate::query()->where('status', 'active')->latest()->limit(6)->get() : collect(),
-            'featuredDemos' => Schema::hasTable('demo_projects') ? DemoProject::query()->where('is_active', true)->with(['websiteTemplate', 'sourceCodeProduct'])->latest()->limit(3)->get() : collect(),
-            'packages' => Schema::hasTable('pricing_packages') ? PricingPackage::query()->where('is_active', true)->orderByDesc('is_featured')->orderBy('sort_order')->limit(6)->get() : collect(),
+            'featuredDemos' => Schema::hasTable('demo_projects') ? DemoProject::query()->where('is_active', true)->where('project_type', '!=', 'source_code')->with('websiteTemplate')->latest()->limit(3)->get() : collect(),
             'posts' => Schema::hasTable('blog_posts') ? BlogPost::query()->where('status', 'published')->latest('published_at')->limit(3)->get() : collect(),
             'faqs' => Schema::hasTable('faq_items') ? FaqItem::query()->where('is_active', true)->orderBy('sort_order')->limit(6)->get() : collect(),
             'testimonials' => Schema::hasTable('testimonials') ? Testimonial::query()->where('status', 'published')->orderBy('sort_order')->limit(6)->get() : collect(),
@@ -45,7 +42,6 @@ class MarketplaceController extends Controller
     {
         return view('marketplace.services', [
             'serviceOfferings' => ServiceOffering::query()->where('status', 'published')->orderBy('sort_order')->get(),
-            'packages' => PricingPackage::query()->where('is_active', true)->orderBy('sort_order')->get(),
             'faqs' => FaqItem::query()->where('is_active', true)->orderBy('sort_order')->get(),
         ]);
     }
@@ -59,7 +55,6 @@ class MarketplaceController extends Controller
             'scope' => [],
             'technologies' => [],
             'timeline' => 'Tùy theo phạm vi cụ thể của từng yêu cầu.',
-            'pricing_route' => route('pricing.show', 'shop'),
             'blog_cta' => 'Xem bài chia sẻ liên quan',
         ];
 
@@ -117,55 +112,6 @@ class MarketplaceController extends Controller
 
         return view('marketplace.templates.show', [
             'template' => $websiteTemplate->load(['category', 'demoProjects', 'attachments']),
-            'packages' => PricingPackage::query()->where('is_active', true)->whereIn('package_type', ['template', 'website'])->orderBy('sort_order')->get(),
-        ]);
-    }
-
-    public function pricing(string $type): View
-    {
-        $map = [
-            'shop' => ['title' => 'Gói website cơ bản cho shop nhỏ', 'package_types' => ['website']],
-            'landing-page' => ['title' => 'Gói landing page chạy quảng cáo', 'package_types' => ['landing_page']],
-            'ui-fix' => ['title' => 'Gói fix và chỉnh sửa giao diện', 'package_types' => ['ui_fix']],
-            'seo' => ['title' => 'Gói SEO website và tối ưu chuyển đổi', 'package_types' => ['seo']],
-            'graduation-project' => ['title' => 'Gói hỗ trợ đồ án và source Laravel', 'package_types' => ['graduation_project']],
-            'coding-task' => ['title' => 'Gói task lập trình nhanh', 'package_types' => ['coding_task']],
-        ];
-
-        abort_unless(isset($map[$type]), 404);
-
-        return view('marketplace.pricing', [
-            'type' => $type,
-            'title' => $map[$type]['title'],
-            'packages' => PricingPackage::query()
-                ->where('is_active', true)
-                ->whereIn('package_type', $map[$type]['package_types'])
-                ->orderByDesc('is_featured')
-                ->orderBy('sort_order')
-                ->get(),
-            'faqs' => FaqItem::query()
-                ->where('is_active', true)
-                ->when($type === 'graduation-project', fn ($query) => $query->where('audience_type', 'student'))
-                ->when($type === 'landing-page', fn ($query) => $query->where('audience_type', 'online_seller'))
-                ->when(in_array($type, ['shop', 'ui-fix', 'seo', 'coding-task'], true), fn ($query) => $query->whereIn('audience_type', ['shop_owner', 'online_seller']))
-                ->orderBy('sort_order')
-                ->get(),
-        ]);
-    }
-
-    public function sourceCode(): View
-    {
-        return view('marketplace.source-code.index', [
-            'products' => SourceCodeProduct::query()->with(['demoProjects', 'attachments'])->where('status', 'active')->latest()->paginate(12),
-        ]);
-    }
-
-    public function sourceCodeDetail(SourceCodeProduct $sourceCodeProduct): View
-    {
-        abort_unless($sourceCodeProduct->status === 'active', 404);
-
-        return view('marketplace.source-code.show', [
-            'product' => $sourceCodeProduct->load(['demoProjects', 'attachments']),
         ]);
     }
 
@@ -175,7 +121,8 @@ class MarketplaceController extends Controller
             'projects' => DemoProject::query()
                 ->where('status', 'published')
                 ->where('is_active', true)
-                ->with(['websiteTemplate', 'sourceCodeProduct'])
+                ->where('project_type', '!=', 'source_code')
+                ->with('websiteTemplate')
                 ->latest()
                 ->paginate(9),
         ]);
@@ -183,15 +130,16 @@ class MarketplaceController extends Controller
 
     public function portfolioDetail(DemoProject $demoProject): View
     {
-        abort_unless($demoProject->status === 'published' && $demoProject->is_active, 404);
+        abort_unless($demoProject->status === 'published' && $demoProject->is_active && $demoProject->project_type !== 'source_code', 404);
 
         return view('marketplace.portfolio.show', [
-            'project' => $demoProject->load(['websiteTemplate', 'sourceCodeProduct']),
+            'project' => $demoProject->load('websiteTemplate'),
             'relatedProjects' => DemoProject::query()
                 ->where('status', 'published')
                 ->where('is_active', true)
+                ->where('project_type', '!=', 'source_code')
                 ->whereKeyNot($demoProject->getKey())
-                ->with(['websiteTemplate', 'sourceCodeProduct'])
+                ->with('websiteTemplate')
                 ->latest()
                 ->limit(3)
                 ->get(),
@@ -265,7 +213,7 @@ class MarketplaceController extends Controller
 
         OrderRequest::query()->create($validated + ['customer_id' => $customer->id]);
 
-        return back()->with('status', 'Yêu cầu mua đã được ghi nhận. Tư vấn viên sẽ liên hệ sớm.');
+        return back()->with('status', 'Yêu cầu của bạn đã được ghi nhận. Chúng tôi sẽ liên hệ lại sớm để xác nhận thông tin.');
     }
 
     public function storeQuote(StoreQuoteRequestRequest $request, CustomerUpsertService $customers): RedirectResponse
@@ -280,7 +228,7 @@ class MarketplaceController extends Controller
 
         QuoteRequest::query()->create($validated + ['customer_id' => $customer->id]);
 
-        return back()->with('status', 'Yêu cầu báo giá đã được gửi thành công.');
+        return back()->with('status', 'Yêu cầu tư vấn đã được gửi. Chúng tôi sẽ phản hồi sớm với hướng xử lý phù hợp.');
     }
 
     public function storeGraduationRequest(StoreGraduationProjectRequestRequest $request, CustomerUpsertService $customers): RedirectResponse
@@ -300,14 +248,14 @@ class MarketplaceController extends Controller
             'need_installation_guide' => $request->boolean('need_installation_guide'),
         ]);
 
-        return back()->with('status', 'Yêu cầu đồ án đã được gửi. Đội ngũ sẽ phản hồi lộ trình triển khai.');
+        return back()->with('status', 'Yêu cầu hỗ trợ đề tài đã được gửi. Chúng tôi sẽ phản hồi sớm với hướng làm phù hợp.');
     }
 
     public function storeContact(StoreContactMessageRequest $request): RedirectResponse
     {
         ContactMessage::query()->create($request->validated());
 
-        return back()->with('status', 'Tin nhắn đã được gửi. Cảm ơn bạn đã liên hệ.');
+        return back()->with('status', 'Tin nhắn của bạn đã được gửi. Cảm ơn bạn đã liên hệ.');
     }
 
     public function sitemap(): Response
@@ -317,11 +265,7 @@ class MarketplaceController extends Controller
             route('services'),
             route('templates.index'),
             route('portfolio.index'),
-            route('source-code.index'),
             route('blog.index'),
-            route('pricing.show', 'shop'),
-            route('pricing.show', 'landing-page'),
-            route('pricing.show', 'graduation-project'),
         ])
             ->merge(WebsiteTemplate::query()->where('status', 'active')->pluck('slug')->map(fn ($slug) => route('templates.show', $slug)))
             ->merge(BlogPost::query()->where('status', 'published')->pluck('slug')->map(fn ($slug) => route('blog.show', $slug)))
@@ -354,7 +298,6 @@ class MarketplaceController extends Controller
                 ],
                 'technologies' => ['HTML semantic', 'Core Web Vitals cơ bản', 'Laravel Blade', 'Meta/heading structure'],
                 'timeline' => 'Thường 2-5 ngày cho audit nhanh và tối ưu các trang chính.',
-                'pricing_route' => route('pricing.show', 'shop'),
                 'blog_cta' => 'Xem thêm bài blog về SEO website',
             ],
             'ui_fix' => [
@@ -370,7 +313,6 @@ class MarketplaceController extends Controller
                 ],
                 'technologies' => ['Tailwind CSS', 'Blade', 'Responsive layout', 'UI/UX content blocks'],
                 'timeline' => 'Task nhỏ có thể xử lý trong 1-3 ngày; redesign block lớn cần audit riêng.',
-                'pricing_route' => route('pricing.show', 'landing-page'),
                 'blog_cta' => 'Đọc thêm nội dung về sửa UI và landing page',
             ],
             'website' => [
@@ -386,7 +328,6 @@ class MarketplaceController extends Controller
                 ],
                 'technologies' => ['Laravel', 'Blade', 'TailwindCSS', 'Lead forms', 'Responsive UI'],
                 'timeline' => 'Gói cơ bản thường từ 3-7 ngày tùy số trang và mức độ custom.',
-                'pricing_route' => route('pricing.show', 'landing-page'),
                 'blog_cta' => 'Xem bài chia sẻ về website và landing page',
             ],
             'student_support' => [
@@ -402,7 +343,6 @@ class MarketplaceController extends Controller
                 ],
                 'technologies' => ['Laravel', 'PHP', 'MySQL', 'REST API', 'Database design'],
                 'timeline' => 'Thường 2-7 ngày tùy mức hoàn thiện hiện tại và deadline.',
-                'pricing_route' => route('pricing.show', 'graduation-project'),
                 'blog_cta' => 'Xem nội dung hỗ trợ đồ án và source Laravel',
             ],
             'coding_task' => [
@@ -418,7 +358,6 @@ class MarketplaceController extends Controller
                 ],
                 'technologies' => ['PHP', 'Laravel', 'React', 'Next.js', 'JavaScript', 'MySQL'],
                 'timeline' => 'Task nhỏ có thể xử lý trong ngày hoặc theo lịch 1-3 ngày.',
-                'pricing_route' => route('pricing.show', 'shop'),
                 'blog_cta' => 'Đọc thêm bài chia sẻ về task lập trình và xử lý nhanh',
             ],
         ];
@@ -441,15 +380,9 @@ class MarketplaceController extends Controller
                 'description' => BlogPost::serviceGroupOptions()[$serviceGroup] ?? 'Dịch vụ phù hợp',
             ],
             [
-                'label' => 'Xem bảng giá tham khảo',
-                'href' => route('pricing.show', match ($serviceGroup) {
-                    'seo' => 'seo',
-                    'student_support' => 'graduation-project',
-                    'ui_fix' => 'ui-fix',
-                    'coding_task' => 'coding-task',
-                    default => 'landing-page',
-                }),
-                'description' => 'Đối chiếu scope trước khi gửi yêu cầu.',
+                'label' => 'Xem dự án đã thực hiện',
+                'href' => route('portfolio.index'),
+                'description' => 'Xem cách triển khai thực tế trước khi gửi yêu cầu.',
             ],
             [
                 'label' => 'Gửi nhu cầu để được tư vấn',

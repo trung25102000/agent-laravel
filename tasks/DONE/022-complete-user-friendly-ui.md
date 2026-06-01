@@ -30,9 +30,9 @@ Hoan thien giao dien web cho nen tang tao video AI de nguoi dung moi co the tao,
 - `video-generator-app/resources/css/app.css`
 - controller/request/resource lien quan neu can bo sung data cho UI
 - feature tests cho cac trang UI chinh
-- `memory/progress.md`
-- `memory/changelog.md`
-- `context/decisions.md` neu co quyet dinh UI/UX dang chu y
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/context/decisions.md` neu co quyet dinh UI/UX dang chu y
 
 ## Implementation Notes
 - Uu tien Blade + Vite hien co, khong them frontend framework moi neu khong that can.

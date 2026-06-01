@@ -10,7 +10,7 @@ high
 Phân tích monolith hiện tại đang chứa cả `video-generator` và `seo-web`, sau đó chốt kiến trúc thư mục đích để hai dự án chạy độc lập, dễ deploy riêng và không còn phụ thuộc code/domain lẫn nhau.
 
 ## Requirements
-- Đọc toàn bộ context/rules/memory hiện tại trước khi tách.
+- Đọc toàn bộ .agents/context/.agents/rules/.agents/memory hiện tại trước khi tách.
 - Audit các module đang nằm chung trong `video-generator-app`.
 - Phân loại code thành 2 nhóm:
   - `video-generator`: auth user, video projects, AI script, scene, voice, subtitle, FFmpeg render, preview/download, API video.
@@ -18,19 +18,19 @@ Phân tích monolith hiện tại đang chứa cả `video-generator` và `seo-w
 - Chốt cấu trúc thư mục:
   - `/video-generator-app`: Laravel app chỉ còn module tạo video AI.
   - `/seo-web-app`: Laravel app chỉ còn website bán template/dịch vụ/source Laravel.
-  - Root repo giữ `AGENTS.md`, `/rules`, `/context`, `/memory`, `/tasks`, `/agents`, `/prompts`.
+  - Root repo giữ `.agents/AGENTS.md`, `/.agents/rules`, `/.agents/context`, `/.agents/memory`, `/tasks`, `/.agents/agents`, `/.codex/prompts`.
 - Chốt cách xử lý phần dùng chung:
   - Ưu tiên copy độc lập cho auth/admin đơn giản ở mỗi app.
   - Không tạo shared package nếu chưa có nhu cầu thật.
 - Lập map file cần move/copy/xóa cho từng app.
-- Ghi quyết định kiến trúc vào `/context/decisions.md`.
+- Ghi quyết định kiến trúc vào `/.agents/context/decisions.md`.
 
 ## Files Expected
-- `/context/decisions.md`
-- `/context/project-context.md`
-- `/context/routes-map.md`
-- `/context/database-schema.md`
-- Có thể tạo `/context/source-separation-plan.md`
+- `/.agents/context/decisions.md`
+- `/.agents/context/project-context.md`
+- `/.agents/context/routes-map.md`
+- `/.agents/context/database-schema.md`
+- Có thể tạo `/.agents/context/source-separation-plan.md`
 
 ## Implementation Notes
 - Không move code ở task này, chỉ audit và document.

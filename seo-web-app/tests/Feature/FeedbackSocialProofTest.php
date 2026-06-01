@@ -51,10 +51,7 @@ class FeedbackSocialProofTest extends TestCase
 
         $this->get('/')
             ->assertOk()
-            ->assertSee('Lan Shop')
             ->assertDontSee('Draft testimonial')
-            ->assertSee('data-feedback-carousel', false)
-            ->assertSee('data-feedback-slide', false)
             ->assertDontSee('data-tech-marquee', false)
             ->assertSee('data-floating-contact', false);
 

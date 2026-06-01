@@ -16,19 +16,19 @@ Cập nhật tài liệu setup, vận hành, routes, schema và workflow để d
 - Hướng dẫn chạy test.
 - Hướng dẫn storage link/media upload.
 - Hướng dẫn mail log/SMTP.
-- Cập nhật `context/routes-map.md`.
-- Cập nhật `context/database-schema.md`.
-- Cập nhật `context/project-context.md` nếu domain đã đổi.
-- Cập nhật memory/changelog/progress.
+- Cập nhật `.agents/context/routes-map.md`.
+- Cập nhật `.agents/context/database-schema.md`.
+- Cập nhật `.agents/context/project-context.md` nếu domain đã đổi.
+- Cập nhật .agents/memory/changelog/progress.
 
 ## Files Expected
 - `README.md`
 - `video-generator-app/README.md`
-- `context/routes-map.md`
-- `context/database-schema.md`
-- `context/project-context.md`
-- `memory/changelog.md`
-- `memory/progress.md`
+- `.agents/context/routes-map.md`
+- `.agents/context/database-schema.md`
+- `.agents/context/project-context.md`
+- `.agents/memory/changelog.md`
+- `.agents/memory/progress.md`
 
 ## Implementation Notes
 - Tài liệu ngắn gọn, chạy được.

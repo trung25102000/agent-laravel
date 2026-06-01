@@ -19,8 +19,8 @@ Bổ sung và chuẩn hóa test suite cho các module chính của hệ thống 
 - các file test mới hoặc cập nhật trong `tests/Feature`
 - các file test mới hoặc cập nhật trong `tests/Unit`
 - factory/seed/test helpers nếu cần
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Không viết test hời hợt chỉ để đủ số lượng

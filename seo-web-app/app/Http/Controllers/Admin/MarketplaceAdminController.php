@@ -16,10 +16,8 @@ use App\Models\DemoProject;
 use App\Models\FaqItem;
 use App\Models\GraduationProjectRequest;
 use App\Models\OrderRequest;
-use App\Models\PricingPackage;
 use App\Models\QuoteRequest;
 use App\Models\ServiceOffering;
-use App\Models\SourceCodeProduct;
 use App\Models\TemplateCategory;
 use App\Models\Testimonial;
 use App\Models\User;
@@ -163,36 +161,6 @@ class MarketplaceAdminController extends Controller
         WebsiteTemplate::query()->create($data + ['slug' => Str::slug($data['name']).'-'.Str::lower(Str::random(5))]);
 
         return back()->with('status', 'Đã tạo template.');
-    }
-
-    public function packages(): View
-    {
-        return view('admin.marketplace.packages', [
-            'packages' => PricingPackage::query()->orderBy('audience_type')->orderBy('sort_order')->paginate(30),
-        ]);
-    }
-
-    public function storePackage(Request $request): RedirectResponse
-    {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:120'],
-            'audience_type' => ['required', Rule::in(['shop_owner', 'online_seller', 'student'])],
-            'package_type' => ['required', 'string', 'max:80'],
-            'price' => ['nullable', 'integer', 'min:0'],
-            'summary' => ['nullable', 'string', 'max:1000'],
-            'benefits' => ['nullable', 'string', 'max:3000'],
-            'is_featured' => ['nullable', 'boolean'],
-            'is_active' => ['nullable', 'boolean'],
-        ]);
-
-        PricingPackage::query()->create(array_merge($data, [
-            'slug' => Str::slug($data['name']).'-'.Str::lower(Str::random(5)),
-            'benefits' => collect(explode("\n", $data['benefits'] ?? ''))->map(fn ($line) => trim($line))->filter()->values()->all(),
-            'is_featured' => $request->boolean('is_featured'),
-            'is_active' => $request->boolean('is_active', true),
-        ]));
-
-        return back()->with('status', 'Đã tạo gói dịch vụ.');
     }
 
     public function orders(Request $request): View
@@ -385,39 +353,11 @@ class MarketplaceAdminController extends Controller
         return back()->with('status', 'Đã tạo bài SEO.');
     }
 
-    public function sourceCodeProducts(): View
-    {
-        return view('admin.marketplace.source-code-products', [
-            'products' => SourceCodeProduct::query()->withCount(['demoProjects', 'attachments'])->latest()->paginate(30),
-        ]);
-    }
-
-    public function storeSourceCodeProduct(Request $request): RedirectResponse
-    {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:160'],
-            'framework' => ['required', 'string', 'max:80'],
-            'summary' => ['nullable', 'string', 'max:1000'],
-            'description' => ['nullable', 'string', 'max:8000'],
-            'price' => ['nullable', 'integer', 'min:0'],
-            'demo_url' => ['nullable', 'url'],
-            'status' => ['required', Rule::in(['active', 'inactive'])],
-        ]);
-
-        SourceCodeProduct::query()->create($data + [
-            'slug' => Str::slug($data['name']).'-'.Str::lower(Str::random(5)),
-            'audience_type' => 'student',
-        ]);
-
-        return back()->with('status', 'Đã tạo source code Laravel.');
-    }
-
     public function demoProjects(): View
     {
         return view('admin.marketplace.demo-projects', [
-            'demos' => DemoProject::query()->with(['websiteTemplate', 'sourceCodeProduct'])->latest()->paginate(30),
+            'demos' => DemoProject::query()->with('websiteTemplate')->latest()->paginate(30),
             'templates' => WebsiteTemplate::query()->where('status', 'active')->orderBy('name')->get(),
-            'products' => SourceCodeProduct::query()->where('status', 'active')->orderBy('name')->get(),
         ]);
     }
 
@@ -583,7 +523,6 @@ class MarketplaceAdminController extends Controller
             'seo' => 'SEO website',
             'ui_fix' => 'Fix giao diện',
             'coding_task' => 'Task code',
-            'source_code' => 'Source code',
             'student_support' => 'Hỗ trợ đồ án',
             'custom' => 'Yêu cầu riêng',
         ];

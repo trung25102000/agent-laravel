@@ -29,9 +29,9 @@ Rà soát toàn bộ thay đổi tách source, đảm bảo test pass ở cả h
 - Push branch hiện tại lên `origin`.
 
 ## Files Expected
-- `/memory/progress.md`
-- `/memory/changelog.md`
-- `/memory/bugs.md` nếu có lỗi đã xử lý
+- `/.agents/memory/progress.md`
+- `/.agents/memory/changelog.md`
+- `/.agents/memory/bugs.md` nếu có lỗi đã xử lý
 - Git commit chứa toàn bộ thay đổi tách source
 
 ## Implementation Notes

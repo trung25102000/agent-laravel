@@ -62,8 +62,8 @@ Thiết kế lại trang chủ `seo-web-app` theo hướng Landing Page sản ph
 - `/seo-web-app/resources/js/app.js`
 - `/seo-web-app/tests/Feature/LandingPageExperienceTest.php`
 - `/seo-web-app/README.md` nếu có thay đổi cách build hoặc asset
-- `/memory/progress.md`
-- `/memory/changelog.md`
+- `/.agents/memory/progress.md`
+- `/.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Ưu tiên Blade + Tailwind + CSS/vanilla JS hiện có.

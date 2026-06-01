@@ -17,14 +17,14 @@ Rà soát cuối cùng toàn bộ website marketplace, polish UI/UX, refactor nh
 - Kiểm tra rules security/testing/frontend/documentation.
 - Kiểm tra no pending migration lỗi.
 - Kiểm tra không có debug dump/log tạm.
-- Cập nhật `memory/progress.md`.
+- Cập nhật `.agents/memory/progress.md`.
 
 ## Files Expected
 - `video-generator-app/*`
-- `memory/progress.md`
-- `memory/changelog.md`
-- `memory/bugs.md` nếu phát hiện bug
-- `context/decisions.md` nếu có decision
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/memory/bugs.md` nếu phát hiện bug
+- `.agents/context/decisions.md` nếu có decision
 
 ## Implementation Notes
 - Không refactor lớn sát cuối nếu không cần.

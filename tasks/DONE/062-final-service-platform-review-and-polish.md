@@ -22,12 +22,12 @@ Rà soát toàn bộ `seo-web-app` sau chuỗi task service-platform để bảo
 - Cập nhật tài liệu và memory đầy đủ.
 
 ## Files Expected
-- `memory/progress.md`
-- `memory/changelog.md`
-- `memory/bugs.md`
-- `context/project-context.md`
-- `context/database-schema.md`
-- `context/routes-map.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/memory/bugs.md`
+- `.agents/context/project-context.md`
+- `.agents/context/database-schema.md`
+- `.agents/context/routes-map.md`
 - `seo-web-app/README.md`
 
 ## Implementation Notes
@@ -37,7 +37,7 @@ Rà soát toàn bộ `seo-web-app` sau chuỗi task service-platform để bảo
 ## Done When
 - Không còn task pending liên quan chuỗi service-platform này.
 - Validation pass và review agents không còn blocker.
-- Docs/context/memory phản ánh đúng trạng thái mới của `seo-web-app`.
+- Docs, `.agents/context/`, và `.agents/memory/` phản ánh đúng trạng thái mới của `seo-web-app`.
 
 ## Test Requirements
 - Chạy trong `seo-web-app`:

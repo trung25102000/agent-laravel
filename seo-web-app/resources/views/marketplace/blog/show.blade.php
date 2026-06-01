@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $post->meta_title ?: $post->title.' | Blog web, SEO và lập trình')
+@section('title', $post->meta_title ?: $post->title.' | Blog website và SEO')
 @section('meta_description', $post->meta_description ?: ($post->excerpt ?: \Illuminate\Support\Str::limit($post->content, 150)))
 @section('canonical', route('blog.show', $post))
 @section('structured_data')
@@ -78,8 +78,8 @@
             @endif
 
             <x-contact-cta
-                :headline="'Bạn muốn áp dụng nội dung này vào website thật?'"
-                :description="'Gửi link website, landing page hoặc brief kỹ thuật. Tôi sẽ gợi ý scope xử lý, internal link, UI và CTA phù hợp với tình trạng hiện tại.'"
+                :headline="'Bạn muốn áp dụng nội dung này vào website của mình?'"
+                :description="'Gửi link website hoặc mô tả nhu cầu hiện tại. Bạn sẽ nhận được gợi ý cách xử lý phù hợp với tình trạng đang gặp.'"
                 :service-type="$post->service_group === 'student_support' ? 'student_support' : ($post->service_group === 'ui_fix' ? 'ui_fix' : ($post->service_group === 'coding_task' ? 'coding_task' : ($post->service_group === 'seo' ? 'seo' : 'website')))"
                 :button-label="'Nhận tư vấn từ bài viết này'"
             />

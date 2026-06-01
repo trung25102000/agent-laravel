@@ -23,9 +23,9 @@ Thiết kế model trung tâm `VideoProject` để quản lý toàn bộ vòng �
 - enum trạng thái nếu phù hợp
 - factory nếu cần
 - test model/migration
-- `context/database-schema.md`
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/context/database-schema.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Dùng PHP Enum cho trạng thái nếu version/framework hỗ trợ tốt

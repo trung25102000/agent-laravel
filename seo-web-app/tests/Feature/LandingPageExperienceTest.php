@@ -17,9 +17,9 @@ class LandingPageExperienceTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('data-landing-section="hero"', false);
-        $response->assertSee('data-landing-section="problems"', false);
-        $response->assertSee('data-landing-section="solutions"', false);
-        $response->assertSee('data-landing-section="trust"', false);
+        $response->assertSee('data-landing-section="services"', false);
+        $response->assertSee('data-hero-cta-group', false);
+        $response->assertSee('data-hero-trust-strip', false);
         $response->assertSee('data-contact-cta', false);
     }
 
@@ -30,17 +30,11 @@ class LandingPageExperienceTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Không biết làm website ở đâu');
-        $response->assertSee('Website tải chậm');
-        $response->assertSee('Website không có khách');
-        $response->assertSee('Landing Page không chuyển đổi');
-        $response->assertSee('Đồ án sắp tới hạn');
-        $response->assertSee('Không đủ người xử lý task');
-        $response->assertSee('Mỗi pain point đều có hướng xử lý rõ');
-        $response->assertSee('Có demo trước khi bàn giao');
-        $response->assertSee('Giao diện đẹp, tối ưu mobile');
-        $response->assertSee('Form thu lead và CTA rõ ràng');
-        $response->assertSee('Bàn giao source, database, tài liệu');
+        $response->assertSee('Bạn cần làm website, sửa website hoặc nhờ xử lý một phần việc khó?');
+        $response->assertSee('Trang này dành cho shop nhỏ, cá nhân, sinh viên và khách cần người hỗ trợ làm web, tối ưu SEO, sửa giao diện hoặc xử lý phần việc lập trình rõ ràng, dễ theo dõi.');
+        $response->assertSee('Khách mới cần thấy ngay bạn đang cung cấp dịch vụ gì và nên liên hệ thế nào.');
+        $response->assertSee('Rõ dịch vụ, rõ cách liên hệ, rõ kết quả');
+        $response->assertSee('Nếu bạn cần website mới, sửa web, tối ưu SEO, hỗ trợ đồ án hoặc nhờ xử lý một phần việc khó, đây là cách bắt đầu nhanh và rõ ràng nhất.');
     }
 
     public function test_homepage_has_reveal_animation_markers_without_admin_dashboard_copy(): void
@@ -51,7 +45,6 @@ class LandingPageExperienceTest extends TestCase
 
         $response->assertOk();
         $response->assertSee('data-reveal', false);
-        $response->assertSee('--reveal-delay', false);
         $response->assertDontSee('Admin Dashboard');
         $response->assertDontSee('trang quản trị');
         $response->assertDontSee('Laravel News');

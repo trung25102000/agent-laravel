@@ -24,7 +24,7 @@ Bổ sung và chuẩn hóa test suite cho các module chính: public pages, admi
 - `video-generator-app/tests/Unit/*`
 - `video-generator-app/database/factories/*`
 - `video-generator-app/phpunit.xml`
-- `memory/progress.md`
+- `.agents/memory/progress.md`
 
 ## Implementation Notes
 - Dùng factory để tạo dữ liệu tối giản.

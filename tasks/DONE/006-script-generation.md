@@ -23,8 +23,8 @@ Triển khai service tạo script video từ input user và lưu kết quả và
 - migration bổ sung field script nếu cần
 - controller/job/service orchestration liên quan
 - test service
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Không khóa chặt logic vào một vendor AI cụ thể

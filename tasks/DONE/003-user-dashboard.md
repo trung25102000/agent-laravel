@@ -20,8 +20,8 @@ Tạo dashboard cho user đã đăng nhập để xem tổng quan và danh sách
 - route dashboard
 - view/dashboard hoặc frontend component tương ứng
 - test dashboard
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Query phải scope theo user hiện tại

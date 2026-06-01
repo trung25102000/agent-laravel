@@ -26,7 +26,7 @@ Mở rộng blog theo các trụ cột nội dung phù hợp với dịch vụ: 
 - `seo-web-app/resources/views/marketplace/blog/index.blade.php`
 - `seo-web-app/resources/views/marketplace/blog/show.blade.php`
 - `seo-web-app/tests/Feature/BlogContentPillarsTest.php`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Không cần tạo CMS phức tạp nếu admin hiện có đủ dùng.

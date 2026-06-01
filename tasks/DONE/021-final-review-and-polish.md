@@ -7,7 +7,7 @@ completed
 high
 
 ## Objective
-Chạy vòng hoàn thiện cuối cho toàn bộ MVP: test, refactor, rà soát rules, và cập nhật memory/context còn thiếu.
+Chạy vòng hoàn thiện cuối cho toàn bộ MVP: test, refactor, rà soát rules, và cập nhật .agents/memory/.agents/context còn thiếu.
 
 ## Requirements
 - Chạy toàn bộ test
@@ -18,11 +18,11 @@ Chạy vòng hoàn thiện cuối cho toàn bộ MVP: test, refactor, rà soát 
 
 ## Files Expected
 - các file code cần polish nếu phát hiện vấn đề
-- `memory/progress.md`
-- `memory/changelog.md`
-- `memory/bugs.md`
-- `context/decisions.md`
-- tài liệu/context liên quan nếu cần
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/memory/bugs.md`
+- `.agents/context/decisions.md`
+- tài liệu/.agents/context liên quan nếu cần
 
 ## Implementation Notes
 - Đây là task chốt MVP, không phải thêm tính năng lớn mới

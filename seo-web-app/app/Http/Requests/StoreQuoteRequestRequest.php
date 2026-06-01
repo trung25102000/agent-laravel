@@ -20,7 +20,7 @@ class StoreQuoteRequestRequest extends FormRequest
             'customer_phone' => ['required', 'string', 'max:30'],
             'preferred_contact_channel' => ['required', Rule::in(['zalo', 'phone', 'email', 'facebook'])],
             'customer_group' => ['required', Rule::in(['shop_owner', 'online_seller', 'student'])],
-            'service_type' => ['required', Rule::in(['website', 'landing_page', 'catalog', 'source_code', 'custom', 'seo', 'ui_fix', 'coding_task', 'student_support'])],
+            'service_type' => ['required', Rule::in(['website', 'landing_page', 'catalog', 'custom', 'seo', 'ui_fix', 'coding_task', 'student_support'])],
             'budget_range' => ['nullable', 'string', 'max:80'],
             'deadline' => ['nullable', 'string', 'max:120'],
             'technology_stack' => ['nullable', 'string', 'max:160'],

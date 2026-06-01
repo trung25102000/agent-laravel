@@ -5,7 +5,7 @@ Repo này có root control plane cho autonomous Laravel agents và hai Laravel a
 - `seo-web-app/`: Web Template Studio, website bán template, landing page, source Laravel, demo project và dịch vụ làm web.
 - `video-generator-app/`: AI Video Generator, nền tảng tạo video dọc 9:16 với script, scenes, voice, subtitle và FFmpeg render.
 
-Root repo giữ `AGENTS.md`, `rules/`, `context/`, `memory/`, `prompts/`, `agents/`, `tasks/`.
+Root repo giữ `.agents/AGENTS.md`, `.agents/rules/`, `.agents/context/`, `.agents/memory/`, `.codex/prompts/`, `.agents/agents/`, `tasks/`.
 
 ## Chạy SEO Web
 

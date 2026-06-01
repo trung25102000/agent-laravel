@@ -14,7 +14,7 @@ Kiểm tra trạng thái Git, bảo đảm test pass và không có file nhạy 
 - Không push nếu còn file nhạy cảm như `.env`, secret, API key, credential.
 - Kiểm tra remote bằng:
   - `git remote -v`
-- Nếu chưa có remote thì dừng và ghi blocker vào `memory/progress.md` và `memory/bugs.md`.
+- Nếu chưa có remote thì dừng và ghi blocker vào `.agents/memory/progress.md` và `.agents/memory/bugs.md`.
 - Kiểm tra branch hiện tại.
 - Chạy `git status --short`.
 - Chạy `git diff --check`.
@@ -28,8 +28,8 @@ Kiểm tra trạng thái Git, bảo đảm test pass và không có file nhạy 
 
 ## Files Expected
 - Git metadata/local repo
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Commit message đề xuất:

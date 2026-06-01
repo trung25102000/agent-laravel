@@ -1,6 +1,6 @@
 # Web Template Studio
 
-Laravel app độc lập cho nền tảng dịch vụ web, code, app, SEO và hỗ trợ kỹ thuật. Website ưu tiên funnel tư vấn/báo giá cho cá nhân, shop nhỏ, sinh viên, khách cần sửa website và doanh nghiệp nhỏ; template, source code và demo project được dùng như trust asset để khách xem trước năng lực triển khai.
+Laravel app độc lập cho nền tảng dịch vụ web, code, app, SEO và hỗ trợ kỹ thuật. Website ưu tiên funnel tư vấn/báo giá cho cá nhân, shop nhỏ, sinh viên, khách cần sửa website và doanh nghiệp nhỏ; template và demo project được dùng như trust asset để khách xem trước năng lực triển khai.
 
 ## Stack
 
@@ -36,14 +36,6 @@ Admin seed mặc định:
 - `GET /portfolio/{slug}`
 - `GET /templates`
 - `GET /templates/{slug}`
-- `GET /pricing/shop`
-- `GET /pricing/landing-page`
-- `GET /pricing/ui-fix`
-- `GET /pricing/seo`
-- `GET /pricing/graduation-project`
-- `GET /pricing/coding-task`
-- `GET /source-code`
-- `GET /source-code/{slug}`
 - `GET /blog`
 - `GET /blog/{slug}`
 - `GET /sitemap.xml`
@@ -57,15 +49,13 @@ Admin seed mặc định:
   - tạo website và landing page
   - hỗ trợ đồ án sinh viên
   - nhận làm task lập trình nhỏ
-- Module `templates`, `source-code` và `demo projects` hiện được giữ lại để hỗ trợ conversion:
+- Module `templates` và `demo projects` hiện được giữ lại để hỗ trợ conversion:
   - cho khách xem demo/mẫu trước
   - chứng minh năng lực thực thi
-  - phục vụ các use case mua source Laravel hoặc đồ án
-- Chuỗi service-platform cốt lõi đã bao gồm service catalog, portfolio/case study, feedback, pricing reference, admin lead workflow, blog pillars, technical SEO và mobile conversion polish.
+  - giúp khách đánh giá mức độ phù hợp trước khi gửi yêu cầu
+- Chuỗi service-platform cốt lõi đã bao gồm service catalog, portfolio/case study, feedback, admin lead workflow, blog pillars, technical SEO và mobile conversion polish.
 - Chuỗi landing-page/UI agency-grade cũng đã hoàn tất: hero 2 cột kiểu agency, problem-solution storytelling, service/portfolio showcase, feedback carousel, tech marquee, visual system mới, rotating media và conversion polish.
 - Quick-contact layer hiện dùng floating icons cố định góc phải dưới cho Zalo/Facebook/Email; footer cũng đã được tăng nhấn mạnh để giữ contact/CTA rõ ở cuối trang.
-- Pricing pages hiện là mức tham khảo theo loại dịch vụ; người dùng được khuyến khích gửi quote để chốt scope và báo giá chính xác.
-
 Form public:
 
 - `POST /orders`
@@ -79,7 +69,6 @@ Admin:
 - `GET|POST /admin/marketplace/services`
 - `PATCH /admin/marketplace/services/{service}`
 - `GET|POST /admin/marketplace/templates`
-- `GET|POST /admin/marketplace/packages`
 - `GET /admin/marketplace/orders`
 - `PATCH /admin/marketplace/orders/{order}`
 - `GET /admin/marketplace/quotes`
@@ -93,7 +82,6 @@ Admin:
 - `GET|POST /admin/marketplace/blog-posts`
 - `GET|POST /admin/marketplace/demo-projects`
 - `GET|POST /admin/marketplace/testimonials`
-- `GET|POST /admin/marketplace/source-code-products`
 
 ## Environment
 

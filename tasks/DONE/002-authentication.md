@@ -24,8 +24,8 @@ Triển khai xác thực người dùng cho web app để user có thể đăng 
 - migration liên quan nếu cần
 - policy hoặc middleware liên quan nếu cần
 - test xác thực
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Ưu tiên dùng Laravel auth/starter kit chính thức tương thích Laravel 13 hoặc triển khai tối giản theo stack hiện có

@@ -31,12 +31,11 @@
                 <span class="text-zinc-400">/</span>
                 <span class="text-zinc-600">{{ $service->name }}</span>
             </div>
-            <p class="mt-4 text-sm font-semibold uppercase text-rose-700">{{ str_replace('_', ' ', $service->service_group) }}</p>
-            <h1 class="mt-2 text-3xl font-semibold text-zinc-950">{{ $service->name }}</h1>
-            <p class="mt-3 max-w-3xl text-sm leading-7 text-zinc-600">{{ $service->detail_description }}</p>
+                <p class="mt-4 text-sm font-semibold uppercase text-rose-700">{{ str_replace('_', ' ', $service->service_group) }}</p>
+                <h1 class="mt-2 text-3xl font-semibold text-zinc-950">{{ $service->name }}</h1>
+                <p class="mt-3 max-w-3xl text-sm leading-7 text-zinc-600">{{ $service->detail_description }}</p>
             <div class="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap" data-mobile-hero-cta>
                 <a class="rounded-md bg-rose-600 px-4 py-2 text-sm font-semibold text-white" href="#quote-form">Nhận báo giá cho dịch vụ này</a>
-                <a class="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800" href="{{ $blueprint['pricing_route'] }}">Xem giá tham khảo</a>
                 <a class="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800" href="{{ route('portfolio.index') }}">Xem dự án đã thực hiện</a>
                 <a class="rounded-md border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-800" href="{{ route('blog.index') }}">{{ $blueprint['blog_cta'] }}</a>
             </div>
@@ -71,7 +70,7 @@
 
         <section class="grid gap-4 lg:grid-cols-2" data-reveal>
             <article class="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
-                <p class="text-sm font-semibold text-rose-700">Phạm vi công việc</p>
+                <p class="text-sm font-semibold text-rose-700">Bạn sẽ được hỗ trợ những gì</p>
                 <ul class="mt-3 space-y-2 text-sm leading-6 text-zinc-700">
                     @foreach ($blueprint['scope'] as $item)
                         <li>• {{ $item }}</li>
@@ -79,7 +78,7 @@
                 </ul>
             </article>
             <article class="rounded-lg border border-zinc-200 bg-white p-5 shadow-sm">
-                <p class="text-sm font-semibold text-rose-700">Công nghệ liên quan</p>
+                <p class="text-sm font-semibold text-rose-700">Nền tảng hoặc công cụ liên quan</p>
                 <div class="mt-3 flex flex-wrap gap-2">
                     @foreach ($blueprint['technologies'] as $tech)
                         <span class="rounded-full bg-zinc-100 px-3 py-1 text-sm font-semibold text-zinc-700">{{ $tech }}</span>
@@ -87,7 +86,7 @@
                 </div>
                 <p class="mt-5 text-sm font-semibold text-zinc-950">Thời gian tham khảo</p>
                 <p class="mt-2 text-sm leading-6 text-zinc-600">{{ $blueprint['timeline'] }}</p>
-                <p class="mt-4 text-sm font-semibold text-zinc-950">Ghi chú giá</p>
+                <p class="mt-4 text-sm font-semibold text-zinc-950">Lưu ý về chi phí</p>
                 <p class="mt-2 text-sm leading-6 text-zinc-600">{{ $service->pricing_note }}</p>
             </article>
         </section>
@@ -158,8 +157,8 @@
         <x-contact-cta
             :headline="'Mô tả nhu cầu cho dịch vụ: '.$service->name"
             :description="$service->short_description"
-            :service-type="$service->service_group === 'student_support' ? 'source_code' : 'custom'"
-            button-label="Gửi yêu cầu cho dịch vụ này"
+            :service-type="$service->service_group === 'student_support' ? 'student_support' : 'custom'"
+            button-label="Nhận tư vấn cho dịch vụ này"
         />
     </div>
 @endsection

@@ -27,8 +27,8 @@ Rà soát và gia cố bảo mật toàn bộ website bán template/dịch vụ 
 - `video-generator-app/routes/web.php`
 - `video-generator-app/routes/api.php`
 - `video-generator-app/tests/Feature/SecurityHardeningTest.php`
-- `memory/bugs.md`
-- `memory/changelog.md`
+- `.agents/memory/bugs.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Ưu tiên thêm tests cho bug/risk phát hiện.

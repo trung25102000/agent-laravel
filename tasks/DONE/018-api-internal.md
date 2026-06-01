@@ -24,7 +24,7 @@ Tạo API nội bộ khi cần để frontend/admin tương tác bằng JSON, b�
 - `video-generator-app/app/Http/Requests/Api/*`
 - `video-generator-app/app/Http/Resources/*`
 - `video-generator-app/tests/Feature/Api/*`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Nếu project chỉ dùng Blade server-render, task có thể ghi rõ không cần API thêm và chỉ chuẩn hóa endpoint tối thiểu.

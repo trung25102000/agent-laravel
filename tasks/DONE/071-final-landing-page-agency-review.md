@@ -31,13 +31,13 @@ Chạy vòng review cuối cho toàn bộ chuỗi task UI/conversion để đả
 - Audit public routes chính sau toàn bộ thay đổi.
 - Chạy full validation.
 - Browser smoke test desktop/mobile.
-- Cập nhật docs/memory/context nếu cần.
+- Cập nhật docs/.agents/memory/.agents/context nếu cần.
 
 ## Files Expected
-- `memory/progress.md`
-- `memory/changelog.md`
-- `memory/bugs.md`
-- `context/project-context.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/memory/bugs.md`
+- `.agents/context/project-context.md`
 - `seo-web-app/README.md`
 
 ## Implementation Notes

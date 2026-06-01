@@ -25,7 +25,7 @@ Xây dựng màn hình admin quản lý đơn hàng, lọc trạng thái, xem ch
 - `video-generator-app/resources/views/admin/orders/show.blade.php`
 - `video-generator-app/routes/web.php`
 - `video-generator-app/tests/Feature/AdminOrderManagementTest.php`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Dùng enum status từ order module.

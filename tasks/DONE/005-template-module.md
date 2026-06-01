@@ -27,7 +27,7 @@ Xây dựng module quản lý mẫu website để admin đăng bán template, la
 - `video-generator-app/resources/views/admin/website-templates/*`
 - `video-generator-app/database/factories/WebsiteTemplateFactory.php`
 - `video-generator-app/tests/Feature/AdminWebsiteTemplateTest.php`
-- `context/database-schema.md`
+- `.agents/context/database-schema.md`
 
 ## Implementation Notes
 - Dùng enum hoặc constants cho status nếu có nhiều trạng thái.

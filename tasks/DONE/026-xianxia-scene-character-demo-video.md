@@ -24,10 +24,10 @@ Fix bug demo video hien tai qua tinh va khong co cam giac tung short/scene rieng
 - `video-generator-app/app/Console/Commands/GenerateXianxiaReviewDemoCommand.php`
 - `video-generator-app/app/Services/XianxiaReviewDemoService.php`
 - `video-generator-app/tests/Feature/XianxiaReviewDemoCommandTest.php`
-- `memory/progress.md`
-- `memory/changelog.md`
-- `memory/bugs.md`
-- `context/decisions.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/memory/bugs.md`
+- `.agents/context/decisions.md`
 
 ## Done When
 - Command tao/cap nhat demo project va cac scene/assets thanh cong.

@@ -35,7 +35,7 @@ class ConsultationFunnelTest extends TestCase
         ]);
 
         $response->assertRedirect();
-        $response->assertSessionHas('status', 'Tin nhắn đã được gửi. Cảm ơn bạn đã liên hệ.');
+        $response->assertSessionHas('status', 'Tin nhắn của bạn đã được gửi. Cảm ơn bạn đã liên hệ.');
     }
 
     public function test_homepage_contact_cta_explains_response_timing_and_scope(): void
@@ -46,6 +46,6 @@ class ConsultationFunnelTest extends TestCase
             ->assertOk()
             ->assertSee('data-contact-proof-grid', false)
             ->assertSee('15-60 phút')
-            ->assertSee('Nhận scope và báo giá nhanh');
+            ->assertSee('Nhận hướng tư vấn phù hợp');
     }
 }

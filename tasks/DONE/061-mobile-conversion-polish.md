@@ -37,7 +37,7 @@ Tối ưu trải nghiệm mobile để người dùng nhỏ lẻ có thể hiể
 - `seo-web-app/resources/views/components/*.blade.php`
 - `seo-web-app/resources/css/app.css`
 - `seo-web-app/tests/Feature/MobileConversionUiTest.php`
-- `memory/bugs.md`
+- `.agents/memory/bugs.md`
 
 ## Implementation Notes
 - Ưu tiên mobile-first, giữ trải nghiệm desktop không regress.

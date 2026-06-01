@@ -92,7 +92,7 @@ class ServiceCatalogTest extends TestCase
             ->assertSee('data-service-visual-grid', false)
             ->assertSee('data-service-visual-card', false)
             ->assertSee('Fix giao diện landing page')
-            ->assertSee('Fix Bug / UI')
+            ->assertSee('Sửa Website')
             ->assertDontSee('Draft service');
     }
 

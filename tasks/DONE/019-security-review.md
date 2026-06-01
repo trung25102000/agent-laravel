@@ -19,10 +19,10 @@ Rà soát và gia cố bảo mật cho toàn bộ MVP trước khi coi hệ th�
 ## Files Expected
 - policy/middleware/request/rate limit files liên quan
 - test security
-- `memory/bugs.md`
-- `memory/progress.md`
-- `memory/changelog.md`
-- `context/decisions.md`
+- `.agents/memory/bugs.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/context/decisions.md`
 
 ## Implementation Notes
 - Dùng review agent bảo mật trong repo làm checklist bắt buộc
@@ -31,7 +31,7 @@ Rà soát và gia cố bảo mật cho toàn bộ MVP trước khi coi hệ th�
 
 ## Done When
 - Không còn lỗ hổng rõ ràng trong phạm vi MVP
-- Security review pass theo rules/agents
+- Security review pass theo .agents/rules/.agents/agents
 - Test pass
 - Không vi phạm rules
 

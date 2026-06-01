@@ -24,8 +24,8 @@ Xây dựng pipeline render video bằng queue job, với mock output trước k
 - mock render provider
 - migration hoặc field output path nếu cần
 - test job/pipeline
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Dùng transaction và status update cẩn thận

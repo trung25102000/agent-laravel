@@ -20,8 +20,8 @@ Sinh subtitle ở định dạng SRT hoặc VTT từ script hoặc scene list v�
 - file writer cho SRT/VTT
 - field/path subtitle trong database nếu cần
 - test subtitle
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - MVP có thể sinh subtitle từ scene timing

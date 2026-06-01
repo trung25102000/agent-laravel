@@ -32,7 +32,7 @@ Thêm hệ media luân phiên 3-5 giây cho homepage để tạo cảm giác s�
 - `seo-web-app/resources/views/marketplace/home.blade.php`
 - `seo-web-app/resources/css/app.css`
 - `seo-web-app/resources/js/app.js`
-- `memory/bugs.md` nếu gặp issue asset/performance
+- `.agents/memory/bugs.md` nếu gặp issue asset/performance
 
 ## Implementation Notes
 - Task này nên phối hợp với `063` và `068`.

@@ -37,18 +37,18 @@ class PerformanceUiSmokeTest extends TestCase
 
         $this->get('/')
             ->assertOk()
-            ->assertSee('data-problem-grid', false)
+            ->assertSee('data-landing-section="hero"', false)
             ->assertSee('data-sticky-cta', false)
             ->assertSee('id="main-content"', false);
 
         $this->get('/services')
             ->assertOk()
-            ->assertDontSee('data-problem-grid', false)
+            ->assertDontSee('data-landing-section="problems"', false)
             ->assertSee('data-contact-cta', false);
 
         $this->get('/blog')
             ->assertOk()
-            ->assertDontSee('data-problem-grid', false)
+            ->assertDontSee('data-landing-section="problems"', false)
             ->assertSee('Xem dịch vụ liên quan');
     }
 }

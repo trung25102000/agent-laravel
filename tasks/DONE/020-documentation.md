@@ -18,11 +18,11 @@ Hoàn thiện tài liệu vận hành và tài liệu nội bộ cho dự án La
 
 ## Files Expected
 - `README.md`
-- `context/routes-map.md`
-- `context/database-schema.md`
-- `context/project-context.md`
-- `memory/changelog.md`
-- `memory/progress.md`
+- `.agents/context/routes-map.md`
+- `.agents/context/database-schema.md`
+- `.agents/context/project-context.md`
+- `.agents/memory/changelog.md`
+- `.agents/memory/progress.md`
 
 ## Implementation Notes
 - README nên đủ để một developer khác chạy dự án local

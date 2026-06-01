@@ -34,7 +34,7 @@ Xây dựng trang danh sách dịch vụ và trang chi tiết từng dịch vụ
 - `seo-web-app/resources/views/marketplace/services/show.blade.php`
 - `seo-web-app/resources/views/components/contact-cta.blade.php`
 - `seo-web-app/tests/Feature/ServiceDetailPagesTest.php`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Nếu controller hiện tại đã xử lý `/services`, giữ controller mỏng và chỉ thêm query/view composition cần thiết.

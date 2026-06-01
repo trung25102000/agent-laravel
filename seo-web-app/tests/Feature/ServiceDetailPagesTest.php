@@ -46,10 +46,11 @@ class ServiceDetailPagesTest extends TestCase
         $this->get("/services/{$service->slug}")
             ->assertOk()
             ->assertSee('Vấn đề khách thường gặp')
-            ->assertSee('Phạm vi công việc')
-            ->assertSee('Công nghệ liên quan')
+            ->assertSee('Bạn sẽ được hỗ trợ những gì')
+            ->assertSee('Nền tảng hoặc công cụ liên quan')
             ->assertSee('Checklist landing page chốt lead')
-            ->assertSee('Gửi yêu cầu cho dịch vụ này');
+            ->assertSee('Nhận tư vấn cho dịch vụ này')
+            ->assertDontSee('Xem giá tham khảo');
     }
 
     public function test_unpublished_service_detail_is_not_public(): void

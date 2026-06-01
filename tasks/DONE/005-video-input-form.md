@@ -27,8 +27,8 @@ Tạo form để user nhập yêu cầu tạo video cho một `VideoProject`.
 - route create/store
 - view/form hoặc frontend component tương ứng
 - test validation và create flow
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - `platform` nên giới hạn trong tập TikTok, YouTube Shorts, Facebook Reels

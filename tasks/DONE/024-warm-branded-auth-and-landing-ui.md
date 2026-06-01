@@ -40,10 +40,10 @@ Hoan thien giao dien theo huong co mau sac than thien, de gan, ro rang cho user 
 - `video-generator-app/resources/css/app.css`
 - `.env.example` neu can doi default `APP_NAME`
 - feature tests cho welcome/login/register UI
-- `memory/progress.md`
-- `memory/changelog.md`
-- `context/routes-map.md` neu thay doi mo ta route
-- `context/decisions.md` neu co quyet dinh branding/palette dang chu y
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
+- `.agents/context/routes-map.md` neu thay doi mo ta route
+- `.agents/context/decisions.md` neu co quyet dinh branding/palette dang chu y
 
 ## Implementation Notes
 - Uu tien Blade + Tailwind utility classes da co.

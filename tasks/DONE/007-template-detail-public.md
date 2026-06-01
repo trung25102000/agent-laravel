@@ -24,7 +24,7 @@ Xây dựng trang chi tiết template giúp khách xem gallery preview, demo lin
 - `video-generator-app/resources/views/templates/show.blade.php`
 - `video-generator-app/routes/web.php`
 - `video-generator-app/tests/Feature/PublicTemplateDetailTest.php`
-- `context/routes-map.md`
+- `.agents/context/routes-map.md`
 
 ## Implementation Notes
 - Dùng route model binding theo slug hoặc query trong controller.

@@ -13,7 +13,7 @@ class SeoWebBrandingTest extends TestCase
     {
         $this->withoutVite();
 
-        foreach (['/', '/services', '/templates', '/pricing/shop', '/source-code', '/blog', '/login'] as $path) {
+        foreach (['/', '/services', '/templates', '/blog', '/login'] as $path) {
             $response = $this->get($path);
 
             $response->assertOk();

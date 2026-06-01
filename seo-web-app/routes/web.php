@@ -11,11 +11,8 @@ Route::get('/services', [MarketplaceController::class, 'services'])->name('servi
 Route::get('/services/{serviceOffering:slug}', [MarketplaceController::class, 'serviceDetail'])->name('services.show');
 Route::get('/templates', [MarketplaceController::class, 'templates'])->name('templates.index');
 Route::get('/templates/{websiteTemplate:slug}', [MarketplaceController::class, 'templateDetail'])->name('templates.show');
-Route::get('/pricing/{type}', [MarketplaceController::class, 'pricing'])->name('pricing.show');
 Route::get('/portfolio', [MarketplaceController::class, 'portfolio'])->name('portfolio.index');
 Route::get('/portfolio/{demoProject:slug}', [MarketplaceController::class, 'portfolioDetail'])->name('portfolio.show');
-Route::get('/source-code', [MarketplaceController::class, 'sourceCode'])->name('source-code.index');
-Route::get('/source-code/{sourceCodeProduct:slug}', [MarketplaceController::class, 'sourceCodeDetail'])->name('source-code.show');
 Route::get('/blog', [MarketplaceController::class, 'blog'])->name('blog.index');
 Route::get('/blog/{blogPost:slug}', [MarketplaceController::class, 'blogDetail'])->name('blog.show');
 Route::get('/sitemap.xml', [MarketplaceController::class, 'sitemap'])->name('sitemap');
@@ -51,8 +48,6 @@ Route::middleware('auth')->group(function (): void {
         Route::get('/services', [MarketplaceAdminController::class, 'services'])->name('services');
         Route::post('/services', [MarketplaceAdminController::class, 'storeService'])->name('services.store');
         Route::patch('/services/{serviceOffering}', [MarketplaceAdminController::class, 'updateService'])->name('services.update');
-        Route::get('/packages', [MarketplaceAdminController::class, 'packages'])->name('packages');
-        Route::post('/packages', [MarketplaceAdminController::class, 'storePackage'])->name('packages.store');
         Route::get('/orders', [MarketplaceAdminController::class, 'orders'])->name('orders');
         Route::patch('/orders/{orderRequest}', [MarketplaceAdminController::class, 'updateOrder'])->name('orders.update');
         Route::get('/customers', [MarketplaceAdminController::class, 'customers'])->name('customers');
@@ -65,8 +60,6 @@ Route::middleware('auth')->group(function (): void {
         Route::patch('/graduation-requests/{graduationProjectRequest}', [MarketplaceAdminController::class, 'updateGraduationRequest'])->name('graduation-requests.update');
         Route::get('/blog-posts', [MarketplaceAdminController::class, 'blogPosts'])->name('blog-posts');
         Route::post('/blog-posts', [MarketplaceAdminController::class, 'storeBlogPost'])->name('blog-posts.store');
-        Route::get('/source-code-products', [MarketplaceAdminController::class, 'sourceCodeProducts'])->name('source-code-products');
-        Route::post('/source-code-products', [MarketplaceAdminController::class, 'storeSourceCodeProduct'])->name('source-code-products.store');
         Route::get('/demo-projects', [MarketplaceAdminController::class, 'demoProjects'])->name('demo-projects');
         Route::post('/demo-projects', [MarketplaceAdminController::class, 'storeDemoProject'])->name('demo-projects.store');
         Route::patch('/demo-projects/{demoProject}', [MarketplaceAdminController::class, 'updateDemoProject'])->name('demo-projects.update');

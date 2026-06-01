@@ -24,9 +24,9 @@ Tách script thành danh sách scene để phục vụ voice-over, subtitle, ass
 - model `VideoScene`
 - service/action scene generation
 - test scene generation
-- `context/database-schema.md`
-- `memory/progress.md`
-- `memory/changelog.md`
+- `.agents/context/database-schema.md`
+- `.agents/memory/progress.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Có thể dùng parser đơn giản cho MVP từ đoạn script

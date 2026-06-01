@@ -10,7 +10,6 @@
             'website' => ['eyebrow' => 'Website', 'icon' => 'WEB', 'gradient' => 'from-[#0F172A] via-[#2563EB] to-[#06B6D4]'],
             'seo' => ['eyebrow' => 'SEO Growth', 'icon' => 'SEO', 'gradient' => 'from-[#10B981] via-[#06B6D4] to-[#2563EB]'],
             'bug_fix' => ['eyebrow' => 'Fix Bug', 'icon' => 'FIX', 'gradient' => 'from-[#F97316] via-[#EF4444] to-[#7C3AED]'],
-            'source_code' => ['eyebrow' => 'Source Code', 'icon' => 'SRC', 'gradient' => 'from-[#7C3AED] via-[#2563EB] to-[#0F172A]'],
         ];
         $visual = $portfolioVisuals[$project->project_type] ?? ['eyebrow' => 'Case Study', 'icon' => 'CS', 'gradient' => 'from-[#2563EB] via-[#7C3AED] to-[#06B6D4]'];
     @endphp
@@ -69,11 +68,11 @@
                         </div>
                     </article>
                     <article class="rounded-[1.25rem] border border-zinc-200 bg-zinc-50 px-4 py-4">
-                        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Vai trò thực hiện</p>
+                        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Phần công việc đã thực hiện</p>
                         <p class="mt-3 text-sm leading-6 text-zinc-700">{{ $project->role_summary }}</p>
                     </article>
                     <article class="rounded-[1.25rem] border border-zinc-200 bg-zinc-50 px-4 py-4">
-                        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Outcome đạt được</p>
+                        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-500">Kết quả nhận được</p>
                         <p class="mt-3 text-sm leading-6 text-zinc-700">{{ $project->outcome_summary }}</p>
                     </article>
                 </div>
@@ -97,7 +96,7 @@
 
         <section class="grid gap-4 lg:grid-cols-[1fr_18rem]" data-reveal>
             <article class="rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm">
-                <p class="text-sm font-semibold text-rose-700">Công nghệ và vai trò thực hiện</p>
+                <p class="text-sm font-semibold text-rose-700">Nền tảng sử dụng và phần việc đã làm</p>
                 <div class="mt-4 flex flex-wrap gap-2">
                     @foreach (($project->tech_stack ?? []) as $tech)
                         <span class="rounded-full bg-zinc-100 px-3 py-1 text-sm font-semibold text-zinc-700">{{ $tech }}</span>
@@ -106,7 +105,7 @@
                 <p class="mt-4 text-sm leading-6 text-zinc-600">{{ $project->role_summary }}</p>
             </article>
             <article class="rounded-[1.5rem] border border-zinc-200 bg-white p-5 shadow-sm">
-                <p class="text-sm font-semibold text-rose-700">Case study liên quan</p>
+                <p class="text-sm font-semibold text-rose-700">Dự án tương tự</p>
                 <div class="mt-4 space-y-3 text-sm">
                     @foreach ($relatedProjects as $relatedProject)
                         <a class="block rounded-[1.1rem] border border-zinc-100 p-3 transition hover:border-rose-200 hover:bg-rose-50" href="{{ route('portfolio.show', $relatedProject) }}">
@@ -119,7 +118,7 @@
 
         <x-contact-cta
             headline="Muốn làm một dự án tương tự?"
-            description="Mô tả mục tiêu của bạn để nhận scope, timeline và hướng triển khai gần với case study này."
+            description="Mô tả mục tiêu của bạn để nhận hướng làm, thời gian dự kiến và gợi ý triển khai gần với dự án này."
             serviceType="custom"
             buttonLabel="Nhận tư vấn cho dự án tương tự"
         />

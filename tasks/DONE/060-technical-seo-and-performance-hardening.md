@@ -33,8 +33,8 @@ Hoàn thiện phần technical SEO và hiệu năng cho `seo-web-app` để hỗ
 - `seo-web-app/resources/js/app.js`
 - `seo-web-app/tests/Feature/TechnicalSeoTest.php`
 - `seo-web-app/tests/Feature/PerformanceUiSmokeTest.php`
-- `context/decisions.md`
-- `memory/changelog.md`
+- `.agents/context/decisions.md`
+- `.agents/memory/changelog.md`
 
 ## Implementation Notes
 - Không thêm script tracking hay third-party nặng nếu chưa cần.
