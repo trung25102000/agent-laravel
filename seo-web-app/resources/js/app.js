@@ -1,8 +1,14 @@
 document.documentElement.classList.add('js');
 
 const revealItems = document.querySelectorAll('[data-reveal]');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+const isCompactViewport = window.innerWidth < 1024;
+const perfLite = prefersReducedMotion || isCoarsePointer || isCompactViewport;
 
-if ('IntersectionObserver' in window) {
+document.documentElement.classList.toggle('perf-lite', perfLite);
+
+if ('IntersectionObserver' in window && !perfLite) {
     const revealObserver = new IntersectionObserver(
         (entries, observer) => {
             entries.forEach((entry) => {
@@ -23,7 +29,6 @@ if ('IntersectionObserver' in window) {
 }
 
 const storyCarousels = document.querySelectorAll('[data-story-carousel]');
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 storyCarousels.forEach((carousel) => {
     const slides = Array.from(carousel.querySelectorAll('[data-story-slide]'));
@@ -63,7 +68,7 @@ storyCarousels.forEach((carousel) => {
     };
 
     const start = () => {
-        if (prefersReducedMotion || slides.length < 2 || timer) {
+        if (perfLite || slides.length < 2 || timer) {
             return;
         }
 
@@ -143,7 +148,7 @@ heroVisualSections.forEach((section) => {
     };
 
     const start = () => {
-        if (prefersReducedMotion || scenes.length < 2 || timer) {
+        if (perfLite || scenes.length < 2 || timer) {
             return;
         }
 
@@ -207,7 +212,7 @@ feedbackCarousels.forEach((carousel) => {
     };
 
     const start = () => {
-        if (prefersReducedMotion || slides.length < 2 || timer) {
+        if (perfLite || slides.length < 2 || timer) {
             return;
         }
 
@@ -249,7 +254,7 @@ if ('IntersectionObserver' in window) {
                     return;
                 }
 
-                if (prefersReducedMotion) {
+                if (perfLite) {
                     element.textContent = String(target);
                     observer.unobserve(element);
                     return;

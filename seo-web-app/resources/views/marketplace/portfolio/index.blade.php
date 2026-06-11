@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="space-y-4 p-5">
+                    <div class="portfolio-showcase-card__body space-y-4 p-5">
                         <div class="flex flex-wrap gap-2" data-portfolio-tech-stack>
                             @foreach (($project->tech_stack ?? []) as $tech)
                                 <span class="rounded-full bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-700">{{ $tech }}</span>
@@ -87,7 +87,7 @@
                                 <p class="mt-2 text-sm leading-6 text-zinc-700">{{ $project->outcome_summary }}</p>
                             </div>
                         </div>
-                        <div class="flex flex-wrap gap-3">
+                        <div class="portfolio-showcase-card__actions flex flex-wrap gap-3">
                             <a class="rounded-xl bg-zinc-950 px-4 py-2.5 text-sm font-semibold text-white" href="{{ route('portfolio.show', $project) }}">Xem chi tiết</a>
                             <a class="rounded-xl border border-zinc-300 px-4 py-2.5 text-sm font-semibold text-zinc-800" href="{{ $project->demo_url }}">Xem demo</a>
                         </div>

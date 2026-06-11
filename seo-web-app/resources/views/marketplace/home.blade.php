@@ -254,7 +254,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="p-5">
+                        <div class="service-visual-card__body p-5">
                             <p class="text-sm leading-6 text-zinc-600">{{ $service->short_description }}</p>
                             @if ($service->key_benefits)
                                 <div class="mt-4 flex flex-wrap gap-2 text-xs font-semibold">
@@ -263,7 +263,7 @@
                                     @endforeach
                                 </div>
                             @endif
-                            <div class="mt-5 flex flex-col gap-2 sm:flex-row">
+                            <div class="service-visual-card__actions mt-5 flex flex-col gap-2 sm:flex-row">
                                 <a class="rounded-xl bg-zinc-950 px-4 py-2.5 text-sm font-semibold text-white" href="{{ route('services.show', $service) }}">Xem chi tiết</a>
                                 <a class="rounded-xl border border-zinc-300 px-4 py-2.5 text-sm font-semibold text-zinc-800" href="#quote-form">Nhận tư vấn</a>
                             </div>
